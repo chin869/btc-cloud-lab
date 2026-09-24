@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BTC Local Lab</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">LOCAL · PAPER TRADING ONLY</div>
+      <h1>BTC Local Lab</h1>
+      <p>免費公開行情分析 + 本機模擬盤。所有交易只存在你的瀏覽器。</p>
+    </div>
+    <nav class="page-tabs" aria-label="主要頁面">
+      <button id="navOverview" class="page-tab active" type="button">總覽</button>
+      <button id="navDataCenter" class="page-tab" type="button">數據中心</button>
+    </nav>
+    <div class="top-actions">
+      <span id="connectionStatus" class="status neutral">尚未更新</span>
+      <button id="refreshBtn" class="btn secondary">立即更新</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="overviewPage" class="page-view active">
+    <section class="grid metrics">
+      <article class="card metric">
+        <span>BTC 現價</span>
+        <strong id="priceValue">--</strong>
+        <small id="marketSource">資料來源：--</small>
+      </article>
+      <article class="card metric">
+        <span>分析傾向</span>
+        <strong id="biasValue">--</strong>
+        <small id="scoreValue">分數：--</small>
+      </article>
+      <article class="card metric">
+        <span>模擬盤總資產</span>
+        <strong id="equityValue">--</strong>
+        <small id="cashValue">現金：--</small>
+      </article>
+      <article class="card metric">
+        <span>未實現損益</span>
+        <strong id="unrealizedValue">--</strong>
+        <small id="realizedValue">已實現：--</small>
+      </article>
+    </section>
+
+    <section class="card prediction-shell">
+      <div class="section-head">
+        <div>
+          <h2>1H / 4H / 24H 第四階段預測核心</h2>
+          <p>規則基準 + Logistic + Ridge Return + Naive Bayes + Stump Ensemble，多時間折與多盤勢驗證。</p>
+        </div>
+        <span id="predictionStatus" class="status neutral">等待模型</span>
+      </div>
+      <div id="predictionMeta" class="prediction-meta">--</div>
+      <div id="validationRule" class="validation-rule">等待驗證規則…</div>
+      <div id="predictionCards" class="prediction-grid">
+        <div class="prediction-placeholder">正在等待歷史 1H K 線…</div>
+      </div>
+      <div class="backtest-head">
+        <div>
+          <h2>Walk-forward 模型排行榜</h2>
+          <p>五段時間順序驗證，並分開檢查多頭、空頭、震盪盤；不使用未來資料。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table class="backtest-table">
+          <thead>
+            <tr>
+              <th>週期</th><th>模型</th><th>門檻</th><th>訊號數</th><th>勝率</th><th>平均淨變動</th><th>Profit Factor</th><th>正報酬折數</th><th>多頭淨變動</th><th>空頭淨變動</th><th>震盪淨變動</th>
+            </tr>
+          </thead>
+          <tbody id="backtestRows">
+            <tr><td colspan="11" class="muted">等待模型完成 walk-forward 驗證</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tiny prediction-warning">PASS 代表模型同時通過訊號數、扣成本報酬、Profit Factor、時間一致性與跨盤勢門檻；仍不代表未來獲利保證。</p>
+    </section>
+
+
+    <section class="card auto-paper-shell">
+      <div class="section-head">
+        <div>
+          <h2>AUTO PAPER 自動模擬盤</h2>
+          <p>Windows 背景每小時檢查一次；只使用虛擬資金，不會送出真實交易。</p>
+        </div>
+        <span id="autoPaperStatus" class="status neutral">等待第一次執行</span>
+      </div>
+      <div class="auto-paper-metrics">
+        <div><span>AUTO 總資產</span><strong id="autoEquityValue">--</strong><small id="autoCashValue">現金：--</small></div>
+        <div><span>BTC 持倉</span><strong id="autoQtyValue">--</strong><small id="autoEntryValue">成本：--</small></div>
+        <div><span>未實現 PnL</span><strong id="autoUnrealizedValue">--</strong><small id="autoRealizedValue">累計已實現：--</small></div>
+        <div><span>最後判斷</span><strong id="autoDecisionValue">--</strong><small id="autoDecisionMeta">--</small></div>
+      </div>
+      <div id="autoDecisionReason" class="auto-reason">等待背景引擎第一次完成判斷。</div>
+      <div class="auto-policy">
+        <span>單筆上限 10%</span><span>現貨 BTC</span><span>無槓桿</span><span>止損 2%</span><span>止盈 4%</span><span>最長持倉 48H</span>
+      </div>
+      <div class="table-wrap auto-trades-wrap">
+        <table>
+          <thead><tr><th>時間</th><th>方向</th><th>模式</th><th>BTC</th><th>成交價</th><th>PnL</th><th>原因</th></tr></thead>
+          <tbody id="autoTradeRows"><tr><td colspan="7" class="muted">目前沒有 AUTO 交易紀錄</td></tr></tbody>
+        </table>
+      </div>
+      <p class="tiny">AUTO 目前預設允許 <strong>experimental-unvalidated</strong> 研究交易，因為現有模型尚未通過完整 PASS；這些交易只用來 forward test，不代表已證明有獲利能力。要暫停可執行 auto_paper_off.bat，重新開啟用 auto_paper_on.bat。</p>
+    </section>
+
+    <section class="card derivatives-shell">
+      <div class="section-head">
+        <div>
+          <h2>衍生品市場增強層</h2>
+          <p>Funding、Open Interest、多空比與主動買賣比；只用實際可取得的短期歷史。</p>
+        </div>
+        <span id="derivativesStatus" class="status neutral">等待資料</span>
+      </div>
+      <div id="derivativesCoverage" class="derivatives-coverage">尚未載入</div>
+      <div id="derivativesSnapshot" class="derivatives-snapshot"></div>
+      <div id="derivativesCards" class="prediction-grid">
+        <div class="prediction-placeholder">等待衍生品資料與短期 walk-forward 驗證…</div>
+      </div>
+      <p class="tiny prediction-warning">衍生品模型的歷史覆蓋通常比價格 K 線短，因此 PASS 只能代表短期外樣本驗證通過，不等於長期有效。</p>
+    </section>
+
+    <section class="layout-main">
+      <div class="left-column">
+        <article class="card chart-card">
+          <div class="section-head">
+            <div>
+              <h2>價格走勢</h2>
+              <p>價格、SMA20、SMA50</p>
+            </div>
+            <select id="intervalSelect" class="select">
+              <option value="5m">5 分</option>
+              <option value="15m">15 分</option>
+              <option value="1h" selected>1 小時</option>
+              <option value="4h">4 小時</option>
+              <option value="1d">1 天</option>
+            </select>
+          </div>
+          <div class="canvas-wrap"><canvas id="priceChart"></canvas></div>
+        </article>
+
+        <article class="card">
+          <div class="section-head">
+            <div>
+              <h2>分析儀表</h2>
+              <p>技術摘要本身不送真實訂單；AUTO PAPER 會由背景策略讀取模型訊號。</p>
+            </div>
+            <span id="updatedAt" class="muted">--</span>
+          </div>
+          <div class="analysis-grid">
+            <div><span>SMA20</span><strong id="sma20Value">--</strong></div>
+            <div><span>SMA50</span><strong id="sma50Value">--</strong></div>
+            <div><span>RSI14</span><strong id="rsiValue">--</strong></div>
+            <div><span>6 根K動能</span><strong id="momentumValue">--</strong></div>
+            <div><span>24 根K波動</span><strong id="volatilityValue">--</strong></div>
+            <div><span>24 根K區間</span><strong id="rangeValue">--</strong></div>
+          </div>
+          <div id="analysisReasons" class="reason-list"></div>
+        </article>
+      </div>
+
+      <aside class="right-column">
+        <article class="card">
+          <h2>模擬盤</h2>
+          <p class="muted">現貨 BTC 模擬交易，不連接真實交易所。</p>
+          <div class="portfolio-list">
+            <div><span>BTC 持倉</span><strong id="qtyValue">0 BTC</strong></div>
+            <div><span>平均成本</span><strong id="avgEntryValue">--</strong></div>
+            <div><span>持倉市值</span><strong id="positionValue">--</strong></div>
+          </div>
+          <label class="field">
+            <span>交易金額（USDT）</span>
+            <input id="orderAmount" type="number" min="1" step="1" value="100">
+          </label>
+          <div class="trade-buttons">
+            <button id="buyBtn" class="btn buy">買入 BTC</button>
+            <button id="sellBtn" class="btn sell">賣出 BTC</button>
+          </div>
+          <button id="closeBtn" class="btn secondary full">全部平倉</button>
+          <div id="tradeMessage" class="message"></div>
+        </article>
+
+        <article class="card">
+          <h2>模擬設定</h2>
+          <label class="field">
+            <span>初始資金（USDT）</span>
+            <input id="initialBalanceInput" type="number" min="100" step="100">
+          </label>
+          <label class="field">
+            <span>手續費（%）</span>
+            <input id="feeInput" type="number" min="0" max="5" step="0.01">
+          </label>
+          <label class="field">
+            <span>滑價（%）</span>
+            <input id="slippageInput" type="number" min="0" max="5" step="0.01">
+          </label>
+          <button id="saveSettingsBtn" class="btn secondary full">儲存設定</button>
+          <button id="resetBtn" class="btn danger full">重置模擬盤</button>
+          <p class="tiny">修改初始資金不會改動目前資產；按「重置模擬盤」才會套用。</p>
+        </article>
+
+        <article class="card">
+          <h2>本機備份</h2>
+          <div class="trade-buttons">
+            <button id="exportBtn" class="btn secondary">匯出 JSON</button>
+            <label class="btn secondary file-btn">匯入 JSON<input id="importInput" type="file" accept="application/json"></label>
+          </div>
+        </article>
+      </aside>
+    </section>
+
+    <section class="card">
+      <div class="section-head">
+        <div>
+          <h2>交易紀錄</h2>
+          <p>最多保留最近 200 筆。</p>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>時間</th><th>方向</th><th>BTC</th><th>成交價</th><th>手續費</th><th>已實現 PnL</th>
+            </tr>
+          </thead>
+          <tbody id="tradeRows"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="notice">
+      <strong>安全邊界：</strong>
+      此版本沒有 API Key、沒有真實交易所下單端點。AUTO PAPER 只操作虛擬資金，絕不送出真實訂單。
+    </section>
+    </section>
+
+    <section id="dataCenterPage" class="page-view">
+      <section class="data-center-hero">
+        <div>
+          <div class="eyebrow">DATA CENTER · PAPER PERFORMANCE</div>
+          <h2>BTC 數據中心</h2>
+          <p>觀察衍生品市場結構，以及本月模擬盤的已實現績效。</p>
+        </div>
+        <div class="data-center-controls">
+          <label for="dataRangeSelect">市場資料範圍</label>
+          <select id="dataRangeSelect" class="select">
+            <option value="24">24 小時</option>
+            <option value="168" selected>7 天</option>
+            <option value="720">30 天</option>
+            <option value="all">全部</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="grid performance-metrics">
+        <article class="card metric">
+          <span>本月 AUTO 已實現 PnL</span>
+          <strong id="monthRealizedValue">$0.00</strong>
+          <small id="monthReturnValue">相對初始資金：0.00%</small>
+        </article>
+        <article class="card metric">
+          <span>目前未實現 PnL</span>
+          <strong id="monthUnrealizedValue">$0.00</strong>
+          <small>目前持倉的浮動損益，不等同本月已實現績效</small>
+        </article>
+        <article class="card metric">
+          <span>本月平倉次數</span>
+          <strong id="monthClosedTradesValue">0</strong>
+          <small id="monthWinRateValue">勝率：--</small>
+        </article>
+        <article class="card metric">
+          <span>本月手續費</span>
+          <strong id="monthFeesValue">$0.00</strong>
+          <small id="monthBestTradeValue">最佳單：--</small>
+        </article>
+      </section>
+
+      <section class="data-grid">
+        <article class="card data-chart-card wide">
+          <div class="section-head">
+            <div>
+              <h2>本月 AUTO PAPER 累計已實現 PnL</h2>
+              <p>只計入系統自動平倉交易；手動模擬單不混入這條績效曲線。</p>
+            </div>
+            <span id="monthPeriodLabel" class="muted">--</span>
+          </div>
+          <div class="data-canvas-wrap"><canvas id="monthlyPnlChart"></canvas></div>
+        </article>
+
+        <article class="card data-chart-card">
+          <div class="section-head">
+            <div>
+              <h2>Funding Rate</h2>
+              <p>永續合約資金費率</p>
+            </div>
+            <strong id="dcFundingNow" class="data-now">--</strong>
+          </div>
+          <div class="data-canvas-wrap small"><canvas id="fundingChart"></canvas></div>
+        </article>
+
+        <article class="card data-chart-card">
+          <div class="section-head">
+            <div>
+              <h2>Open Interest</h2>
+              <p>BTC 合約未平倉量</p>
+            </div>
+            <strong id="dcOiNow" class="data-now">--</strong>
+          </div>
+          <div class="data-canvas-wrap small"><canvas id="oiChart"></canvas></div>
+        </article>
+
+        <article class="card data-chart-card">
+          <div class="section-head">
+            <div>
+              <h2>Global Long / Short Ratio</h2>
+              <p>帳戶多空比，1.0 為中線</p>
+            </div>
+            <strong id="dcLongShortNow" class="data-now">--</strong>
+          </div>
+          <div class="data-canvas-wrap small"><canvas id="longShortChart"></canvas></div>
+        </article>
+
+        <article class="card data-chart-card">
+          <div class="section-head">
+            <div>
+              <h2>Taker Buy / Sell Ratio</h2>
+              <p>主動買入 / 主動賣出，1.0 為中線</p>
+            </div>
+            <strong id="dcTakerNow" class="data-now">--</strong>
+          </div>
+          <div class="data-canvas-wrap small"><canvas id="takerChart"></canvas></div>
+        </article>
+      </section>
+
+      <section class="card data-status-card">
+        <div class="section-head">
+          <div>
+            <h2>資料收集器狀態</h2>
+            <p>網站會把本機累積資料與即時 API 合併。</p>
+          </div>
+          <span id="dcCollectorBadge" class="status neutral">--</span>
+        </div>
+        <div id="dcCollectorDetails" class="collector-details">等待資料...</div>
+      </section>
+
+      <section class="notice">
+        <strong>績效口徑：</strong>
+        「本月 AUTO 已實現 PnL」只統計背景 AUTO PAPER 本月 SELL / 平倉紀錄；目前 AUTO 持倉浮盈浮虧另外顯示，手動模擬單也不會混入。
+      </section>
+    </section>
+  </main>
+
+  <script src="data/derivatives-history.js"></script>
+  <script src="data/auto-paper.js"></script>
+  <script src="predictor.js"></script>
+  <script src="derivatives.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head><meta charset="utf-8"><title>BTC Auto Paper Engine</title></head>
+<body>
+<pre id="engineOutput">AUTO_ENGINE_WAITING</pre>
+<script src="data/derivatives-history.js"></script>
+<script src="predictor.js"></script>
+<script src="derivatives.js"></script>
+<script>
+(async()=>{
+  const out=document.getElementById("engineOutput");
+  const emit=(obj)=>{ out.textContent="AUTO_RESULT_START"+JSON.stringify(obj)+"AUTO_RESULT_END"; };
+
+  async function fetchJson(url,timeoutMs=12000){
+    const controller=new AbortController();
+    const timer=setTimeout(()=>controller.abort(),timeoutMs);
+    try{
+      const res=await fetch(url,{signal:controller.signal,cache:"no-store"});
+      if(!res.ok) throw new Error("HTTP "+res.status+" "+url);
+      return await res.json();
+    }finally{ clearTimeout(timer); }
+  }
+
+  function mergeRows(localRows,liveRows){
+    const map=new Map();
+    [...(Array.isArray(localRows)?localRows:[]),...(Array.isArray(liveRows)?liveRows:[])].forEach(row=>{
+      const ts=Number(row && (row.timestamp ?? row.fundingTime));
+      if(!Number.isFinite(ts)) return;
+      map.set(ts,Object.assign({},row,{timestamp:ts}));
+    });
+    return Array.from(map.values()).sort((a,b)=>Number(a.timestamp)-Number(b.timestamp));
+  }
+
+  async function fetchHistory(target=5000){
+    let endTime=Date.now(),rows=[];
+    while(rows.length<target){
+      const limit=Math.min(1000,target-rows.length);
+      const url="https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit="+limit+"&endTime="+endTime;
+      const data=await fetchJson(url);
+      if(!Array.isArray(data)||!data.length) break;
+      const batch=data.map(k=>({
+        t:Number(k[0]),open:Number(k[1]),high:Number(k[2]),low:Number(k[3]),
+        close:Number(k[4]),volume:Number(k[5]),closedAt:Number(k[6])
+      }));
+      rows=batch.concat(rows);
+      endTime=batch[0].t-1;
+      if(data.length<limit) break;
+    }
+    const unique=new Map();
+    rows.forEach(c=>unique.set(c.t,c));
+    return Array.from(unique.values()).sort((a,b)=>a.t-b.t).filter(c=>c.closedAt<Date.now()).slice(-target);
+  }
+
+  async function derivativeFeeds(){
+    const persisted=(window.BTCLocalDerivativesHistory&&window.BTCLocalDerivativesHistory.feeds)||{};
+    const base="https://fapi.binance.com";
+    const requests={
+      funding:base+"/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000",
+      openInterest:base+"/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&limit=500",
+      longShort:base+"/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&limit=500",
+      taker:base+"/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=1h&limit=500"
+    };
+    const names=Object.keys(requests);
+    const settled=await Promise.allSettled(names.map(n=>fetchJson(requests[n])));
+    const live={funding:[],openInterest:[],longShort:[],taker:[]};
+    settled.forEach((r,i)=>{
+      const name=names[i];
+      if(r.status!=="fulfilled"||!Array.isArray(r.value)) return;
+      live[name]=r.value.map(row=>Object.assign({},row,{
+        timestamp:Number(name==="funding"?row.fundingTime:row.timestamp)
+      }));
+    });
+    return {
+      funding:mergeRows(persisted.funding,live.funding),
+      openInterest:mergeRows(persisted.openInterest,live.openInterest),
+      longShort:mergeRows(persisted.longShort,live.longShort),
+      taker:mergeRows(persisted.taker,live.taker)
+    };
+  }
+
+  function modelMean(models){
+    const ps=(models||[]).map(m=>Number(m.current&&m.current.probabilityUp)).filter(Number.isFinite);
+    return ps.length?ps.reduce((a,b)=>a+b,0)/ps.length:0.5;
+  }
+
+  function deriveSignal(main,deriv){
+    const weights={"1h":1,"4h":1.5,"24h":2};
+    const validated=[];
+    const raw=[];
+    for(const key of ["1h","4h","24h"]){
+      const h=main.horizons[key];
+      if(h&&h.consensus&&h.consensus.validated&&h.consensus.action!=="NEUTRAL"){
+        validated.push({action:h.consensus.action,weight:weights[key],source:"OHLCV "+key});
+      }
+      raw.push({key,p:modelMean(h&&h.models),weight:weights[key],source:"OHLCV"});
+      const dh=deriv&&deriv.available&&deriv.horizons&&deriv.horizons[key];
+      if(dh&&dh.available){
+        if(dh.consensus&&dh.consensus.validated&&dh.consensus.action!=="NEUTRAL"){
+          validated.push({action:dh.consensus.action,weight:weights[key]*0.8,source:"Derivatives "+key});
+        }
+        raw.push({key,p:modelMean(dh.models),weight:weights[key]*0.65,source:"Derivatives"});
+      }
+    }
+
+    if(validated.length){
+      let score=0,total=0;
+      validated.forEach(v=>{
+        score+=(v.action==="LONG"?1:-1)*v.weight;
+        total+=v.weight;
+      });
+      const agreement=total?Math.abs(score)/total:0;
+      if(agreement>=0.34){
+        return {
+          signal:score>0?"BUY":"SELL",
+          mode:"validated",
+          probabilityUp:score>0?0.5+agreement*0.35:0.5-agreement*0.35,
+          confidence:Math.min(90,55+agreement*30),
+          reason:"通過 PASS 的模型投票："+validated.map(v=>v.source+" "+v.action).join("、")
+        };
+      }
+    }
+
+    let weighted=0,totalWeight=0;
+    raw.forEach(r=>{weighted+=r.p*r.weight;totalWeight+=r.weight;});
+    const p=totalWeight?weighted/totalWeight:0.5;
+    const byHorizon={};
+    for(const key of ["1h","4h","24h"]){
+      const rows=raw.filter(r=>r.key===key);
+      byHorizon[key]=rows.length?rows.reduce((a,b)=>a+b.p,0)/rows.length:0.5;
+    }
+    const longVotes=Object.values(byHorizon).filter(v=>v>=0.54).length;
+    const shortVotes=Object.values(byHorizon).filter(v=>v<=0.46).length;
+    let signal="HOLD";
+    if(p>=0.56&&longVotes>=2) signal="BUY";
+    else if(p<=0.44&&shortVotes>=2) signal="SELL";
+    return {
+      signal,
+      mode:"experimental-unvalidated",
+      probabilityUp:p,
+      confidence:Math.min(78,50+Math.abs(p-0.5)*120),
+      horizonProbabilities:byHorizon,
+      reason:"研究模式："+signal+"；綜合上漲機率 "+(p*100).toFixed(1)+"%，1H/4H/24H="+
+        [byHorizon["1h"],byHorizon["4h"],byHorizon["24h"]].map(v=>(v*100).toFixed(1)+"%").join(" / ")
+    };
+  }
+
+  try{
+    const candles=await fetchHistory(5000);
+    if(candles.length<700) throw new Error("完整 1H K 線不足");
+    const main=window.BTCPredictor.run(candles,{feeRate:0.001,slippageRate:0.0005});
+    let deriv=null;
+    try{
+      const feeds=await derivativeFeeds();
+      deriv=window.BTCDerivatives.run(candles,feeds,{feeRate:0.001,slippageRate:0.0005});
+    }catch(e){}
+    const last=candles[candles.length-1];
+    const decision=deriveSignal(main,deriv);
+    emit({
+      ok:true,
+      generatedAt:new Date().toISOString(),
+      candleTs:last.t,
+      price:last.close,
+      currentRegime:main.currentRegime,
+      signal:decision.signal,
+      mode:decision.mode,
+      probabilityUp:decision.probabilityUp,
+      confidence:decision.confidence,
+      horizonProbabilities:decision.horizonProbabilities||null,
+      reason:decision.reason,
+      mainValidated:{
+        "1h":Boolean(main.horizons["1h"].consensus.validated),
+        "4h":Boolean(main.horizons["4h"].consensus.validated),
+        "24h":Boolean(main.horizons["24h"].consensus.validated)
+      },
+      derivativesAvailable:Boolean(deriv&&deriv.available)
+    });
+  }catch(err){
+    emit({ok:false,generatedAt:new Date().toISOString(),error:String(err&&err.message||err)});
+  }
+})();
+</script>
+</body>
+</html>
