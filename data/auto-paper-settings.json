@@ -1,0 +1,21 @@
+{
+  "enabled": true,
+  "symbol": "BTCUSDT",
+  "marketType": "USDT_M_PERPETUAL",
+  "initialBalance": 500,
+  "maxPositionPct": 0.10,
+  "maxLeverage": 10,
+  "maxMarginPct": 0.25,
+  "minRiskPct": 0.005,
+  "maxRiskPct": 0.0125,
+  "minStopPct": 0.004,
+  "maxStopPct": 0.020,
+  "rewardRiskRatio": 2,
+  "cooldownMinutes": 30,
+  "feeRate": 0.001,
+  "slippageRate": 0.0005,
+  "stopLossPct": 0.02,
+  "takeProfitPct": 0.04,
+  "maxHoldHours": 48,
+  "experimentalTrading": true
+}
