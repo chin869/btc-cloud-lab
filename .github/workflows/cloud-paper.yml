@@ -1,0 +1,95 @@
+name: BTC Cloud AUTO PAPER
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "2-59/5 * * * *"
+  push:
+    branches: ["main"]
+    paths:
+      - "index.html"
+      - "style.css"
+      - "app.js"
+      - "predictor.js"
+      - "derivatives.js"
+      - "cloud/**"
+      - "data/auto-paper-settings.json"
+      - ".github/workflows/cloud-paper.yml"
+
+concurrency:
+  group: btc-cloud-paper
+  cancel-in-progress: false
+
+permissions: {}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    permissions:
+      contents: write
+      pages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Verify cloud safety and configuration
+        run: |
+          node cloud/verify_cloud.mjs
+          node cloud/verify_strategy.mjs
+
+      - name: Run cloud collector and AUTO PAPER
+        id: cloud_cycle
+        continue-on-error: true
+        run: node cloud/cloud_cycle.mjs
+
+      - name: Build cloud dashboard
+        if: steps.cloud_cycle.outcome == 'success'
+        run: node cloud/build_site.mjs
+
+      - name: Persist cloud paper data
+        if: always() && (steps.cloud_cycle.outcome == 'success' || steps.cloud_cycle.outcome == 'failure')
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/derivatives-history.json data/derivatives-history.js data/auto-paper.json data/auto-paper.js data/cloud-status.json
+          if git diff --cached --quiet; then
+            echo "No cloud data changes to commit."
+          else
+            git commit -m "chore: update cloud paper data"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
+
+      - name: Report cloud cycle failure
+        if: steps.cloud_cycle.outcome == 'failure'
+        run: exit 1
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
