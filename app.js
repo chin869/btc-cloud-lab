@@ -179,6 +179,53 @@
     }));
   }
 
+  function okxBar(interval){
+    return ({"1m":"1m","5m":"5m","15m":"15m","1h":"1H","4h":"4H","1d":"1D"})[interval] || interval;
+  }
+
+  function okxIntervalMs(interval){
+    return ({"1m":60000,"5m":300000,"15m":900000,"1h":3600000,"4h":14400000,"1d":86400000})[interval] || 3600000;
+  }
+
+  function parseOkxCandles(rows,interval){
+    return (Array.isArray(rows)?rows:[])
+      .filter(k=>Array.isArray(k)&&String(k[8])==="1")
+      .map(k=>({
+        t:Number(k[0]),open:Number(k[1]),high:Number(k[2]),low:Number(k[3]),close:Number(k[4]),
+        volume:Number(k[6]),closedAt:Number(k[0])+okxIntervalMs(interval)-1
+      }))
+      .sort((a,b)=>a.t-b.t);
+  }
+
+  async function fetchOkxRecent(interval,limit=200){
+    const safeLimit=Math.max(50,Math.min(300,Number(limit)||200));
+    const url="https://www.okx.com/api/v5/market/candles?instId=BTC-USDT-SWAP&bar="+okxBar(interval)+"&limit="+safeLimit;
+    const payload=await fetchJson(url);
+    if(!payload||String(payload.code)!=="0") throw new Error("OKX 合約資料錯誤");
+    const candles=parseOkxCandles(payload.data,interval);
+    if(candles.length<50) throw new Error("OKX 合約資料不足");
+    return candles;
+  }
+
+  async function fetchOkxHistory(target=9000){
+    let after="";
+    const rows=[];
+    for(let page=0;rows.length<target&&page<35;page++){
+      const limit=Math.min(300,target-rows.length);
+      const url="https://www.okx.com/api/v5/market/history-candles?instId=BTC-USDT-SWAP&bar=1H&limit="+limit+(after?"&after="+after:"");
+      const payload=await fetchJson(url,12000);
+      if(!payload||String(payload.code)!=="0"||!Array.isArray(payload.data)||!payload.data.length) break;
+      rows.push(...parseOkxCandles(payload.data,"1h"));
+      const oldest=Math.min(...payload.data.map(k=>Number(k[0])).filter(Number.isFinite));
+      if(!Number.isFinite(oldest)||String(oldest)===after||payload.data.length<limit) break;
+      after=String(oldest);
+      await new Promise(resolve=>setTimeout(resolve,120));
+    }
+    const unique=new Map();
+    rows.forEach(c=>unique.set(c.t,c));
+    return Array.from(unique.values()).sort((a,b)=>a.t-b.t).slice(-target);
+  }
+
   async function fetchKraken(interval,limit=200){
     const map={"5m":5,"15m":15,"1h":60,"4h":240,"1d":1440};
     const url="https://api.kraken.com/0/public/OHLC?pair=XBTUSD&interval="+map[interval];
@@ -198,7 +245,10 @@
       const candles=await fetchBinance(interval);
       return {candles,source:CLOUD_FUTURES_MODE?"Binance BTCUSDT 永續合約公開 API":"Binance 公開 API"};
     }catch(binanceError){
-      if(CLOUD_FUTURES_MODE) throw binanceError;
+      if(CLOUD_FUTURES_MODE){
+        const candles=await fetchOkxRecent(interval);
+        return {candles,source:"OKX BTC-USDT 永續合約公開 API（備援）",fallbackReason:String(binanceError.message||binanceError)};
+      }
       const candles=await fetchKraken(interval);
       return {candles,source:"Kraken 公開 API（備援）",fallbackReason:String(binanceError.message||binanceError)};
     }
@@ -241,7 +291,12 @@
       const days=(candles.length/24).toFixed(0);
       return {candles,source:(CLOUD_FUTURES_MODE?"Binance BTCUSDT 永續合約 1H":"Binance 1H")+" · "+candles.length+" 根（約 "+days+" 天）"};
     }catch(binanceError){
-      if(CLOUD_FUTURES_MODE) throw binanceError;
+      if(CLOUD_FUTURES_MODE){
+        const candles=await fetchOkxHistory(9000);
+        if(candles.length<700) throw new Error("Binance 與 OKX 合約歷史資料不足");
+        const days=(candles.length/24).toFixed(0);
+        return {candles,source:"OKX BTC-USDT 永續合約 1H · "+candles.length+" 根（約 "+days+" 天，備援）",fallbackReason:String(binanceError.message||binanceError)};
+      }
       const candles=(await fetchKraken("1h",720)).filter(c=>!c.closedAt || c.closedAt<Date.now());
       return {candles,source:"Kraken 1H 備援 · "+candles.length+" 根",fallbackReason:String(binanceError.message||binanceError)};
     }
