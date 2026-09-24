@@ -1,10 +1,10 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-09-24T20:16:44.694Z",
-  "lastRunAt": "2026-09-24T20:16:44.694Z",
+  "updatedAt": "2026-09-24T20:23:35.822Z",
+  "lastRunAt": "2026-09-24T20:23:35.822Z",
   "lastSuccessAt": null,
-  "lastError": "Error: USDT-M futures market data unavailable: https://fapi.binance.com: HTTP 451 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=1000&endTime=1790281004680\n    at fetchHistory (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:214:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async makeDecision (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:393:33)\n    at async main (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:545:20)\n    at async file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:577:1",
+  "lastError": "Error: USDT-M futures market data unavailable: https://fapi.binance.com: HTTP 451 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=1000&endTime=1790281415819\n    at fetchHistory (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:214:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async makeDecision (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:393:33)\n    at async main (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:545:20)\n    at async file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:577:1",
   "lastProcessedCandleTs": 0,
   "lastDecision": null,
   "settingsSnapshot": {

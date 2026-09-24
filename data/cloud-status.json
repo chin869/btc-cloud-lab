@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "lastRunAt": "2026-09-24T20:16:44.343Z",
+  "lastRunAt": "2026-09-24T20:23:35.664Z",
   "lastSuccessAt": null,
-  "lastError": "Error: USDT-M futures market data unavailable: https://fapi.binance.com: HTTP 451 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=1000&endTime=1790281004680\n    at fetchHistory (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:214:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async makeDecision (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:393:33)\n    at async main (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:545:20)\n    at async file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:577:1",
+  "lastError": "Error: USDT-M futures market data unavailable: https://fapi.binance.com: HTTP 451 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=1000&endTime=1790281415819\n    at fetchHistory (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:214:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async makeDecision (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:393:33)\n    at async main (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:545:20)\n    at async file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:577:1",
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-09-24T20:16:44.343Z",
+    "lastAttemptAt": "2026-09-24T20:23:35.664Z",
     "lastSuccessAt": "2026-09-24T12:29:05.0720768Z",
-    "lastError": "funding: HTTP 451 https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000 | openInterest: HTTP 451 https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500 | longShort: HTTP 451 https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500 | taker: HTTP 451 https://fapi.binance.com/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500",
+    "lastError": "funding: HTTP 451 https://fapi.binance.com/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000 | openInterest: HTTP 451 https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500 | longShort: HTTP 451 https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500 | taker: HTTP 451 https://fapi.binance.com/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500",
     "counts": {
       "funding": 500,
       "openInterest": 502,
@@ -21,15 +21,15 @@
       },
       "openInterest": {
         "ok": false,
-        "error": "HTTP 451 https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500"
+        "error": "HTTP 451 https://fapi.binance.com/futures/data/openInterestHist?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500"
       },
       "longShort": {
         "ok": false,
-        "error": "HTTP 451 https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500"
+        "error": "HTTP 451 https://fapi.binance.com/futures/data/globalLongShortAccountRatio?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500"
       },
       "taker": {
         "ok": false,
-        "error": "HTTP 451 https://fapi.binance.com/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=1h&startTime=1787775404345&endTime=1790281004345&limit=500"
+        "error": "HTTP 451 https://fapi.binance.com/futures/data/takerlongshortRatio?symbol=BTCUSDT&period=1h&startTime=1787775815667&endTime=1790281415667&limit=500"
       }
     }
   },
