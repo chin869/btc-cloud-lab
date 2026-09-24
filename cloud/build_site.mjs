@@ -35,7 +35,7 @@ html=replaceRequired(html,"<h1>BTC Local Lab</h1>","<h1>BTC Cloud Lab</h1>","mai
 html=replaceRequired(
   html,
   "免費公開行情分析 + 本機模擬盤。所有交易只存在你的瀏覽器。",
-  "Binance BTCUSDT 永續合約公開行情 + 雲端 AUTO PAPER；不連接真實合約帳戶。",
+  "BTCUSDT 永續合約公開行情 + 雲端 AUTO PAPER；不連接真實合約帳戶。",
   "intro copy"
 );
 html=replaceRequired(
@@ -64,7 +64,7 @@ html=replaceRequired(html,"現貨 BTC 模擬交易，不連接真實交易所。
 html=replaceRequired(html,"<h2>模擬設定</h2>","<h2>手動模擬設定</h2>","manual settings heading");
 html=replaceRequired(html,"<h2>本機備份</h2>","<h2>瀏覽器模擬盤備份</h2>","manual backup heading");
 html=replaceRequired(html,"<h2>交易紀錄</h2>","<h2>手動模擬交易紀錄</h2>","manual trades heading");
-html=replaceRequired(html,"網站會把本機累積資料與即時 API 合併。","網站會把雲端累積資料與 Binance 合約公開 API 合併。","collector copy");
+html=replaceRequired(html,"網站會把本機累積資料與即時 API 合併。","網站會把雲端累積資料與 Binance／OKX 合約公開 API 合併。","collector copy");
 html=replaceRequired(
   html,
   '<script src="data/derivatives-history.js"></script>',

@@ -61,9 +61,10 @@ expect(modelContext.window.BTCDerivatives&&typeof modelContext.window.BTCDerivat
 
 const cycle=read("cloud/cloud_cycle.mjs");
 expect(cycle.includes("BTCPredictor.run")&&cycle.includes("BTCDerivatives.run"),"Cloud cycle is not using both existing model modules");
-expect(cycle.includes("fapi.binance.com")&&cycle.includes("/fapi/v1/klines"),"Cloud futures market endpoint is missing");
+expect(cycle.includes("fapi.binance.com")&&cycle.includes("/fapi/v1/klines"),"Primary cloud futures market endpoint is missing");
+expect(cycle.includes("www.okx.com")&&cycle.includes("BTC-USDT-SWAP"),"Cloud futures fallback endpoint is missing");
 expect(!cycle.includes("/api/v3/klines")&&!cycle.includes("data-api.binance.vision"),"Cloud AUTO PAPER must not use spot candles");
-expect(cycle.includes('marketType:"BINANCE_USDT_M_PERPETUAL"'),"Cloud decision does not identify the USDT-M perpetual market");
+expect(cycle.includes('marketType:"USDT_M_BTC_PERPETUAL"'),"Cloud decision does not identify the USDT-M BTC perpetual market");
 expect(cycle.includes('fetchHistory("1m"'),"Cloud cycle is not using closed 1m candles for risk monitoring");
 for(const forbidden of ["X-MBX-APIKEY","/api/v3/order","/fapi/v1/order","method:\"POST\"","method:'POST'"]){
   expect(!cycle.includes(forbidden),"Cloud cycle contains a forbidden trading/API-key marker: "+forbidden);

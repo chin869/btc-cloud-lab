@@ -17,6 +17,8 @@ const DERIV_JS_PATH=path.join(dataDir,"derivatives-history.js");
 const CLOUD_STATUS_PATH=path.join(dataDir,"cloud-status.json");
 
 const BASE_FUTURES="https://fapi.binance.com";
+const BASE_OKX="https://www.okx.com";
+const OKX_INSTRUMENT="BTC-USDT-SWAP";
 const MAX_ROWS_PER_FEED=30000;
 
 fs.mkdirSync(dataDir,{recursive:true});
@@ -56,6 +58,23 @@ async function fetchJson(url,timeoutMs=20000){
   }finally{
     clearTimeout(timer);
   }
+}
+
+async function fetchOkxData(pathname,query,timeoutMs=20000){
+  const payload=await fetchJson(BASE_OKX+pathname+"?"+query,timeoutMs);
+  if(!payload||String(payload.code)!=="0"||!Array.isArray(payload.data)){
+    throw new Error("OKX "+String(payload&&payload.code||"invalid")+" "+String(payload&&payload.msg||"response"));
+  }
+  return payload.data;
+}
+
+async function firstSuccessful(sources){
+  const errors=[];
+  for(const source of sources){
+    try{return {rows:await source.run(),source:source.name};}
+    catch(err){errors.push(source.name+": "+String(err&&err.message||err));}
+  }
+  throw new Error(errors.join(" | "));
 }
 
 function normalizeTsRow(row,timestampField="timestamp"){
@@ -101,6 +120,48 @@ async function getPagedRows(endpoint,extraQuery,startMs,endMs,limit,timestampFie
   return all;
 }
 
+async function getOkxFunding(){
+  const rows=await fetchOkxData(
+    "/api/v5/public/funding-rate-history",
+    "instId="+OKX_INSTRUMENT+"&limit=100"
+  );
+  return rows.map(row=>({
+    symbol:"BTCUSDT",venue:"OKX",fundingRate:row.fundingRate,
+    fundingTime:Number(row.fundingTime),timestamp:Number(row.fundingTime)
+  }));
+}
+
+async function getOkxMetric(pathname,mapRow,extraQuery=""){
+  const rows=await fetchOkxData(
+    pathname,
+    "instId="+OKX_INSTRUMENT+"&period=1H&limit=100"+extraQuery
+  );
+  return rows.map(mapRow).filter(Boolean);
+}
+
+function okxOpenInterest(row){
+  if(!Array.isArray(row)||row.length<4) return null;
+  return {
+    symbol:"BTCUSDT",venue:"OKX",timestamp:Number(row[0]),
+    sumOpenInterest:String(row[2]),sumOpenInterestValue:String(row[3])
+  };
+}
+
+function okxLongShort(row){
+  if(!Array.isArray(row)||row.length<2) return null;
+  return {symbol:"BTCUSDT",venue:"OKX",timestamp:Number(row[0]),longShortRatio:String(row[1])};
+}
+
+function okxTaker(row){
+  if(!Array.isArray(row)||row.length<3) return null;
+  const sell=Number(row[1]),buy=Number(row[2]);
+  if(!Number.isFinite(sell)||!Number.isFinite(buy)||sell<=0) return null;
+  return {
+    symbol:"BTCUSDT",venue:"OKX",timestamp:Number(row[0]),
+    sellVol:String(row[1]),buyVol:String(row[2]),buySellRatio:String(buy/sell)
+  };
+}
+
 function emptyDerivatives(){
   return {version:1,updatedAt:null,feeds:{funding:[],openInterest:[],longShort:[],taker:[]}};
 }
@@ -126,10 +187,22 @@ async function collectDerivatives(){
   const endMs=Date.now();
   const derivativeStartMs=endMs-29*24*3600000;
   const requests={
-    funding:fetchJson(BASE_FUTURES+"/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000"),
-    openInterest:getPagedRows("/futures/data/openInterestHist","period=1h",derivativeStartMs,endMs,500,"timestamp"),
-    longShort:getPagedRows("/futures/data/globalLongShortAccountRatio","period=1h",derivativeStartMs,endMs,500,"timestamp"),
-    taker:getPagedRows("/futures/data/takerlongshortRatio","period=1h",derivativeStartMs,endMs,500,"timestamp")
+    funding:firstSuccessful([
+      {name:"Binance USDT-M",run:()=>fetchJson(BASE_FUTURES+"/fapi/v1/fundingRate?symbol=BTCUSDT&limit=1000")},
+      {name:"OKX USDT-M SWAP",run:getOkxFunding}
+    ]),
+    openInterest:firstSuccessful([
+      {name:"Binance USDT-M",run:()=>getPagedRows("/futures/data/openInterestHist","period=1h",derivativeStartMs,endMs,500,"timestamp")},
+      {name:"OKX USDT-M SWAP",run:()=>getOkxMetric("/api/v5/rubik/stat/contracts/open-interest-history",okxOpenInterest)}
+    ]),
+    longShort:firstSuccessful([
+      {name:"Binance USDT-M",run:()=>getPagedRows("/futures/data/globalLongShortAccountRatio","period=1h",derivativeStartMs,endMs,500,"timestamp")},
+      {name:"OKX USDT-M SWAP",run:()=>getOkxMetric("/api/v5/rubik/stat/contracts/long-short-account-ratio-contract",okxLongShort)}
+    ]),
+    taker:firstSuccessful([
+      {name:"Binance USDT-M",run:()=>getPagedRows("/futures/data/takerlongshortRatio","period=1h",derivativeStartMs,endMs,500,"timestamp")},
+      {name:"OKX USDT-M SWAP",run:()=>getOkxMetric("/api/v5/rubik/stat/taker-volume-contract",okxTaker,"&unit=1")}
+    ])
   };
   const names=Object.keys(requests);
   const results=await Promise.allSettled(Object.values(requests));
@@ -140,9 +213,9 @@ async function collectDerivatives(){
   results.forEach((result,index)=>{
     const name=names[index];
     if(result.status==="fulfilled"){
-      const rows=Array.isArray(result.value)?result.value:[];
+      const rows=Array.isArray(result.value.rows)?result.value.rows:[];
       incoming[name]=name==="funding"?rows.map(row=>normalizeTsRow(row,"fundingTime")):rows;
-      status.sources[name]={ok:true,received:incoming[name].length};
+      status.sources[name]={ok:true,received:incoming[name].length,source:result.value.source};
       successCount++;
     }else{
       incoming[name]=[];
@@ -200,15 +273,53 @@ async function fetchHistoryFrom(base,interval,target=5000){
     .slice(-target);
 }
 
+function intervalMs(interval){
+  if(interval==="1m") return 60000;
+  if(interval==="1h") return 3600000;
+  throw new Error("Unsupported contract candle interval: "+interval);
+}
+
+async function fetchOkxHistory(interval,target=5000){
+  const bar=interval==="1h"?"1H":"1m";
+  let after="";
+  const rows=[];
+  for(let page=0;rows.length<target&&page<25;page++){
+    const limit=Math.min(300,target-rows.length);
+    const query="instId="+OKX_INSTRUMENT+"&bar="+bar+"&limit="+limit+(after?"&after="+after:"");
+    const data=await fetchOkxData("/api/v5/market/history-candles",query,25000);
+    if(!data.length) break;
+    let oldest=Infinity;
+    for(const k of data){
+      const t=Number(k[0]);
+      oldest=Math.min(oldest,t);
+      if(String(k[8])!=="1") continue;
+      rows.push({
+        t,open:Number(k[1]),high:Number(k[2]),low:Number(k[3]),close:Number(k[4]),
+        volume:Number(k[6]),closedAt:t+intervalMs(interval)-1
+      });
+    }
+    if(!Number.isFinite(oldest)||String(oldest)===after||data.length<limit) break;
+    after=String(oldest);
+    await new Promise(resolve=>setTimeout(resolve,120));
+  }
+  const unique=new Map();
+  for(const candle of rows) unique.set(candle.t,candle);
+  return Array.from(unique.values()).sort((a,b)=>a.t-b.t).slice(-target);
+}
+
 async function fetchHistory(interval,target=5000,minRows=700){
   const errors=[];
-  for(const base of [BASE_FUTURES]){
+  const sources=[
+    {name:"Binance USDT-M BTCUSDT",run:()=>fetchHistoryFrom(BASE_FUTURES,interval,target)},
+    {name:"OKX USDT-M BTC-USDT-SWAP",run:()=>fetchOkxHistory(interval,target)}
+  ];
+  for(const source of sources){
     try{
-      const candles=await fetchHistoryFrom(base,interval,target);
+      const candles=await source.run();
       if(candles.length<minRows) throw new Error(interval+" candles are insufficient");
-      return {candles,source:base};
+      return {candles,source:source.name};
     }catch(err){
-      errors.push(base+": "+String(err&&err.message||err));
+      errors.push(source.name+": "+String(err&&err.message||err));
     }
   }
   throw new Error("USDT-M futures market data unavailable: "+errors.join(" | "));
@@ -408,8 +519,8 @@ async function makeDecision(feeds){
   return {
     ok:true,
     generatedAt:nowIso(),
-    marketType:"BINANCE_USDT_M_PERPETUAL",
-    marketDataSource:history.source+"/fapi/v1/klines",
+    marketType:"USDT_M_BTC_PERPETUAL",
+    marketDataSource:history.source,
     candleTs:market.candleTs,
     price:market.price,
     market,
