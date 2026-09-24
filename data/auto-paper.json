@@ -1,12 +1,30 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-09-24T20:23:35.822Z",
-  "lastRunAt": "2026-09-24T20:23:35.822Z",
-  "lastSuccessAt": null,
-  "lastError": "Error: USDT-M futures market data unavailable: https://fapi.binance.com: HTTP 451 https://fapi.binance.com/fapi/v1/klines?symbol=BTCUSDT&interval=1h&limit=1000&endTime=1790281415819\n    at fetchHistory (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:214:9)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async Promise.all (index 0)\n    at async makeDecision (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:393:33)\n    at async main (file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:545:20)\n    at async file:///home/runner/work/btc-cloud-lab/btc-cloud-lab/cloud/cloud_cycle.mjs:577:1",
-  "lastProcessedCandleTs": 0,
-  "lastDecision": null,
+  "updatedAt": "2026-09-24T20:24:05.059Z",
+  "lastRunAt": "2026-09-24T20:24:05.059Z",
+  "lastSuccessAt": "2026-09-24T20:24:05.059Z",
+  "lastError": null,
+  "lastProcessedCandleTs": 1790281320000,
+  "lastDecision": {
+    "at": "2026-09-24T20:24:05.059Z",
+    "candleTs": 1790281320000,
+    "signal": "HOLD",
+    "executed": "HOLD",
+    "mode": "experimental-unvalidated",
+    "price": 84235.2,
+    "marketType": "USDT_M_BTC_PERPETUAL",
+    "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+    "probabilityUp": 0.5128677741831997,
+    "confidence": 51.54413290198397,
+    "reason": "研究模式：HOLD；綜合上漲機率 51.3%，1H/4H/24H=50.6% / 51.7% / 51.6%",
+    "market": {
+      "atrPct": 0.0004936857072306361,
+      "rsi": 30.942516830657922,
+      "emaFast": 84245.60492277,
+      "emaSlow": 84288.96927401985
+    }
+  },
   "settingsSnapshot": {
     "enabled": true,
     "symbol": "BTCUSDT",
@@ -43,6 +61,12 @@
     "highestPrice": 0,
     "lowestPrice": 0,
     "trades": [],
-    "equityHistory": []
+    "equityHistory": [
+      {
+        "ts": 1790281320000,
+        "equity": 500,
+        "price": 84235.2
+      }
+    ]
   }
 }
