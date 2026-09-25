@@ -50,7 +50,7 @@ html=replaceRequired(
   "AUTO 目前預設允許 <strong>experimental-unvalidated</strong> 研究交易，因為現有模型尚未通過完整 PASS；這些交易只用來 forward test，不代表已證明有獲利能力。雲端開關由儲存庫中的 AUTO PAPER 設定管理。",
   "AUTO PAPER mode copy"
 );
-html=replaceRequired(html,"<span>模擬盤總資產</span>","<span>手動模擬總資產</span>","manual equity label");
+html=replaceRequired(html,"<span>模擬盤總資產</span>","<span>AUTO 合約總資產</span>","cloud equity label");
 html=replaceRequired(html,"<h2>AUTO PAPER 自動模擬盤</h2>","<h2>AUTO PAPER 永續合約模擬盤</h2>","cloud futures heading");
 html=replaceRequired(html,"<span>BTC 持倉</span>","<span>合約持倉</span>","cloud position label");
 html=replaceRequired(
@@ -65,6 +65,20 @@ html=replaceRequired(html,"<h2>模擬設定</h2>","<h2>手動模擬設定</h2>",
 html=replaceRequired(html,"<h2>本機備份</h2>","<h2>瀏覽器模擬盤備份</h2>","manual backup heading");
 html=replaceRequired(html,"<h2>交易紀錄</h2>","<h2>手動模擬交易紀錄</h2>","manual trades heading");
 html=replaceRequired(html,"網站會把本機累積資料與即時 API 合併。","網站會把雲端累積資料與 Binance／OKX 合約公開 API 合併。","collector copy");
+html=replaceRequired(html,'<section class="layout-main">','<section class="layout-main cloud-contract-layout">',"cloud layout class");
+html=replaceRequired(html,'<aside class="right-column">','<aside class="right-column cloud-manual-only">',"hide manual controls");
+html=replaceRequired(
+  html,
+  '<section class="card">\n      <div class="section-head">\n        <div>\n          <h2>手動模擬交易紀錄</h2>',
+  '<section class="card cloud-manual-only">\n      <div class="section-head">\n        <div>\n          <h2>手動模擬交易紀錄</h2>',
+  "hide manual trades"
+);
+html=replaceRequired(
+  html,
+  '<link rel="stylesheet" href="style.css">',
+  '<link rel="stylesheet" href="style.css">\n  <style>.cloud-manual-only{display:none!important}.cloud-contract-layout{grid-template-columns:minmax(0,1fr)!important}.cloud-contract-layout .left-column{min-width:0}</style>',
+  "cloud-only styles"
+);
 html=replaceRequired(
   html,
   '<script src="data/derivatives-history.js"></script>',
