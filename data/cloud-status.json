@@ -1,11 +1,11 @@
 {
   "version": 1,
-  "lastRunAt": "2026-09-25T06:08:28.209Z",
-  "lastSuccessAt": "2026-09-25T06:08:37.078Z",
+  "lastRunAt": "2026-09-25T06:31:49.086Z",
+  "lastSuccessAt": "2026-09-25T06:31:56.840Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-09-25T06:08:28.209Z",
+    "lastAttemptAt": "2026-09-25T06:31:49.086Z",
     "lastSuccessAt": "2026-09-25T06:08:28.804Z",
     "lastError": null,
     "counts": {
@@ -15,48 +15,32 @@
       "taker": 521
     },
     "sources": {
-      "funding": {
+      "cached": {
         "ok": true,
-        "received": 100,
-        "source": "OKX USDT-M SWAP"
-      },
-      "openInterest": {
-        "ok": true,
-        "received": 100,
-        "source": "OKX USDT-M SWAP"
-      },
-      "longShort": {
-        "ok": true,
-        "received": 100,
-        "source": "OKX USDT-M SWAP"
-      },
-      "taker": {
-        "ok": true,
-        "received": 100,
-        "source": "OKX USDT-M SWAP"
+        "reason": "1h derivatives data is still fresh"
       }
     }
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-09-25T06:08:37.077Z",
+    "generatedAt": "2026-09-25T06:31:56.839Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1790316420000,
-    "price": 84140.2,
+    "candleTs": 1790317800000,
+    "price": 84062.3,
     "market": {
-      "candleTs": 1790316420000,
-      "closedAt": 1790316479999,
-      "price": 84140.2,
-      "high": 84163.6,
-      "low": 84140.2,
-      "atr": 20.435714285714702,
-      "atrPct": 0.00024287693974716845,
-      "rsi": 38.43873517786539,
-      "emaFast": 84161.44882397959,
-      "emaSlow": 84175.68921850213,
-      "momentum5": -0.00013071709019008004,
-      "volumeRatio": 0.8641260722073402
+      "candleTs": 1790317800000,
+      "closedAt": 1790317859999,
+      "price": 84062.3,
+      "high": 84069.1,
+      "low": 84052.2,
+      "atr": 41.16428571428384,
+      "atrPct": 0.0004896878352636538,
+      "rsi": 50.315687226809835,
+      "emaFast": 84092.18658785215,
+      "emaSlow": 84108.18459860067,
+      "momentum5": -0.0008890251743880473,
+      "volumeRatio": 0.5979709471920712
     },
     "currentRegime": "RANGE",
     "signal": "HOLD",
