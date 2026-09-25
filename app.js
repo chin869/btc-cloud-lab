@@ -831,6 +831,21 @@
     }
     if(el("autoRealizedValue")) el("autoRealizedValue").textContent="累計已實現："+fmtUsd(m.realized);
 
+    // The cloud page uses the AUTO futures ledger for its headline account
+    // summary. The local Windows page keeps its separate manual spot summary.
+    if(CLOUD_FUTURES_MODE){
+      if(el("equityValue")) el("equityValue").textContent=fmtUsd(m.equity);
+      if(el("cashValue")) el("cashValue").textContent=(m.side?"可用保證金：":"現金：")+fmtUsd(m.side?m.freeCash:m.cash);
+      if(el("unrealizedValue")){
+        el("unrealizedValue").textContent=fmtUsd(m.unrealized);
+        el("unrealizedValue").className=m.unrealized>0?"positive":m.unrealized<0?"negative":"";
+      }
+      if(el("realizedValue")){
+        el("realizedValue").textContent="累計已實現："+fmtUsd(m.realized);
+        el("realizedValue").className=m.realized>0?"positive":m.realized<0?"negative":"";
+      }
+    }
+
     const d=ledger.lastDecision||{};
     if(el("autoDecisionValue")){
       el("autoDecisionValue").textContent=autoSignalLabel(d.executed||d.signal||"HOLD");
