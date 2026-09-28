@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-09-28T12:38:12.807Z",
-  "lastRunAt": "2026-09-28T12:38:12.806Z",
-  "lastSuccessAt": "2026-09-28T12:38:12.807Z",
+  "updatedAt": "2026-09-28T19:50:15.506Z",
+  "lastRunAt": "2026-09-28T19:50:15.505Z",
+  "lastSuccessAt": "2026-09-28T19:50:15.506Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1790599020000,
+  "lastProcessedCandleTs": 1790624940000,
   "lastDecision": {
-    "at": "2026-09-28T12:38:12.807Z",
-    "candleTs": 1790599020000,
-    "signal": "BUY",
-    "executed": "OPEN_LONG",
-    "mode": "validated",
-    "price": 83326.4,
+    "at": "2026-09-28T19:50:15.506Z",
+    "candleTs": 1790624940000,
+    "signal": "HOLD",
+    "executed": "HOLD",
+    "mode": "experimental-unvalidated",
+    "price": 83244.7,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "probabilityUp": 0.85,
-    "confidence": 85,
-    "reason": "Dynamic size: 10x, risk 1.25%, stop 0.40%, target 0.80%",
+    "probabilityUp": 0.4814820937679866,
+    "confidence": 52.22214874784161,
+    "reason": "Position monitored; protective levels updated",
     "market": {
-      "atrPct": 0.0005671328997429655,
-      "rsi": 48.760499897561395,
-      "emaFast": 83344.86696269408,
-      "emaSlow": 83326.65681095411
+      "atrPct": 0.0009094530085055683,
+      "rsi": 36.717935349321976,
+      "emaFast": 83270.68811534466,
+      "emaSlow": 83342.4685924701
     }
   },
   "settingsSnapshot": {
@@ -59,7 +59,7 @@
     "positionOpenedAt": "2026-09-28T12:38:12.806Z",
     "lastExitAt": "2026-09-27T22:04:43.199Z",
     "highestPrice": 83368.06319999999,
-    "lowestPrice": 83368.06319999999,
+    "lowestPrice": 83234.8,
     "trades": [
       {
         "ts": "2026-09-28T12:38:12.806Z",
@@ -249,6 +249,11 @@
         "ts": 1790599020000,
         "equity": 497.0805732894481,
         "price": 83326.4
+      },
+      {
+        "ts": 1790624940000,
+        "equity": 495.85815303577044,
+        "price": 83244.7
       }
     ]
   }
