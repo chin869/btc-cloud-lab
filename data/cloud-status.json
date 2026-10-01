@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "lastRunAt": "2026-09-30T22:10:38.334Z",
-  "lastSuccessAt": "2026-09-30T22:10:46.904Z",
+  "lastRunAt": "2026-10-01T01:18:11.773Z",
+  "lastSuccessAt": "2026-10-01T01:18:20.580Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-09-30T22:10:38.334Z",
-    "lastSuccessAt": "2026-09-30T22:10:38.942Z",
+    "lastAttemptAt": "2026-10-01T01:18:11.773Z",
+    "lastSuccessAt": "2026-10-01T01:18:12.440Z",
     "lastError": null,
     "counts": {
-      "funding": 574,
-      "openInterest": 656,
-      "longShort": 656,
-      "taker": 657
+      "funding": 575,
+      "openInterest": 659,
+      "longShort": 659,
+      "taker": 660
     },
     "sources": {
       "funding": {
@@ -39,24 +39,24 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-09-30T22:10:46.903Z",
+    "generatedAt": "2026-10-01T01:18:20.578Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1790806140000,
-    "price": 83570,
+    "candleTs": 1790817420000,
+    "price": 83583,
     "market": {
-      "candleTs": 1790806140000,
-      "closedAt": 1790806199999,
-      "price": 83570,
-      "high": 83571.9,
-      "low": 83563.3,
-      "atr": 23.828571428572882,
-      "atrPct": 0.0002851330791979524,
-      "rsi": 21.94318649649766,
-      "emaFast": 83623.56778056796,
-      "emaSlow": 83661.93907839453,
-      "momentum5": -0.0012429189473432967,
-      "volumeRatio": 1.9667435362944798
+      "candleTs": 1790817420000,
+      "closedAt": 1790817479999,
+      "price": 83583,
+      "high": 83618.5,
+      "low": 83553.7,
+      "atr": 31.11428571428301,
+      "atrPct": 0.0003722561491485471,
+      "rsi": 73.37573830077352,
+      "emaFast": 83556.90352347387,
+      "emaSlow": 83536.60756782445,
+      "momentum5": 0.00034588368494170574,
+      "volumeRatio": 1.4998151482178004
     },
     "currentRegime": "RANGE",
     "signal": "BUY",
