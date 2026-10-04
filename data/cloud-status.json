@@ -1,74 +1,74 @@
 {
   "version": 1,
-  "lastRunAt": "2026-10-04T02:32:58.449Z",
-  "lastSuccessAt": "2026-10-04T02:33:02.330Z",
+  "lastRunAt": "2026-10-04T08:44:11.683Z",
+  "lastSuccessAt": "2026-10-04T08:44:19.379Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-10-04T02:32:58.450Z",
-    "lastSuccessAt": "2026-10-04T02:32:59.061Z",
+    "lastAttemptAt": "2026-10-04T08:44:11.683Z",
+    "lastSuccessAt": "2026-10-04T08:44:12.142Z",
     "lastError": null,
     "counts": {
-      "funding": 594,
-      "openInterest": 732,
-      "longShort": 732,
-      "taker": 732
+      "funding": 595,
+      "openInterest": 738,
+      "longShort": 738,
+      "taker": 739
     },
     "sources": {
       "funding": {
         "ok": true,
-        "received": 500,
-        "source": "Binance USDT-M"
+        "received": 100,
+        "source": "OKX USDT-M SWAP"
       },
       "openInterest": {
         "ok": true,
-        "received": 501,
-        "source": "Binance USDT-M"
+        "received": 100,
+        "source": "OKX USDT-M SWAP"
       },
       "longShort": {
         "ok": true,
-        "received": 501,
-        "source": "Binance USDT-M"
+        "received": 100,
+        "source": "OKX USDT-M SWAP"
       },
       "taker": {
         "ok": true,
-        "received": 502,
-        "source": "Binance USDT-M"
+        "received": 100,
+        "source": "OKX USDT-M SWAP"
       }
     }
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-10-04T02:33:02.328Z",
+    "generatedAt": "2026-10-04T08:44:19.106Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
-    "marketDataSource": "Binance USDT-M BTCUSDT",
-    "candleTs": 1791081060000,
-    "price": 84781,
+    "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+    "candleTs": 1791103380000,
+    "price": 85034.3,
     "market": {
-      "candleTs": 1791081060000,
-      "closedAt": 1791081119999,
-      "price": 84781,
-      "high": 84803.4,
-      "low": 84772.1,
-      "atr": 9.61428571428821,
-      "atrPct": 0.00011340141911853139,
-      "rsi": 47.169811320756075,
-      "emaFast": 84790.69092420743,
-      "emaSlow": 84789.6695804933,
-      "momentum5": -0.00019104404390712926,
-      "volumeRatio": 1.2376166812582463
+      "candleTs": 1791103380000,
+      "closedAt": 1791103439999,
+      "price": 85034.3,
+      "high": 85034.3,
+      "low": 85034.2,
+      "atr": 19.778571428577248,
+      "atrPct": 0.00023259521661937887,
+      "rsi": 37.01747257212511,
+      "emaFast": 85029.30851938356,
+      "emaSlow": 85044.62582416822,
+      "momentum5": 0.00046120305758790003,
+      "volumeRatio": 0.21788251694064806
     },
     "currentRegime": "RANGE",
     "signal": "HOLD",
     "mode": "experimental-unvalidated",
-    "probabilityUp": 0.5206445629878448,
-    "confidence": 52.477347558541375,
+    "probabilityUp": 0.5423087843334193,
+    "confidence": 55.07705412001032,
     "horizonProbabilities": {
-      "1h": 0.5028349697987305,
-      "4h": 0.49073249860831114,
-      "24h": 0.5305104542147178
+      "1h": 0.4911040367504494,
+      "4h": 0.5279846637508719,
+      "24h": 0.572256240347633
     },
-    "reason": "研究模式：HOLD；綜合上漲機率 52.1%，1H/4H/24H=50.3% / 49.1% / 53.1%",
+    "reason": "研究模式：HOLD；綜合上漲機率 54.2%，1H/4H/24H=49.1% / 52.8% / 57.2%",
     "mainValidated": {
       "1h": false,
       "4h": false,
