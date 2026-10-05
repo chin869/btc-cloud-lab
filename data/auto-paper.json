@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-10-05T05:39:34.656Z",
-  "lastRunAt": "2026-10-05T05:39:34.655Z",
-  "lastSuccessAt": "2026-10-05T05:39:34.656Z",
+  "updatedAt": "2026-10-05T12:39:59.265Z",
+  "lastRunAt": "2026-10-05T12:39:59.265Z",
+  "lastSuccessAt": "2026-10-05T12:39:59.265Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1791178680000,
+  "lastProcessedCandleTs": 1791203880000,
   "lastDecision": {
-    "at": "2026-10-05T05:39:34.656Z",
-    "candleTs": 1791178680000,
-    "signal": "BUY",
-    "executed": "OPEN_LONG",
-    "mode": "validated",
-    "price": 85708.2,
+    "at": "2026-10-05T12:39:59.265Z",
+    "candleTs": 1791203880000,
+    "signal": "HOLD",
+    "executed": "HOLD",
+    "mode": "experimental-unvalidated",
+    "price": 85809.9,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "probabilityUp": 0.85,
-    "confidence": 85,
-    "reason": "Dynamic size: 10x, risk 1.25%, stop 0.40%, target 0.80%",
+    "probabilityUp": 0.5434173213273585,
+    "confidence": 55.210078559283026,
+    "reason": "Position monitored; protective levels updated",
     "market": {
-      "atrPct": 0.0005582896385643333,
-      "rsi": 81.71196948021026,
-      "emaFast": 85597.66073027185,
-      "emaSlow": 85542.08944423794
+      "atrPct": 0.0004555751392655094,
+      "rsi": 22.762073027093493,
+      "emaFast": 85910.49196538329,
+      "emaSlow": 85967.62205810017
     }
   },
   "settingsSnapshot": {
@@ -58,7 +58,7 @@
     "riskAmount": 6.421951636262993,
     "positionOpenedAt": "2026-10-05T05:39:34.655Z",
     "lastExitAt": "2026-10-04T21:38:12.561Z",
-    "highestPrice": 85751.0541,
+    "highestPrice": 85875.1,
     "lowestPrice": 85751.0541,
     "trades": [
       {
@@ -567,6 +567,11 @@
         "ts": 1791178680000,
         "equity": 511.8298663472739,
         "price": 85708.2
+      },
+      {
+        "ts": 1791203880000,
+        "equity": 513.3531420393634,
+        "price": 85809.9
       }
     ]
   }
