@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-10-08T08:49:22.135Z",
-  "lastRunAt": "2026-10-08T08:49:22.135Z",
-  "lastSuccessAt": "2026-10-08T08:49:22.135Z",
+  "updatedAt": "2026-10-08T15:53:53.510Z",
+  "lastRunAt": "2026-10-08T15:53:53.509Z",
+  "lastSuccessAt": "2026-10-08T15:53:53.509Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1791449280000,
+  "lastProcessedCandleTs": 1791474720000,
   "lastDecision": {
-    "at": "2026-10-08T08:49:22.135Z",
-    "candleTs": 1791449280000,
+    "at": "2026-10-08T15:53:53.509Z",
+    "candleTs": 1791474720000,
     "signal": "BUY",
-    "executed": "HOLD",
+    "executed": "CLOSE_LONG",
     "mode": "validated",
-    "price": 82852.9,
+    "price": 81331.4,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
     "probabilityUp": 0.85,
     "confidence": 85,
-    "reason": "Position monitored; protective levels updated",
+    "reason": "Adaptive stop loss",
     "market": {
-      "atrPct": 0.0005295098731779987,
-      "rsi": 55.16245487364514,
-      "emaFast": 82848.47236687492,
-      "emaSlow": 82853.12367521101
+      "atrPct": 0.001394734558678612,
+      "rsi": 58.312928501468264,
+      "emaFast": 81329.62579118216,
+      "emaSlow": 81336.50078016036
     }
   },
   "settingsSnapshot": {
@@ -44,23 +44,40 @@
     "experimentalTrading": true
   },
   "account": {
-    "cash": 511.0700060514428,
-    "qty": 0.015410413941003218,
-    "avgEntry": 83117.63805,
-    "realizedPnl": 12.350883259591802,
-    "positionSide": "LONG",
-    "leverage": 10,
-    "marginUsed": 128.08772081489795,
-    "stopPrice": 82785.1674978,
-    "initialStopPrice": 82785.1674978,
-    "takeProfitPrice": 83782.5791544,
-    "entryFee": 1.2808772081489794,
-    "riskAmount": 6.404386040744898,
-    "positionOpenedAt": "2026-10-08T02:00:41.115Z",
-    "lastExitAt": "2026-10-07T17:30:16.760Z",
-    "highestPrice": 83117.63805,
-    "lowestPrice": 82820,
+    "cash": 504.0335045467221,
+    "qty": 0,
+    "avgEntry": 0,
+    "realizedPnl": 4.033504546722087,
+    "positionSide": null,
+    "leverage": 1,
+    "marginUsed": 0,
+    "stopPrice": 0,
+    "initialStopPrice": 0,
+    "takeProfitPrice": 0,
+    "entryFee": 0,
+    "riskAmount": 0,
+    "positionOpenedAt": null,
+    "lastExitAt": "2026-10-08T15:53:53.509Z",
+    "highestPrice": 0,
+    "lowestPrice": 0,
     "trades": [
+      {
+        "ts": "2026-10-08T15:53:53.509Z",
+        "candleTs": 1791474720000,
+        "side": "CLOSE_LONG",
+        "qty": 0.015410413941003218,
+        "fill": 82743.7749140511,
+        "fee": 1.2751158224667254,
+        "entryFee": 1.2808772081489794,
+        "realized": -8.317378712869715,
+        "leverage": 10,
+        "mode": "validated",
+        "source": "AUTO-CLOUD-USDT-M-1M",
+        "marketType": "USDT_M_BTC_PERPETUAL",
+        "reason": "Adaptive stop loss",
+        "probabilityUp": 0.85,
+        "confidence": 85
+      },
       {
         "ts": "2026-10-08T02:00:41.115Z",
         "candleTs": 1791424740000,
@@ -706,6 +723,11 @@
         "ts": 1791449280000,
         "equity": 506.9902831150088,
         "price": 82852.9
+      },
+      {
+        "ts": 1791474720000,
+        "equity": 504.0335045467221,
+        "price": 81331.4
       }
     ]
   }
