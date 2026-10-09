@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-10-08T21:00:00.902Z",
-  "lastRunAt": "2026-10-08T21:00:00.901Z",
-  "lastSuccessAt": "2026-10-08T21:00:00.902Z",
+  "updatedAt": "2026-10-09T01:09:45.369Z",
+  "lastRunAt": "2026-10-09T01:09:45.369Z",
+  "lastSuccessAt": "2026-10-09T01:09:45.369Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1791493080000,
+  "lastProcessedCandleTs": 1791508080000,
   "lastDecision": {
-    "at": "2026-10-08T21:00:00.901Z",
-    "candleTs": 1791493080000,
-    "signal": "BUY",
-    "executed": "OPEN_LONG",
-    "mode": "validated",
-    "price": 81798.3,
+    "at": "2026-10-09T01:09:45.369Z",
+    "candleTs": 1791508080000,
+    "signal": "HOLD",
+    "executed": "HOLD",
+    "mode": "experimental-unvalidated",
+    "price": 81705.5,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "probabilityUp": 0.85,
-    "confidence": 85,
-    "reason": "Dynamic size: 10x, risk 1.25%, stop 0.40%, target 0.80%",
+    "probabilityUp": 0.5046049625048238,
+    "confidence": 50.55259550057885,
+    "reason": "Position monitored; protective levels updated",
     "market": {
-      "atrPct": 0.00024476582730239893,
-      "rsi": 56.00000000000191,
-      "emaFast": 81769.75433680655,
-      "emaSlow": 81763.05912236983
+      "atrPct": 0.0005667567404537274,
+      "rsi": 31.98937711250626,
+      "emaFast": 81739.79585996014,
+      "emaSlow": 81770.08794011122
     }
   },
   "settingsSnapshot": {
@@ -59,7 +59,7 @@
     "positionOpenedAt": "2026-10-08T21:00:00.901Z",
     "lastExitAt": "2026-10-08T15:53:53.509Z",
     "highestPrice": 81839.19915,
-    "lowestPrice": 81839.19915,
+    "lowestPrice": 81656.7,
     "trades": [
       {
         "ts": "2026-10-08T21:00:00.901Z",
@@ -753,6 +753,11 @@
         "ts": 1791493080000,
         "equity": 502.1436937681805,
         "price": 81798.3
+      },
+      {
+        "ts": 1791508080000,
+        "equity": 500.7148458044985,
+        "price": 81705.5
       }
     ]
   }
