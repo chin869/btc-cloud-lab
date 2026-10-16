@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "lastRunAt": "2026-10-16T19:01:22.715Z",
-  "lastSuccessAt": "2026-10-16T19:01:30.159Z",
+  "lastRunAt": "2026-10-16T22:01:19.745Z",
+  "lastSuccessAt": "2026-10-16T22:01:28.661Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-10-16T19:01:22.716Z",
-    "lastSuccessAt": "2026-10-16T19:01:23.088Z",
+    "lastAttemptAt": "2026-10-16T22:01:19.745Z",
+    "lastSuccessAt": "2026-10-16T22:01:20.413Z",
     "lastError": null,
     "counts": {
       "funding": 632,
-      "openInterest": 1036,
-      "longShort": 1037,
-      "taker": 1037
+      "openInterest": 1040,
+      "longShort": 1040,
+      "taker": 1040
     },
     "sources": {
       "funding": {
@@ -22,7 +22,7 @@
       },
       "openInterest": {
         "ok": true,
-        "received": 100,
+        "received": 101,
         "source": "OKX USDT-M SWAP"
       },
       "longShort": {
@@ -39,26 +39,26 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-10-16T19:01:30.157Z",
+    "generatedAt": "2026-10-16T22:01:28.659Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1792177200000,
-    "price": 81099.8,
+    "candleTs": 1792188000000,
+    "price": 81664.8,
     "market": {
-      "candleTs": 1792177200000,
-      "closedAt": 1792177259999,
-      "price": 81099.8,
-      "high": 81140.7,
-      "low": 81082,
-      "atr": 95.84999999999751,
-      "atrPct": 0.0011818771439633328,
-      "rsi": 50.37496394577423,
-      "emaFast": 81059.92519854878,
-      "emaSlow": 81109.59800570269,
-      "momentum5": 0.0022950264539802756,
-      "volumeRatio": 0.5746112147828049
+      "candleTs": 1792188000000,
+      "closedAt": 1792188059999,
+      "price": 81664.8,
+      "high": 81664.8,
+      "low": 81643.2,
+      "atr": 13.342857142855271,
+      "atrPct": 0.00016338565872757015,
+      "rsi": 48.21428571428646,
+      "emaFast": 81662.6208815837,
+      "emaSlow": 81672.04912568492,
+      "momentum5": 0.0001616624781388687,
+      "volumeRatio": 1.0198212767953574
     },
-    "currentRegime": "RANGE",
+    "currentRegime": "DOWN",
     "signal": "BUY",
     "mode": "validated",
     "probabilityUp": 0.85,
