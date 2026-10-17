@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "lastRunAt": "2026-10-16T22:01:19.745Z",
-  "lastSuccessAt": "2026-10-16T22:01:28.661Z",
+  "lastRunAt": "2026-10-17T00:20:48.321Z",
+  "lastSuccessAt": "2026-10-17T00:20:55.890Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-10-16T22:01:19.745Z",
-    "lastSuccessAt": "2026-10-16T22:01:20.413Z",
+    "lastAttemptAt": "2026-10-17T00:20:48.321Z",
+    "lastSuccessAt": "2026-10-17T00:20:48.788Z",
     "lastError": null,
     "counts": {
-      "funding": 632,
-      "openInterest": 1040,
-      "longShort": 1040,
-      "taker": 1040
+      "funding": 633,
+      "openInterest": 1042,
+      "longShort": 1042,
+      "taker": 1043
     },
     "sources": {
       "funding": {
@@ -22,7 +22,7 @@
       },
       "openInterest": {
         "ok": true,
-        "received": 101,
+        "received": 100,
         "source": "OKX USDT-M SWAP"
       },
       "longShort": {
@@ -39,24 +39,24 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-10-16T22:01:28.659Z",
+    "generatedAt": "2026-10-17T00:20:55.889Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1792188000000,
-    "price": 81664.8,
+    "candleTs": 1792196340000,
+    "price": 81557.3,
     "market": {
-      "candleTs": 1792188000000,
-      "closedAt": 1792188059999,
-      "price": 81664.8,
-      "high": 81664.8,
-      "low": 81643.2,
-      "atr": 13.342857142855271,
-      "atrPct": 0.00016338565872757015,
-      "rsi": 48.21428571428646,
-      "emaFast": 81662.6208815837,
-      "emaSlow": 81672.04912568492,
-      "momentum5": 0.0001616624781388687,
-      "volumeRatio": 1.0198212767953574
+      "candleTs": 1792196340000,
+      "closedAt": 1792196399999,
+      "price": 81557.3,
+      "high": 81610.6,
+      "low": 81557.3,
+      "atr": 15.285714285712206,
+      "atrPct": 0.0001874230054907679,
+      "rsi": 43.95380434782618,
+      "emaFast": 81591.78945017113,
+      "emaSlow": 81589.1818423121,
+      "momentum5": -0.0005967698453545056,
+      "volumeRatio": 0.5272472493253061
     },
     "currentRegime": "DOWN",
     "signal": "BUY",
