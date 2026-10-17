@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "lastRunAt": "2026-10-17T00:20:48.321Z",
-  "lastSuccessAt": "2026-10-17T00:20:55.890Z",
+  "lastRunAt": "2026-10-17T04:43:08.868Z",
+  "lastSuccessAt": "2026-10-17T04:43:16.804Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-10-17T00:20:48.321Z",
-    "lastSuccessAt": "2026-10-17T00:20:48.788Z",
+    "lastAttemptAt": "2026-10-17T04:43:08.868Z",
+    "lastSuccessAt": "2026-10-17T04:43:09.305Z",
     "lastError": null,
     "counts": {
       "funding": 633,
-      "openInterest": 1042,
-      "longShort": 1042,
-      "taker": 1043
+      "openInterest": 1046,
+      "longShort": 1046,
+      "taker": 1047
     },
     "sources": {
       "funding": {
@@ -39,36 +39,40 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-10-17T00:20:55.889Z",
+    "generatedAt": "2026-10-17T04:43:16.803Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1792196340000,
-    "price": 81557.3,
+    "candleTs": 1792212120000,
+    "price": 81530.1,
     "market": {
-      "candleTs": 1792196340000,
-      "closedAt": 1792196399999,
-      "price": 81557.3,
-      "high": 81610.6,
-      "low": 81557.3,
-      "atr": 15.285714285712206,
-      "atrPct": 0.0001874230054907679,
-      "rsi": 43.95380434782618,
-      "emaFast": 81591.78945017113,
-      "emaSlow": 81589.1818423121,
-      "momentum5": -0.0005967698453545056,
-      "volumeRatio": 0.5272472493253061
+      "candleTs": 1792212120000,
+      "closedAt": 1792212179999,
+      "price": 81530.1,
+      "high": 81530.2,
+      "low": 81521.5,
+      "atr": 10.664285714288,
+      "atrPct": 0.00013080182306029307,
+      "rsi": 60.06734006734202,
+      "emaFast": 81527.00407099331,
+      "emaSlow": 81518.39861596806,
+      "momentum5": -0.0003715038180291952,
+      "volumeRatio": 0.9681196197466276
     },
     "currentRegime": "DOWN",
-    "signal": "BUY",
-    "mode": "validated",
-    "probabilityUp": 0.85,
-    "confidence": 85,
-    "horizonProbabilities": null,
-    "reason": "通過 PASS 的模型投票：OHLCV 24h LONG",
+    "signal": "HOLD",
+    "mode": "experimental-unvalidated",
+    "probabilityUp": 0.5175676396554186,
+    "confidence": 52.10811675865023,
+    "horizonProbabilities": {
+      "1h": 0.47758944790131164,
+      "4h": 0.4771260383162026,
+      "24h": 0.5807791459370537
+    },
+    "reason": "研究模式：HOLD；綜合上漲機率 51.8%，1H/4H/24H=47.8% / 47.7% / 58.1%",
     "mainValidated": {
       "1h": false,
       "4h": false,
-      "24h": true
+      "24h": false
     },
     "derivativesAvailable": true
   }
