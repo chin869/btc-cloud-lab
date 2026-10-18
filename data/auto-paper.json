@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-10-18T21:17:52.488Z",
-  "lastRunAt": "2026-10-18T21:17:52.488Z",
-  "lastSuccessAt": "2026-10-18T21:17:52.488Z",
+  "updatedAt": "2026-10-18T23:22:49.904Z",
+  "lastRunAt": "2026-10-18T23:22:49.903Z",
+  "lastSuccessAt": "2026-10-18T23:22:49.904Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1792358160000,
+  "lastProcessedCandleTs": 1792365660000,
   "lastDecision": {
-    "at": "2026-10-18T21:17:52.488Z",
-    "candleTs": 1792358160000,
+    "at": "2026-10-18T23:22:49.904Z",
+    "candleTs": 1792365660000,
     "signal": "HOLD",
     "executed": "HOLD",
     "mode": "experimental-unvalidated",
-    "price": 80992.5,
+    "price": 81804.5,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "probabilityUp": 0.5238002294379903,
-    "confidence": 52.85602753255884,
+    "probabilityUp": 0.48386411028030424,
+    "confidence": 51.936306766363494,
     "reason": "Position monitored; protective levels updated",
     "market": {
-      "atrPct": 0.0003769308445667188,
-      "rsi": 47.069335239457665,
-      "emaFast": 80979.70013870504,
-      "emaSlow": 80952.14041515155
+      "atrPct": 0.0004285478532005084,
+      "rsi": 65.38807311956818,
+      "emaFast": 81751.22066776536,
+      "emaSlow": 81733.22622349877
     }
   },
   "settingsSnapshot": {
@@ -51,14 +51,14 @@
     "positionSide": "LONG",
     "leverage": 10,
     "marginUsed": 126.27861668466342,
-    "stopPrice": 80868.20429519999,
+    "stopPrice": 81642.1140476,
     "initialStopPrice": 80868.20429519999,
     "takeProfitPrice": 81842.52000959999,
     "entryFee": 1.2627861668466343,
     "riskAmount": 6.3139308342331715,
     "positionOpenedAt": "2026-10-18T18:55:41.214Z",
     "lastExitAt": "2026-10-17T15:54:09.898Z",
-    "highestPrice": 81192.97619999999,
+    "highestPrice": 81818,
     "lowestPrice": 80982.2,
     "trades": [
       {
@@ -1144,6 +1144,11 @@
         "ts": 1792358160000,
         "equity": 500.73369446031916,
         "price": 80992.5
+      },
+      {
+        "ts": 1792365660000,
+        "equity": 513.3626485333128,
+        "price": 81804.5
       }
     ]
   }
