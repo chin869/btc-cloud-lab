@@ -1,28 +1,28 @@
 {
   "version": 2,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-10-23T21:46:52.086Z",
-  "lastRunAt": "2026-10-23T21:46:52.086Z",
-  "lastSuccessAt": "2026-10-23T21:46:52.086Z",
+  "updatedAt": "2026-10-24T00:05:08.269Z",
+  "lastRunAt": "2026-10-24T00:05:08.269Z",
+  "lastSuccessAt": "2026-10-24T00:05:08.269Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1792791900000,
+  "lastProcessedCandleTs": 1792800240000,
   "lastDecision": {
-    "at": "2026-10-23T21:46:52.086Z",
-    "candleTs": 1792791900000,
+    "at": "2026-10-24T00:05:08.269Z",
+    "candleTs": 1792800240000,
     "signal": "HOLD",
     "executed": "HOLD",
     "mode": "experimental-unvalidated",
-    "price": 81322.6,
+    "price": 81118,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "probabilityUp": 0.5398324109302797,
-    "confidence": 54.77988931163356,
-    "reason": "研究模式：HOLD；綜合上漲機率 54.0%，1H/4H/24H=50.8% / 48.8% / 59.5%",
+    "probabilityUp": 0.5268702554250859,
+    "confidence": 53.22443065101031,
+    "reason": "研究模式：HOLD；綜合上漲機率 52.7%，1H/4H/24H=50.3% / 48.2% / 58.3%",
     "market": {
-      "atrPct": 0.00011910236866151134,
-      "rsi": 43.081761006294165,
-      "emaFast": 81337.17958839399,
-      "emaSlow": 81354.60518022263
+      "atrPct": 0.00025069299398058627,
+      "rsi": 51.080550098230525,
+      "emaFast": 81119.8094783935,
+      "emaSlow": 81090.45198229545
     }
   },
   "settingsSnapshot": {
@@ -1343,6 +1343,11 @@
         "ts": 1792791900000,
         "equity": 513.4504549328861,
         "price": 81322.6
+      },
+      {
+        "ts": 1792800240000,
+        "equity": 513.4504549328861,
+        "price": 81118
       }
     ]
   }
