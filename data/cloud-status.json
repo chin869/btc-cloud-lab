@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "lastRunAt": "2026-10-27T02:25:37.964Z",
-  "lastSuccessAt": "2026-10-27T02:25:45.429Z",
+  "lastRunAt": "2026-10-27T08:14:51.382Z",
+  "lastSuccessAt": "2026-10-27T08:14:58.695Z",
   "lastError": null,
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-10-27T02:25:37.964Z",
-    "lastSuccessAt": "2026-10-27T02:25:38.482Z",
+    "lastAttemptAt": "2026-10-27T08:14:51.382Z",
+    "lastSuccessAt": "2026-10-27T08:14:51.737Z",
     "lastError": null,
     "counts": {
-      "funding": 701,
-      "openInterest": 1284,
-      "longShort": 1284,
-      "taker": 1285
+      "funding": 702,
+      "openInterest": 1290,
+      "longShort": 1290,
+      "taker": 1291
     },
     "sources": {
       "funding": {
@@ -39,36 +39,36 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-10-27T02:25:45.360Z",
+    "generatedAt": "2026-10-27T08:14:58.693Z",
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1793067840000,
-    "price": 80048.6,
+    "candleTs": 1793088780000,
+    "price": 79864.7,
     "market": {
-      "candleTs": 1793067840000,
-      "closedAt": 1793067899999,
-      "price": 80048.6,
-      "high": 80048.6,
-      "low": 79976.3,
-      "atr": 41.89999999999937,
-      "atrPct": 0.0005234320150508487,
-      "rsi": 57.896261953055614,
-      "emaFast": 80018.40145581547,
-      "emaSlow": 80024.86092552736,
-      "momentum5": 0.0001749243452207061,
-      "volumeRatio": 0.8111696448475318
+      "candleTs": 1793088780000,
+      "closedAt": 1793088839999,
+      "price": 79864.7,
+      "high": 79875,
+      "low": 79859.9,
+      "atr": 38.13571428571387,
+      "atrPct": 0.0004775040072236403,
+      "rsi": 64.96995404736559,
+      "emaFast": 79860.05157025935,
+      "emaSlow": 79843.80915645343,
+      "momentum5": 0.000309368737474891,
+      "volumeRatio": 0.19433398041064825
     },
     "currentRegime": "DOWN",
     "signal": "HOLD",
     "mode": "experimental-unvalidated",
-    "probabilityUp": 0.4873506494191978,
-    "confidence": 51.51792206969626,
+    "probabilityUp": 0.4702989181465395,
+    "confidence": 53.56412982241526,
     "horizonProbabilities": {
-      "1h": 0.49995428646476314,
-      "4h": 0.48617976282276804,
-      "24h": 0.4850449707807222
+      "1h": 0.47997984589223586,
+      "4h": 0.458449107597592,
+      "24h": 0.49057702860287367
     },
-    "reason": "研究模式：HOLD；綜合上漲機率 48.7%，1H/4H/24H=50.0% / 48.6% / 48.5%",
+    "reason": "研究模式：HOLD；綜合上漲機率 47.0%，1H/4H/24H=48.0% / 45.8% / 49.1%",
     "mainValidated": {
       "1h": false,
       "4h": false,
