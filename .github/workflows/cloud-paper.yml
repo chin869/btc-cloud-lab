@@ -12,6 +12,8 @@ on:
       - "app.js"
       - "predictor.js"
       - "derivatives.js"
+      - "paper-report.js"
+      - "cloud-review.html"
       - "cloud/**"
       - "data/auto-paper-settings.json"
       - ".github/workflows/cloud-paper.yml"
@@ -24,33 +26,41 @@ permissions: {}
 
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 25
     permissions:
       contents: write
       pages: write
+      actions: read
+    outputs:
+      cycle_outcome: ${{ steps.cloud_cycle.outcome }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          ref: main
 
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
 
       - name: Verify cloud safety and configuration
         run: |
           node cloud/verify_cloud.mjs
           node cloud/verify_strategy.mjs
+          node --test cloud/tests/*.test.mjs
+
+      - name: Record scheduler diagnostics
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: node cloud/run_diagnostics.mjs
 
       - name: Run cloud collector and AUTO PAPER
         id: cloud_cycle
         continue-on-error: true
         run: node cloud/cloud_cycle.mjs
-
-      - name: Build cloud dashboard
-        if: steps.cloud_cycle.outcome == 'success'
-        run: node cloud/build_site.mjs
 
       - name: Persist cloud paper data
         if: always() && (steps.cloud_cycle.outcome == 'success' || steps.cloud_cycle.outcome == 'failure')
@@ -58,17 +68,17 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/derivatives-history.json data/derivatives-history.js data/auto-paper.json data/auto-paper.js data/cloud-status.json
+          git add data/
           if git diff --cached --quiet; then
             echo "No cloud data changes to commit."
           else
             git commit -m "chore: update cloud paper data"
-            git push origin "HEAD:${GITHUB_REF_NAME}"
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
 
-      - name: Report cloud cycle failure
-        if: steps.cloud_cycle.outcome == 'failure'
-        run: exit 1
+      - name: Build cloud dashboard from persisted revision
+        run: node cloud/build_site.mjs
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
@@ -77,6 +87,7 @@ jobs:
         uses: actions/upload-pages-artifact@v4
         with:
           path: dist
+          retention-days: 1
 
   deploy:
     needs: build
@@ -93,3 +104,6 @@ jobs:
       - name: Deploy GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Report collector failure after publishing visible status
+        if: needs.build.outputs.cycle_outcome == 'failure'
+        run: exit 1
