@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>舊交易重算對照 · BTC Cloud Lab</title><link rel="stylesheet" href="style.css"><style>main{max-width:1100px;margin:30px auto;padding:18px}a{color:#8bc6ff}td,th{white-space:normal!important}p{line-height:1.8}small{display:block;color:#9aa8b8}</style></head>
+<body><main><a href="index.html">← 回到模擬網站</a><h1>舊交易重算對照</h1>
+<p>保留原本每筆進場時間、數量與原始止盈止損，檢查完整分鐘行情是否更早碰到出場價。這是逐筆保護價查核，沒有重建全部歷史模型、資金費、動態保護價與後續再進場，不能當成修正後整套策略的報酬率。</p>
+<p>開倉所在的第一個不完整分鐘無法判斷觸價先後，會另外標記；同根完整分鐘同時碰到止盈與止損時，採止損優先。原帳本不會被覆蓋。</p>
+<section class="card"><h2>查核結果</h2><p id="summary">讀取中…</p><div class="table-wrap"><table><thead><tr><th>原開倉（台灣時間）</th><th>舊帳本淨損益</th><th>固定進場查核淨損益</th><th>觸價分鐘／原離場時間</th><th>判定與限制</th></tr></thead><tbody id="rows"></tbody></table></div></section>
+<section class="card"><h2>排程紀錄</h2><p id="schedule">讀取中…</p></section>
+<p><a href="data/reports/legacy-replay.json" download>下載完整查核資料</a></p>
+<script>
+const money=v=>Number.isFinite(v)?v.toFixed(2)+" USDT":"無法確認";
+const time=v=>v?new Date(v).toLocaleString("zh-TW",{timeZone:"Asia/Taipei"}):"--";
+fetch("data/reports/legacy-replay.json").then(r=>{if(!r.ok)throw Error("查核報告尚未發布");return r.json()}).then(report=>{
+ document.getElementById("summary").textContent=report.summary;
+ document.getElementById("schedule").textContent=report.schedule?.summary||"尚無排程資料";
+ for(const row of report.trades){const tr=document.createElement("tr");for(const value of [time(row.openedAt),money(row.originalNet),money(row.replayedNet),time(row.exitAt),row.note]){const td=document.createElement("td");td.textContent=value;tr.appendChild(td);}document.getElementById("rows").appendChild(tr);}
+}).catch(err=>{document.getElementById("summary").textContent=err.message;});
+</script></main></body></html>
+
