@@ -1,0 +1,17 @@
+{
+  "note": "Created/start times identify runner queueing, not the scheduler's intended trigger time. A successful run does not imply punctual scheduling.",
+  "runs": [
+    {
+      "observedAt": "2026-11-02T08:26:44.057Z",
+      "id": "41413075826",
+      "event": "push",
+      "cron": "2-59/5 * * * *",
+      "createdAt": "2026-11-02T08:26:25Z",
+      "startedAt": "2026-11-02T08:26:25Z",
+      "head": "06f4b8e9de6e3a8330d21dad272f9411cb958bd1",
+      "url": "https://github.com/chin869/btc-cloud-lab/actions/runs/41413075826",
+      "queueMinutes": 0,
+      "intervalMinutes": null
+    }
+  ]
+}

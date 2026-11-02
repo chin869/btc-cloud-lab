@@ -1,18 +1,18 @@
 {
-  "version": 1,
-  "lastRunAt": "2026-11-02T02:19:05.266Z",
-  "lastSuccessAt": "2026-11-02T02:19:12.666Z",
-  "lastError": null,
+  "version": 2,
+  "strategyVersion": "paper-v3",
+  "lastRunAt": "2026-11-02T08:26:44.497Z",
+  "lastSuccessAt": "2026-11-02T08:26:52.553Z",
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-11-02T02:19:05.266Z",
-    "lastSuccessAt": "2026-11-02T02:19:05.630Z",
+    "lastAttemptAt": "2026-11-02T08:26:45.238Z",
+    "lastSuccessAt": "2026-11-02T08:26:45.447Z",
     "lastError": null,
     "counts": {
-      "funding": 719,
-      "openInterest": 1428,
-      "longShort": 1428,
-      "taker": 1429
+      "funding": 720,
+      "openInterest": 1434,
+      "longShort": 1434,
+      "taker": 1435
     },
     "sources": {
       "funding": {
@@ -39,41 +39,79 @@
   },
   "decision": {
     "ok": true,
-    "generatedAt": "2026-11-02T02:19:12.664Z",
-    "marketType": "USDT_M_BTC_PERPETUAL",
-    "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
-    "candleTs": 1793585880000,
-    "price": 78406,
-    "market": {
-      "candleTs": 1793585880000,
-      "closedAt": 1793585939999,
-      "price": 78406,
-      "high": 78429,
-      "low": 78406,
-      "atr": 35.92142857142816,
-      "atrPct": 0.0004581464246540846,
-      "rsi": 60.85238498447507,
-      "emaFast": 78392.00054170538,
-      "emaSlow": 78397.00793087485,
-      "momentum5": 0.000497658453175509,
-      "volumeRatio": 0.8605233497844419
-    },
-    "currentRegime": "RANGE",
     "signal": "HOLD",
     "mode": "experimental-unvalidated",
-    "probabilityUp": 0.47824284123652366,
-    "confidence": 52.61085905161716,
+    "probabilityUp": 0.48942756248623964,
+    "confidence": 51.057243751376035,
     "horizonProbabilities": {
-      "1h": 0.46640577002382694,
-      "4h": 0.46543745530623604,
-      "24h": 0.4971647128452097
+      "1h": 0.4817034879356998,
+      "4h": 0.5165366077150823,
+      "24h": 0.4729578158398775
     },
-    "reason": "研究模式：HOLD；綜合上漲機率 47.8%，1H/4H/24H=46.6% / 46.5% / 49.7%",
+    "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
+    "confidenceKind": "heuristic-score-not-win-probability",
+    "evidence": {
+      "validatedVotes": [],
+      "supportingVotes": 0,
+      "supportingHorizons": 0,
+      "agreement": 0
+    },
+    "reason": "研究模式 HOLD；模型原始機率均值 48.9%，不代表實際交易勝率。",
+    "generatedAt": "2026-11-02T08:26:52.553Z",
+    "modelAsOf": 1793606399999,
+    "marketType": "USDT_M_BTC_PERPETUAL",
+    "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+    "venue": "OKX",
+    "candleTs": 1793607900000,
+    "price": 78091.6,
+    "market": {
+      "candleTs": 1793607900000,
+      "closedAt": 1793607959999,
+      "price": 78091.6,
+      "open": 78083.4,
+      "high": 78091.7,
+      "low": 78081.9,
+      "atr": 26.371428571428364,
+      "atrPct": 0.0003376986586448269,
+      "rsi": 42.3693953105733,
+      "emaFast": 78096.10702032663,
+      "emaSlow": 78102.7448108995,
+      "momentum5": -0.00006402327374044336,
+      "volumeRatio": 0.40008858366197153
+    },
+    "currentRegime": "RANGE",
     "mainValidated": {
       "1h": false,
       "4h": false,
       "24h": false
     },
-    "derivativesAvailable": true
-  }
+    "derivativesAvailable": true,
+    "feedWarnings": []
+  },
+  "run": {
+    "id": "41413075826",
+    "attempt": "1",
+    "event": "push",
+    "codeRevision": "06f4b8e9de6e3a8330d21dad272f9411cb958bd1"
+  },
+  "health": {
+    "status": "ok",
+    "lastAttemptAt": "2026-11-02T08:26:52.553Z",
+    "lastCheckedCandleAt": "2026-11-02T08:25:59.999Z",
+    "quoteAt": "2026-11-02T08:25:59.999Z",
+    "intervalMinutes": 367.66481666666664,
+    "expectedIntervalMinutes": 5,
+    "processedMinutes": 0,
+    "gap": null,
+    "venue": "OKX",
+    "indicatorContextComplete": true,
+    "execution": "delayed-paper-replay",
+    "fundingModel": "public rate × minute-open proxy; funding history coverage not guaranteed",
+    "limitations": [
+      "非即時交易；排程不保證準點",
+      "資金費以公開費率估算，覆蓋可能不完整",
+      "尚未模擬維持保證金與交易所強平"
+    ]
+  },
+  "durationSeconds": 8.058
 }
