@@ -16,7 +16,8 @@ function expect(condition,message){if(!condition) fail(message);}
 
 const required=[
   "index.html","style.css","app.js","predictor.js","derivatives.js",
-  "cloud/cloud_cycle.mjs","cloud/build_site.mjs",
+  "cloud/cloud_cycle.mjs","cloud/build_site.mjs","cloud/paper_engine.mjs","cloud/storage.mjs",
+  "cloud/signal.mjs","cloud/model_feeds.mjs","paper-report.js","cloud-review.html",
   "data/auto-paper-settings.json","data/auto-paper.json",
   "data/auto-paper.js","data/derivatives-history.json","data/derivatives-history.js",
   ".github/workflows/cloud-paper.yml"
@@ -66,8 +67,9 @@ expect(cycle.includes("www.okx.com")&&cycle.includes("BTC-USDT-SWAP"),"Cloud fut
 expect(!cycle.includes("/api/v3/klines")&&!cycle.includes("data-api.binance.vision"),"Cloud AUTO PAPER must not use spot candles");
 expect(cycle.includes('marketType:"USDT_M_BTC_PERPETUAL"'),"Cloud decision does not identify the USDT-M BTC perpetual market");
 expect(cycle.includes('fetchHistory("1m"'),"Cloud cycle is not using closed 1m candles for risk monitoring");
-for(const forbidden of ["X-MBX-APIKEY","/api/v3/order","/fapi/v1/order","method:\"POST\"","method:'POST'"]){
-  expect(!cycle.includes(forbidden),"Cloud cycle contains a forbidden trading/API-key marker: "+forbidden);
+const executionSource=["cloud/cloud_cycle.mjs","cloud/paper_engine.mjs","cloud/risk_engine.mjs","cloud/storage.mjs","cloud/signal.mjs","cloud/model_feeds.mjs"].map(read).join("\n");
+for(const forbidden of ["X-MBX-APIKEY","OK-ACCESS-KEY","/api/v3/order","/fapi/v1/order","/api/v5/trade/","method:\"POST\"","method:'POST'"]){
+  expect(!executionSource.includes(forbidden),"Cloud execution contains a forbidden trading/API-key marker: "+forbidden);
 }
 
 const workflow=read(".github/workflows/cloud-paper.yml");

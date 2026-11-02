@@ -31,6 +31,7 @@
   };
   state.account = loadAccount(state.settings);
 
+  function escapeHtml(value){return String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
   function el(id){ return document.getElementById(id); }
   function nowIso(){ return new Date().toISOString(); }
   function clamp(n,min,max){ return Math.min(max,Math.max(min,n)); }
@@ -241,6 +242,13 @@
   }
 
   async function fetchMarket(interval){
+    if(CLOUD_FUTURES_MODE){
+      const ledger=autoPaperLedger();
+      const venue=ledger?.health?.venue||ledger?.account?.positionVenue||
+        (String(ledger?.lastDecision?.marketDataSource).includes("OKX")?"OKX":"Binance");
+      const candles=venue==="OKX"?await fetchOkxRecent(interval):await fetchBinance(interval);
+      return {candles,source:venue+" BTC 永續合約公開行情；與雲端同來源"};
+    }
     try{
       const candles=await fetchBinance(interval);
       return {candles,source:CLOUD_FUTURES_MODE?"Binance BTCUSDT 永續合約公開 API":"Binance 公開 API"};
@@ -773,7 +781,8 @@
     if(!account) return {cash:0,qty:0,avgEntry:0,price:NaN,equity:0,unrealized:0,realized:0};
     const history=Array.isArray(account.equityHistory)?account.equityHistory:[];
     const lastPoint=history.length?history[history.length-1]:null;
-    const price=state.market&&Number.isFinite(state.market.price)?state.market.price:(lastPoint?Number(lastPoint.price):NaN);
+    const price=CLOUD_FUTURES_MODE?Number(ledger.lastDecision?.price??lastPoint?.price):
+      state.market&&Number.isFinite(state.market.price)?state.market.price:(lastPoint?Number(lastPoint.price):NaN);
     const cash=Number(account.cash)||0;
     const qty=Number(account.qty)||0;
     const avgEntry=Number(account.avgEntry)||0;
@@ -784,7 +793,7 @@
     const direction=side==="SHORT"?-1:1;
     const value=Number.isFinite(price)?qty*price:0;
     const exitFee=Number.isFinite(price)?value*(Number(settings.feeRate)||0):0;
-    const futuresUnrealized=qty>0&&Number.isFinite(price)?(price-avgEntry)*qty*direction-exitFee:0;
+    const futuresUnrealized=qty>0&&Number.isFinite(price)?(price-avgEntry)*qty*direction:0;
     const exitValue=Number.isFinite(price)?qty*price*(1-(Number(settings.slippageRate)||0))*(1-(Number(settings.feeRate)||0)):0;
     const unrealized=futures?futuresUnrealized:(qty>0?exitValue-qty*avgEntry:0);
     return {
@@ -799,6 +808,10 @@
   }
 
   function autoSignalLabel(signal){
+    if(signal==="PENDING_ENTRY") return "等待補算進場";
+    if(signal==="PENDING_EXIT") return "等待補算離場";
+    if(signal==="BLOCKED") return "資料缺口";
+    if(signal==="STALE") return "資料過期";
     if(signal==="OPEN_LONG") return "OPEN LONG";
     if(signal==="OPEN_SHORT") return "OPEN SHORT";
     if(signal==="CLOSE_LONG"||signal==="CLOSE_SHORT") return "CLOSE";
@@ -818,8 +831,9 @@
     const m=autoPaperMetrics();
     const enabled=Boolean(ledger.settingsSnapshot&&ledger.settingsSnapshot.enabled);
     if(status){
-      status.className="status "+(ledger.lastError?"bad":enabled?"ok":"neutral");
-      status.textContent=ledger.lastError?"AUTO ERROR":enabled?"AUTO ON":"AUTO OFF";
+      const health=CLOUD_FUTURES_MODE&&window.BTCPaperReport?window.BTCPaperReport.health(ledger,state.cloudStatus):null;
+      status.className="status "+(health?health.level:ledger.lastError?"bad":enabled?"ok":"neutral");
+      status.textContent=health?health.label:ledger.lastError?"AUTO ERROR":enabled?"AUTO ON":"AUTO OFF";
     }
     if(el("autoEquityValue")) el("autoEquityValue").textContent=fmtUsd(m.equity);
     if(el("autoCashValue")) el("autoCashValue").textContent=(m.side?"可用保證金：":"現金：")+fmtUsd(m.side?m.freeCash:m.cash);
@@ -860,7 +874,7 @@
     const rows=el("autoTradeRows");
     if(rows){
       rows.innerHTML="";
-      const trades=Array.isArray(ledger.account.trades)?ledger.account.trades.slice(0,20):[];
+      const trades=Array.isArray(ledger.account.trades)?ledger.account.trades.slice(0,100):[];
       if(!trades.length){
         rows.innerHTML='<tr><td colspan="7" class="muted">目前沒有 AUTO 交易紀錄</td></tr>';
       }else{
@@ -875,28 +889,51 @@
             "<td>"+fmtNum(Number(t.qty),8)+"</td>"+
             "<td>"+fmtUsd(Number(t.fill))+"</td>"+
             "<td class='"+(pnl>0?"positive":pnl<0?"negative":"")+"'>"+fmtUsd(pnl)+"</td>"+
-            "<td>"+String(t.reason||"--")+"</td>";
+            "<td>"+escapeHtml(t.reason||"--")+
+              (CLOUD_FUTURES_MODE?"<small>"+escapeHtml(t.venue||"舊版來源未記錄")+" · "+escapeHtml(t.strategyVersion||"舊版紀錄")+
+                (t.entryContext?.plan?" · 預估止損含費 "+fmtUsd(t.entryContext.plan.estimatedStopLoss)+" · 扣費後盈虧比 "+fmtNum(t.entryContext.plan.netRewardRisk):"")+
+                (t.recordedAt?" · 帳本更新 "+new Date(t.recordedAt).toLocaleString("zh-TW"):"")+"</small>":"")+"</td>";
           rows.appendChild(tr);
         });
       }
     }
   }
 
-  function reloadAutoPaperData(){
+  async function reloadAutoPaperData(){
+    if(CLOUD_FUTURES_MODE){
+      const results=await Promise.allSettled([fetchJson("data/auto-paper.json?t="+Date.now()),fetchJson("data/cloud-status.json?t="+Date.now()),fetchJson("data/cloud-analysis.json?t="+Date.now()),fetchJson("data/derivatives-history.json?t="+Date.now())]);
+      if(results[0].status==="fulfilled"){state.autoPaper=results[0].value;window.BTCAutoPaper=state.autoPaper;state.cloudReadError=null;}
+      else state.cloudReadError="帳本下載失敗，正在顯示上次保存的資料";
+      if(results[1].status==="fulfilled")state.cloudStatus=results[1].value;
+      if(results[2].status==="fulfilled")window.BTCCloudAnalysis=results[2].value;
+      if(results[3].status==="fulfilled")window.BTCLocalDerivativesHistory=results[3].value;
+      return results[0].status==="fulfilled";
+    }
     return new Promise(resolve=>{
-      const script=document.createElement("script");
-      script.src="data/auto-paper.js?t="+Date.now();
-      script.onload=()=>{
-        state.autoPaper=window.BTCAutoPaper||state.autoPaper;
-        script.remove();
-        resolve(true);
-      };
-      script.onerror=()=>{
-        script.remove();
-        resolve(false);
-      };
-      document.head.appendChild(script);
+      const script=document.createElement("script");script.src="data/auto-paper.js?t="+Date.now();
+      script.onload=()=>{state.autoPaper=window.BTCAutoPaper||state.autoPaper;script.remove();resolve(true);};
+      script.onerror=()=>{script.remove();resolve(false);};document.head.appendChild(script);
     });
+  }
+
+  function renderCloudHealth(){
+    if(!CLOUD_FUTURES_MODE||!window.BTCPaperReport)return;
+    const ledger=autoPaperLedger(),health=window.BTCPaperReport.health(ledger,state.cloudStatus);
+    const put=(id,value)=>{if(el(id))el(id).textContent=value;};
+    put("cloudHealthLabel",state.cloudReadError||health.label);
+    if(el("cloudHealthLabel"))el("cloudHealthLabel").className="status "+(state.cloudReadError?"bad":health.level);
+    put("cloudLastCheck",ledger?.lastSuccessAt?new Date(ledger.lastSuccessAt).toLocaleString("zh-TW",{timeZone:"Asia/Taipei"})+"（台灣時間）":"尚無紀錄");
+    put("cloudAge",health.ageMinutes===null?"--":Math.floor(health.ageMinutes)+" 分鐘前");
+    const h=ledger?.health;
+    put("cloudSource",h?.venue||ledger?.lastDecision?.marketDataSource||"等待資料");
+    put("cloudCoverage",h?"本輪處理 "+h.processedMinutes+" 根分鐘 K 線；"+(h.gap?"仍有缺口，禁止新進場":"已完成本輪可處理範圍")+(h.intervalMinutes!==null?"；距上次執行 "+Math.round(h.intervalMinutes)+" 分鐘":""):"舊版尚未記錄補查範圍");
+    put("cloudRiskNote",ledger?.account?.positionSide?"預估單筆止損含費 "+fmtUsd(ledger.account.estimatedStopLoss)+"；跳價可能超過。價格距離 2:1；扣費後預估盈虧比 "+fmtNum(ledger.account.netRewardRisk):"本金 500 USDT · 合約模擬 · 最高 10 倍 · 價格距離 2:1，扣費後比例另計");
+    const segments=window.BTCPaperReport.segments(ledger);
+    put("cloudSegments",segments.map(x=>(x.version==="legacy"?"舊版（含已知誤差）":"新版")+"："+x.closes+" 筆平倉，"+fmtUsd(x.realized)).join(" ／ "));
+    const archive=el("cloudArchive");
+    if(archive&&ledger?.migration?.archive&&/^data\/archive\/[a-zA-Z0-9.-]+\.json$/.test(ledger.migration.archive)){
+      archive.href=ledger.migration.archive;archive.hidden=false;
+    }
   }
 
   function setPage(page){
@@ -924,6 +961,7 @@
   }
 
   function monthlyPerformance(){
+    if(CLOUD_FUTURES_MODE&&window.BTCPaperReport)return window.BTCPaperReport.monthly(autoPaperLedger());
     const {start,end}=monthWindow();
     const ledger=autoPaperLedger();
     const allTrades=ledger&&ledger.account&&Array.isArray(ledger.account.trades)?ledger.account.trades:[];
@@ -931,7 +969,7 @@
       const d=new Date(t.ts);
       return d>=start && d<end;
     });
-    const closes=trades.filter(t=>t.side==="SELL");
+    const closes=trades.filter(t=>["SELL","CLOSE_LONG","CLOSE_SHORT"].includes(t.side));
     const realized=closes.reduce((sum,t)=>sum+(Number(t.realized)||0),0);
     const fees=trades.reduce((sum,t)=>sum+(Number(t.fee)||0),0);
     const wins=closes.filter(t=>(Number(t.realized)||0)>0).length;
@@ -1106,15 +1144,15 @@
   function renderCollectorDetails(){
     const payload=window.BTCLocalDerivativesHistory || {};
     const collector=payload.collector || {};
-    const counts=collector.counts || {};
+    const counts=CLOUD_FUTURES_MODE?Object.fromEntries(Object.entries(derivativeFeedsForCenter()).map(([name,rows])=>[name,rows.length])):collector.counts || {};
     const badge=el("dcCollectorBadge");
     const details=el("dcCollectorDetails");
     if(!badge || !details) return;
 
     const lastSuccess=collector.lastSuccessAt || payload.updatedAt || state.derivativesPersistedAt;
-    const hasError=Boolean(collector.lastError);
+    const hasError=Boolean(collector.lastError)||!lastSuccess||Date.now()-Date.parse(lastSuccess)>2*3600000;
     badge.className="status "+(hasError?"bad":lastSuccess?"ok":"neutral");
-    badge.textContent=hasError?"最近收集有錯誤":lastSuccess?"背景收集正常":"尚未有狀態";
+    badge.textContent=hasError?"收集異常或資料已過期":lastSuccess?"最近收集完成":"尚未有狀態";
 
     const pills=[
       ["最後成功",lastSuccess?new Date(lastSuccess).toLocaleString("zh-TW"):"--"],
@@ -1122,9 +1160,10 @@
       ["Open Interest",String(counts.openInterest ?? (payload.feeds?.openInterest?.length||0))+" 筆"],
       ["Long/Short · Taker",String(counts.longShort ?? (payload.feeds?.longShort?.length||0))+" / "+String(counts.taker ?? (payload.feeds?.taker?.length||0))+" 筆"]
     ];
+    if(CLOUD_FUTURES_MODE)pills.unshift(["統計來源",autoPaperLedger()?.health?.venue||"等待來源"]);
     details.innerHTML=pills.map(([label,value])=>'<div class="collector-pill"><span>'+label+'</span><strong>'+value+'</strong></div>').join("");
     if(hasError){
-      details.innerHTML+='<div class="collector-pill"><span>最近錯誤</span><strong class="negative">'+String(collector.lastError)+'</strong></div>';
+      details.innerHTML+='<div class="collector-pill"><span>最近錯誤</span><strong class="negative">'+escapeHtml(collector.lastError||"超過兩小時沒有新資料")+'</strong></div>';
     }
   }
 
@@ -1150,7 +1189,7 @@
       el("monthBestTradeValue").textContent="最佳單："+(Number.isFinite(perf.best)?fmtUsd(perf.best):"--")+(Number.isFinite(perf.worst)?" · 最差 "+fmtUsd(perf.worst):"");
     }
     if(el("monthPeriodLabel")){
-      el("monthPeriodLabel").textContent=(perf.start.getFullYear())+" 年 "+(perf.start.getMonth()+1)+" 月";
+      el("monthPeriodLabel").textContent=perf.label||((perf.start.getFullYear())+" 年 "+(perf.start.getMonth()+1)+" 月");
     }
 
     const feeds=derivativeFeedsForCenter();
@@ -1166,6 +1205,21 @@
   }
 
   async function refreshPredictions(force=false){
+    if(CLOUD_FUTURES_MODE){
+      const a=window.BTCCloudAnalysis;
+      if(a?.main){
+        state.predictions=a.main;state.derivatives=a.deriv;state.derivativesError=[a.derivativeError,...(a.feedWarnings||[])].filter(Boolean).join("；");
+        state.predictionSource=a.venue+" 雲端模型 · "+a.historyLength+" 根 1H · "+new Date(a.generatedAt).toLocaleString("zh-TW");
+        state.predictionUpdatedAt=Date.parse(a.generatedAt);
+        const feeds=persistedDerivativeHistory().feeds;
+        state.derivativesPersistedAt=persistedDerivativeHistory().updatedAt||null;
+        state.derivativeFeeds=Object.fromEntries(Object.entries(feeds).map(([name,rows])=>[name,rows.filter(r=>r.venue===a.venue)]));
+        const age=Date.now()-Number(a.modelAsOf);
+        if(el("predictionStatus")){el("predictionStatus").textContent=age>2*3600000?"雲端模型已過期":"雲端模型快照";el("predictionStatus").className="status "+(age>2*3600000?"neutral":"ok");}
+        renderPredictions();renderDerivatives();
+      }else if(el("predictionStatus")){el("predictionStatus").textContent="等待雲端模型快照";}
+      return;
+    }
     if(state.predictionRefreshing) return;
     if(!force && state.predictions && Date.now()-state.predictionUpdatedAt<5*60*1000) return;
     const status=el("predictionStatus");
@@ -1217,6 +1271,7 @@
     renderPredictions();
     renderDerivatives();
     renderAutoPaper();
+    renderCloudHealth();
     renderDataCenter();
     drawChart();
   }
@@ -1228,15 +1283,17 @@
     const status=el("connectionStatus");
     status.className="status neutral";
     status.textContent="更新中…";
+    await reloadAutoPaperData();
+    await refreshPredictions(false);
+    renderAccount();renderAutoPaper();renderCloudHealth();renderDataCenter();
     try{
       const result=await fetchMarket(state.settings.interval);
       state.candles=result.candles;
       state.source=result.source;
       state.market=analyze(result.candles);
-      await reloadAutoPaperData();
-      await refreshPredictions(false);
+      if(!CLOUD_FUTURES_MODE)await refreshPredictions(false);
       status.className="status ok";
-      status.textContent="行情已連線";
+      status.textContent=CLOUD_FUTURES_MODE?"報價已連線（非雲端監控狀態）":"行情已連線";
       renderAll();
     }catch(err){
       status.className="status bad";
@@ -1362,4 +1419,5 @@
   renderAll();
   refresh();
   setInterval(refresh,15000);
+  if(CLOUD_FUTURES_MODE)setInterval(()=>{renderAutoPaper();renderCloudHealth();},10000);
 })();

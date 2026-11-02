@@ -1,72 +1,124 @@
-# BTC Cloud Lab 部署說明
+# BTC Cloud Lab 免費版使用說明（paper-v3）
 
-這是 BTC Local Lab 的雲端執行層。Windows 本機版與原有批次檔仍然保留；雲端版上線後，即使家裡電腦關機，GitHub Actions 仍會約每 5 分鐘執行一次 AUTO PAPER，GitHub Pages 則提供固定的瀏覽網址。
+這是既有 BTC Local Lab 的雲端執行層。只記錄 BTC 永續合約模擬交易，不連接真實交易帳戶，也不需要交易所 API Key。Windows 本機版保留。
 
-## 雲端版會做什麼
+GitHub Actions 負責收集與計算，GitHub Pages 顯示結果。你的電腦可以關機，iPad 開啟相同網址即可查看。
 
-- 優先從 Binance 公開、免金鑰的 USDT-M Futures 端點讀取 BTCUSDT 永續合約資料；若雲端主機遇到 Binance 區域限制，會自動改用 OKX 公開的 `BTC-USDT-SWAP` 永續合約資料。
-- 直接執行既有的 `predictor.js` 與 `derivatives.js`。
-- 只操作 repository 內的 AUTO PAPER 虛擬帳本。
-- 更新完成後，把模擬持倉、交易紀錄、衍生品歷史與執行狀態提交回 repository。
-- 重新產生 GitHub Pages 網站，讓手機、iPad 與電腦都能開啟。
+## 這次修正了什麼
 
-雲端程式沒有 API Key、私鑰、餘額查詢或下單端點，也不會連接真實交易帳戶。
+| 項目 | 新版行為 |
+| --- | --- |
+| 排程隔很久才執行 | 按順序補查期間每根分鐘 K 線，確認原持倉是否早已碰到止損或止盈 |
+| 新進場 | 先保存模型訊號，再於下一個完整分鐘開盤模擬成交；到下次執行才補算 |
+| 行情缺漏 | 停在缺口前、顯示異常、禁止新進場；補齊後從原位置繼續 |
+| 跳過止損價 | 使用可取得的開盤價，加不利滑價，不假設一定能成交在原止損價 |
+| 同分鐘碰到止盈與止損 | 無法知道先後順序，保守採止損優先並留紀錄 |
+| 單一週期通過檢查 | 不把一票同意當成 85% 勝率，也不直接使用 10 倍槓桿 |
+| 倉位分配 | 依風險預算計算，納入進出手續費及設定滑價 |
+| 月報 | 統計合約多空平倉；依台灣時間區分月份 |
+| 網頁狀態 | 分開顯示報價連線與雲端檢查；超過 15 分鐘提示延遲 |
+| 歷史保留 | 原帳本先原樣備份，舊版、新版交易分開標示，可下載 |
 
-## 雲端風控規則
+每筆交易記錄訊號、交易所、策略版本、費用、倉位依據、發生時間與補寫時間。既有 predictor.js、derivatives.js 保持原樣；網頁顯示雲端實際使用的模型快照。
 
-- 初始虛擬資金：500 USDT
-- 標的：USDT 本位 BTC 永續合約，可做多或做空；只計算模擬成交、保證金與損益
-- 槓桿：依模型信心與 1 分鐘波動動態使用，最高 10 倍
-- 倉位：每筆預計風險約為帳戶權益的 0.5%～1.25%，保證金最多使用權益的 25%
-- 手續費：0.10%
-- 滑價：0.05%
-- 初始止損：依 1 分鐘 ATR 自動計算，約 0.4%～2.0%
-- 初始止盈：固定為初始止損距離的 2 倍，報酬風險比 2:1
-- 動態離場：模型反轉、EMA／RSI／短線動能惡化時可提前平倉；獲利達 1R 後會移動保護價
-- 最長持倉：48 小時
-- 平倉後 30 分鐘內不重新進場
-- 同一根已收盤 1 分鐘 K 線不重複交易
+## 逐分鐘補查，不等於每分鐘即時交易
 
-雲端程式只允許切換 `enabled` 與 `experimentalTrading`。本金、槓桿上限、倉位風險與 2:1 初始報酬風險比由程式固定保護。
+GitHub 排程設定每 5 分鐘觸發，但可能延遲或略過部分排程，無法保證準點。中間行情會在之後執行時補查；你當下看到的持倉可能尚未更新。
 
-AUTO PAPER 的進場價、持倉監控與回測價格都使用合約 K 線，不以 BTC 現貨 K 線代替。每次判斷會記錄實際採用的合約資料源。畫面中的手動瀏覽器現貨練習盤是舊版保留功能，帳本與雲端合約 AUTO PAPER 完全分開。
+例如 10:00 執行後，到 11:00 才再執行，程式會檢查這段分鐘行情；若原持倉在 10:20 碰到止損，就留下該分鐘的出場紀錄。它不會用 11:00 才知道的訊號，假裝 10:20 開過新單。
 
-## 最簡單的首次部署流程
+分鐘高低價只能證明該分鐘碰過價位，不能精確知道秒數。帳本對分鐘內觸價以該分鐘結束時間記錄，另保存原分鐘時間及實際補寫時間。
 
-1. 登入 GitHub，建立一個新的 **Public repository**，名稱可用 `btc-cloud-lab`，預設分支保持 `main`。建立時不要另外加入 README、`.gitignore` 或 License。
-2. 把 `WebCodex-Test` 資料夾內的所有內容上傳到 repository 根目錄。務必確認 GitHub 上看得到 `.github/workflows/cloud-paper.yml`、`cloud`、`data`、`index.html`、`app.js`、`predictor.js` 與 `derivatives.js`。
-3. 打開 repository 的 **Settings → Pages**，在 **Build and deployment** 將 Source 選成 **GitHub Actions**。
-4. 打開 **Actions**。若 GitHub 顯示需要啟用 workflows，先按啟用；接著選 **BTC Cloud AUTO PAPER → Run workflow → Run workflow**。
-5. 等待 `build` 和 `deploy` 兩個工作都顯示綠色勾勾。第一次通常需要幾分鐘。
-6. 回到 **Settings → Pages**，開啟 GitHub 顯示的網站網址。之後可把這個網址加入手機或 iPad 書籤。
+單次最多抓取最近 7 天及指標暖機資料。如果缺口超出範圍或來源無法提供歷史，會停止核對並提示，不跳過缺口假裝成功。沒有持倉或預先保存的委託時，不會憑空補出中斷期間的新交易。
 
-不需要建立 GitHub Secret，也不要上傳任何 Binance API Key。
+## 帳戶與風控
 
-若 `Persist cloud paper data` 顯示沒有寫入權限，請到 **Settings → Actions → General → Workflow permissions**，選擇 **Read and write permissions** 後重跑一次。若 `deploy` 顯示 Pages 尚未設定，回到第 3 步確認 Source 是 GitHub Actions。
+- 初始模擬本金 500 USDT；升級沿用現有餘額，不抹除過去盈虧。因此總資產不一定正好是 500。
+- USDT 本位 BTC 永續合約，可多可空，同時一個持倉。
+- 槓桿最高 10 倍，依支持週期與波動調整；僅單一週期支持時上限 2 倍。
+- 每筆預計風險為權益 0.5%～1.25%；保證金不超過扣除進場費後權益的 25%。跳價及資金費仍可能使損失超出預算。
+- 止損距離依分鐘波動決定，範圍 0.4%～2%；初始止盈距離為止損的 2 倍。
+- **2:1 指價格距離；扣費後實際盈虧比會較低。** 網頁另顯示預估含費止損及扣費後比例。
+- 進出場各收 0.10% 模擬手續費，各加 0.05% 不利滑價。這是研究假設，並非交易所實際費率承諾。
+- 方向反轉或短線指標惡化可提前離場，有利走勢可移動保護價。收盤後才得知的新保護價不倒套到同分鐘之前。
+- 最長持倉 48 小時，平倉後冷卻 30 分鐘。
+- 資金費使用同交易所公開結算費率及該分鐘開盤價估算，每筆只扣一次；缺漏歷史不會憑空估值，覆蓋不保證完整。
+- 尚未完整模擬維持保證金、強制平倉、訂單簿成交與流動性。結果不能視為真實交易可實現報酬。
 
-## 資料如何保存
+信心分數與模型原始上漲機率均未校準成實際交易勝率。研究模式預設開啟，未通過完整檢查的交易保留 experimental-unvalidated 標記；通過檢查也不是保證獲利。
 
-每次雲端循環會提交下列檔案：
+## 資料來源
 
-- `data/derivatives-history.json`
-- `data/derivatives-history.js`
-- `data/auto-paper.json`
-- `data/auto-paper.js`
-- `data/cloud-status.json`
+使用 Binance USDT-M 公開合約行情；該區域無法存取時，空倉可選 OKX BTC-USDT-SWAP。持倉或等待成交的委託鎖定原交易所，避免用另一交易所價格補算出場。
 
-下一輪會讀取上一輪帳本，因此持倉與績效不會因 GitHub Actions 使用新的執行環境而重置。寫入採用暫存檔後再替換，若帳本 JSON 已損壞，執行會報錯並保留原檔，不會靜默建立新帳本覆蓋歷史。
+衍生品必須同來源，且時間不超過模型最後收盤 K 線。持倉量、多空比、主動買賣量超過 2 小時，資金費率超過 24 小時時，該項不送入模型；缺少或過期資料另有標記。
 
-## 暫停或恢復 AUTO PAPER
+網頁報價可持續更新；帳戶估值使用雲端最後檢查價格，避免把新報價與尚未補查的持倉混成即時績效。
 
-在 GitHub 打開 `data/auto-paper-settings.json`：
+## 已有網站：最簡單更新流程
 
-- 暫停：把 `"enabled": true` 改成 `"enabled": false` 並提交。
-- 恢復：改回 `"enabled": true` 並提交。
+現有網站：https://chin869.github.io/btc-cloud-lab/
 
-這只會停止或恢復虛擬模擬盤，不涉及真實交易。
+1. 登入原 GitHub 帳號，開啟 chin869/btc-cloud-lab，使用既有 main 分支。
+2. 提交程式更新及 data/reports/legacy-replay.json。**不要用舊 auto-paper.json、auto-paper.js 或整個舊 data 資料夾蓋掉線上帳本。** 本次專用更新包只包含修改的程式、說明與獨立查核報告。
+3. 在 Settings → Pages 確認 Source 為 GitHub Actions。
+4. 到 Actions → BTC Cloud AUTO PAPER → Run workflow，分支選 main，再按 Run workflow。
+5. 等待 build 與 deploy。新版首次執行會自動備份當時原帳本並沿用餘額。
+6. 開啟原網站並重新整理。應看到「雲端模擬狀態」、最後成功時間、舊版／新版交易統計及「舊交易重算對照」。iPad 使用相同網址。
 
-## 本機版與雲端版的關係
+無需新增付費服務、API Key 或交易所帳戶。收集失敗時，工作流盡可能把錯誤發布到網站；若建置、持久化或 Pages 部署本身失敗，網站可能仍是舊版本，請以 Actions 記錄為準。
 
-第一次上雲會沿用目前的 `data/auto-paper.json` 作為雲端起點。桌面上的 Windows 版本不會被覆蓋，仍可保留作為備份或測試環境。上線後兩邊若同時執行，會各自形成不同的模擬盤歷史；正式觀察時建議把 GitHub 上的 ledger 當作雲端主紀錄。
+若寫入被儲存庫政策拒絕，確認 Actions 可寫入此儲存庫；分支保護拒絕需要調整對應規則或採用核准的資料分支方案，不能靠重跑解決。不要上傳私人密碼或金鑰。
 
-GitHub Actions 允許的最短排程間隔是 5 分鐘，而且不是準點保證，繁忙時可能延後。程式每次會讀取最新已收盤的 1 分鐘 K 線，但無法保證每一分鐘都執行。若日後需要真正每分鐘常駐監控，應搬到 VPS 或支援 1 分鐘排程的雲端服務。排程只會在 repository 的預設分支執行；公開 repository 若長時間完全沒有活動，GitHub 也可能停用排程，可在 Actions 頁面重新啟用。
+## 首次建立網站
+
+1. 建立公開儲存庫，預設分支 main。
+2. 上傳完整專案，包含 .github/workflows/cloud-paper.yml、cloud、data 及根目錄網頁檔案。
+3. 依上方第 3～6 步啟用 Pages 並執行工作流。
+
+公開儲存庫的程式及模擬紀錄任何人都可查看。標準公開儲存庫的 GitHub Actions 執行器與 Pages 可使用免費方案；不要改選大型付費執行器或私人儲存庫而假設費用仍相同。
+
+## 暫停與恢復
+
+編輯 data/auto-paper-settings.json：enabled 設 false 暫停新進場，true 恢復。暫停時取消等待中的進場委託，但仍補查與保護現有持倉，不會立刻清空持倉。
+
+experimentalTrading 設 false 可禁止未通過檢查的研究進場。其他資金及風控參數由 cloud/risk_engine.mjs 固定保護。
+
+## 保存與舊交易查核
+
+每輪提交帳本、分鐘游標、行情快取、模型快照、執行狀態與排程診斷回 GitHub。先寫暫存檔再替換；損壞帳本會報錯，不會靜默重建成新帳戶。
+
+首次升級建立 data/archive/auto-paper-before-v3-<雜湊>.json，原樣備份並保存完整 SHA-256。舊交易不改寫，新交易標記 paper-v3。升級時若仍有舊持倉，新版風控出場會保留舊進場背景，不代表完全由新版選出的交易。
+
+cloud-review.html 提供 13 筆舊交易對照：固定當時進場與數量，檢查原始止損／止盈是否更早觸發。它未重建全部模型、動態離場、後續進場與資金費，**不可把加總當成新版策略報酬率**。
+
+data/run-diagnostics.json 保存啟動時間、間隔、能取得的 GitHub 排隊時間與工作連結。這能協助找原因，不能保證修復平台延遲；沒有新增付費通知服務。
+
+## 可執行驗證（Node.js 24）
+
+```powershell
+node cloud/verify_cloud.mjs
+node cloud/verify_strategy.mjs
+node --test cloud/tests/*.test.mjs
+node cloud/build_site.mjs
+```
+
+實際行情試跑使用隔離資料夾：
+
+```powershell
+New-Item -ItemType Directory -Force .paper-test
+Copy-Item data/auto-paper.json,data/auto-paper-settings.json,data/derivatives-history.json .paper-test/
+$env:BTC_DATA_DIR = (Resolve-Path .paper-test).Path
+node cloud/cloud_cycle.mjs
+Remove-Item Env:BTC_DATA_DIR
+```
+
+不要把 .paper-test 測試帳本上傳蓋掉雲端資料。建置只讀正式 data，不會自動部署測試資料。
+
+重做舊交易查核可執行 node cloud/replay_legacy.mjs --download。首次取得公開歷史資料，之後保留快取即可離線重跑。原帳本不會被修改。
+
+## 官方限制參考
+
+- [GitHub 排程：最短 5 分鐘、可能延遲、公開儲存庫 60 天無活動可停用](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+- [以 Actions 發布 Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [GitHub Actions 計費與公開儲存庫](https://docs.github.com/en/billing/concepts/product-billing/github-actions)
