@@ -12,7 +12,12 @@ export const POLICY=Object.freeze({
   feeRate:0.001,
   slippageRate:0.0005,
   maxHoldHours:48,
-  cooldownMinutes:30
+  cooldownMinutes:30,
+  maxQuoteAgeMinutes:3,
+  expectedIntervalMinutes:5,
+  staleRunMinutes:15,
+  maxReplayMinutes:7*24*60,
+  strategyVersion:"paper-v3"
 });
 
 const clamp=(n,min,max)=>Math.min(max,Math.max(min,n));
@@ -64,6 +69,7 @@ export function analyzeMinuteCandles(candles){
     candleTs:Number(last.t),
     closedAt:Number(last.closedAt),
     price,
+    open:Number(last.open),
     high:Number(last.high),
     low:Number(last.low),
     atr:Number.isFinite(atrValue)?atrValue:price*0.003,
@@ -80,26 +86,48 @@ export function planPosition(equity,decision,market){
   const side=decision.signal==="BUY"?"LONG":decision.signal==="SELL"?"SHORT":null;
   if(!side||!Number.isFinite(equity)||equity<=0) return null;
   const confidence=clamp(Number(decision.confidence)||50,50,90);
-  let leverage=confidence>=78?8:confidence>=70?6:confidence>=62?4:2;
-  if(decision.mode==="validated") leverage+=2;
+  const horizons=Number(decision.evidence?.supportingHorizons)||0;
+  const votes=Number(decision.evidence?.supportingVotes)||0;
+  // Agreement of a single voter is not calibrated confidence or permission for 10x.
+  let leverage=horizons>=3&&confidence>=75?6:horizons>=2&&confidence>=65?4:2;
+  if(horizons>=3&&votes>=4&&confidence>=78) leverage=8;
+  if(horizons>=3&&votes>=6&&confidence>=80&&decision.evidence?.agreement>=0.9) leverage=10;
   if(market.atrPct>=0.012) leverage=Math.min(leverage,3);
   else if(market.atrPct>=0.008) leverage=Math.min(leverage,5);
   leverage=clamp(Math.round(leverage),1,POLICY.maxLeverage);
 
   const stopPct=clamp(market.atrPct*2.2,POLICY.minStopPct,POLICY.maxStopPct);
-  const riskPct=clamp(0.005+(confidence-50)/3200+(decision.mode==="validated"?0.0025:0),POLICY.minRiskPct,POLICY.maxRiskPct);
+  const riskPct=clamp(0.005+(Math.min(confidence,horizons<2?60:80)-50)/4000,POLICY.minRiskPct,POLICY.maxRiskPct);
   const riskAmount=equity*riskPct;
-  const notionalByRisk=riskAmount/stopPct;
-  const notionalByMargin=equity*POLICY.maxMarginPct*leverage;
+  const costs=estimateCosts(side,stopPct,stopPct*POLICY.rewardRiskRatio);
+  const notionalByRisk=riskAmount/costs.stopLossPerNotional;
+  const notionalByMargin=equity*POLICY.maxMarginPct*leverage/(1+POLICY.feeRate*POLICY.maxMarginPct*leverage);
   const notional=Math.max(0,Math.min(notionalByRisk,notionalByMargin));
-  const entryPrice=Number(market.price);
+  const entryPrice=Number(market.price)*(side==="LONG"?1+POLICY.slippageRate:1-POLICY.slippageRate);
+  if(!Number.isFinite(entryPrice)||entryPrice<=0||!Number.isFinite(notional)) return null;
   const qty=notional/entryPrice;
   const takePct=stopPct*POLICY.rewardRiskRatio;
   return {
-    side,leverage,notional,qty,riskAmount,riskPct,stopPct,takePct,
+    side,leverage,notional,qty,entryPrice,riskAmount,riskPct,stopPct,takePct,
+    entryFee:notional*POLICY.feeRate,
+    estimatedStopLoss:notional*costs.stopLossPerNotional,
+    estimatedTakeProfit:notional*costs.takeProfitPerNotional,
+    netRewardRisk:costs.takeProfitPerNotional/costs.stopLossPerNotional,
+    riskNote:"含設定手續費與滑價的估計；跳價及資金費可能使損失超過預算",
     marginUsed:notional/leverage,
     stopPrice:side==="LONG"?entryPrice*(1-stopPct):entryPrice*(1+stopPct),
     takeProfitPrice:side==="LONG"?entryPrice*(1+takePct):entryPrice*(1-takePct)
+  };
+}
+
+export function estimateCosts(side,stopPct,takePct){
+  const direction=side==="SHORT"?-1:1;
+  const slip=1-direction*POLICY.slippageRate;
+  const stopFill=(1-direction*stopPct)*slip;
+  const takeFill=(1+direction*takePct)*slip;
+  return {
+    stopLossPerNotional:direction*(1-stopFill)+POLICY.feeRate*(1+stopFill),
+    takeProfitPerNotional:direction*(takeFill-1)-POLICY.feeRate*(1+takeFill)
   };
 }
 
@@ -115,11 +143,17 @@ export function evaluatePosition(position,decision,market,nowMs=Date.now()){
   const stop=Number(position.stopPrice);
   const take=Number(position.takeProfitPrice);
   const high=Number(market.high),low=Number(market.low),price=Number(market.price);
+  const open=Number.isFinite(Number(market.open))?Number(market.open):price;
   const opened=Date.parse(position.openedAt);
   const heldHours=Number.isFinite(opened)?(nowMs-opened)/3600000:0;
 
-  if(side==="LONG"&&low<=stop) return {action:"CLOSE",price:stop,reason:"Adaptive stop loss"};
-  if(side==="SHORT"&&high>=stop) return {action:"CLOSE",price:stop,reason:"Adaptive stop loss"};
+  if(side==="LONG"&&open<=stop || side==="SHORT"&&open>=stop){
+    return {action:"CLOSE",price:open,atOpen:true,reason:"Gap through stop: use first available open",executionAssumption:"stop-market gap at candle open"};
+  }
+  const ambiguous=side==="LONG"?low<=stop&&high>=take:high>=stop&&low<=take;
+  if(side==="LONG"&&low<=stop || side==="SHORT"&&high>=stop){
+    return {action:"CLOSE",price:stop,reason:"Adaptive stop loss",executionAssumption:ambiguous?"both levels touched; conservatively stop first":"stop touched within candle",ambiguous};
+  }
   if(side==="LONG"&&high>=take) return {action:"CLOSE",price:take,reason:"2:1 adaptive take profit"};
   if(side==="SHORT"&&low<=take) return {action:"CLOSE",price:take,reason:"2:1 adaptive take profit"};
   if(heldHours>=POLICY.maxHoldHours) return {action:"CLOSE",price,reason:"Maximum holding time"};
@@ -144,6 +178,10 @@ export function evaluatePosition(position,decision,market,nowMs=Date.now()){
     const trail=Math.max(Number(market.atr)*1.25,riskDistance*0.5);
     if(side==="LONG") next.stopPrice=Math.max(Number(next.stopPrice),price-trail);
     else next.stopPrice=Math.min(Number(next.stopPrice),price+trail);
+  }
+  // A protective change is known only at this close, never retroactively at this bar's high/low.
+  if(side==="LONG"&&price<=next.stopPrice || side==="SHORT"&&price>=next.stopPrice){
+    return {action:"CLOSE",price,reason:"Protective level already crossed at candle close",executionAssumption:"new protection applied at close, not earlier in candle"};
   }
   return {action:"HOLD",position:next,rMultiple};
 }
