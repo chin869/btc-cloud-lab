@@ -1,44 +1,8 @@
 {
   "strategyVersion": "paper-v3",
   "venue": "OKX",
-  "feedKey": "{\"funding\":1793721600000,\"openInterest\":1793739600000,\"longShort\":1793739600000,\"taker\":1793739600000}",
+  "feedKey": "{\"funding\":1793750400000,\"openInterest\":1793754000000,\"longShort\":1793754000000,\"taker\":1793754000000}",
   "candles": [
-    {
-      "t": 1775743200000,
-      "open": 70779.8,
-      "high": 71228,
-      "low": 70505,
-      "close": 71090.7,
-      "volume": 6950.939,
-      "closedAt": 1775746799999
-    },
-    {
-      "t": 1775746800000,
-      "open": 71090.8,
-      "high": 72333.7,
-      "low": 70900,
-      "close": 72105.7,
-      "volume": 14473.9489,
-      "closedAt": 1775750399999
-    },
-    {
-      "t": 1775750400000,
-      "open": 72105.6,
-      "high": 72379.3,
-      "low": 71666.7,
-      "close": 72047.5,
-      "volume": 8396.9796,
-      "closedAt": 1775753999999
-    },
-    {
-      "t": 1775754000000,
-      "open": 72047.6,
-      "high": 72518.3,
-      "low": 72037.2,
-      "close": 72308.6,
-      "volume": 7082.9204,
-      "closedAt": 1775757599999
-    },
     {
       "t": 1775757600000,
       "open": 72308.6,
@@ -45002,12 +44966,48 @@
       "close": 77876.9,
       "volume": 2194.3931,
       "closedAt": 1793743199999
+    },
+    {
+      "t": 1793743200000,
+      "open": 77876.9,
+      "high": 77881.4,
+      "low": 77685.7,
+      "close": 77863.3,
+      "volume": 1056.981,
+      "closedAt": 1793746799999
+    },
+    {
+      "t": 1793746800000,
+      "open": 77863.3,
+      "high": 77974.7,
+      "low": 77400,
+      "close": 77439.4,
+      "volume": 2206.4713,
+      "closedAt": 1793750399999
+    },
+    {
+      "t": 1793750400000,
+      "open": 77439.4,
+      "high": 77530.1,
+      "low": 76827,
+      "close": 77221.3,
+      "volume": 5977.3218,
+      "closedAt": 1793753999999
+    },
+    {
+      "t": 1793754000000,
+      "open": 77221.3,
+      "high": 77315.4,
+      "low": 76785,
+      "close": 77010.9,
+      "volume": 4131.3399,
+      "closedAt": 1793757599999
     }
   ],
   "analysis": {
     "main": {
       "version": 3,
-      "generatedAt": "2026-11-03T22:04:00.347Z",
+      "generatedAt": "2026-11-04T02:14:06.799Z",
       "candleCount": 5000,
       "roundTripCostPct": 0.3,
       "currentRegime": "RANGE",
@@ -45021,19 +45021,19 @@
               "key": "rules",
               "label": "規則基準",
               "current": {
-                "probabilityUp": 0.8436363636363635,
-                "action": "LONG",
-                "confidence": 84.36363636363635,
+                "probabilityUp": 0.3472727272727273,
+                "action": "NEUTRAL",
+                "confidence": 65.27272727272727,
                 "edge": 0.32,
-                "rawScore": 0.8181818181818181
+                "rawScore": -0.3636363636363636
               },
               "metrics": {
                 "tested": 2410,
                 "signals": 711,
                 "coverage": 0.2950207468879668,
                 "winRate": 0.1490857946554149,
-                "avgNetMove": -0.2924796305049371,
-                "profitFactor": 0.18115421951764915,
+                "avgNetMove": -0.29262008645346077,
+                "profitFactor": 0.1810830122474123,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
@@ -45053,14 +45053,14 @@
                   "RANGE": {
                     "signals": 360,
                     "winRate": 0.16111111111111112,
-                    "avgNetMove": -0.29891224560066526,
-                    "profitFactor": 0.13425010894451575
+                    "avgNetMove": -0.2991896460989996,
+                    "profitFactor": 0.13414233300173622
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 14.586413015780302,
+                  "score": 14.58360389680983,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45071,7 +45071,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 14.586413015780302,
+                "score": 14.58360389680983,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45084,9 +45084,9 @@
               "key": "logistic",
               "label": "Logistic",
               "current": {
-                "probabilityUp": 0.4819890051022399,
+                "probabilityUp": 0.5349695343074832,
                 "action": "NEUTRAL",
-                "confidence": 51.80109948977601,
+                "confidence": 53.49695343074832,
                 "edge": 0.32,
                 "rawScore": null
               },
@@ -45149,9 +45149,9 @@
               "key": "ridgeReturn",
               "label": "Ridge Return",
               "current": {
-                "probabilityUp": 0.49753254854719337,
+                "probabilityUp": 0.5229167225242349,
                 "action": "NEUTRAL",
-                "confidence": 50.24674514528066,
+                "confidence": 52.291672252423496,
                 "edge": 0.32,
                 "rawScore": null
               },
@@ -45214,46 +45214,46 @@
               "key": "naiveBayes",
               "label": "Naive Bayes",
               "current": {
-                "probabilityUp": 0.332517593761177,
+                "probabilityUp": 0.6520165874123839,
                 "action": "NEUTRAL",
-                "confidence": 66.7482406238823,
+                "confidence": 65.20165874123839,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2410,
-                "signals": 276,
-                "coverage": 0.11452282157676348,
-                "winRate": 0.2318840579710145,
-                "avgNetMove": -0.35847380130938666,
-                "profitFactor": 0.14563652053536627,
+                "signals": 283,
+                "coverage": 0.11742738589211618,
+                "winRate": 0.2226148409893993,
+                "avgNetMove": -0.3585702746774369,
+                "profitFactor": 0.14239042341960947,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 153,
-                    "winRate": 0.1895424836601307,
-                    "avgNetMove": -0.43267453731674055,
-                    "profitFactor": 0.1098836101890582
+                    "signals": 155,
+                    "winRate": 0.1870967741935484,
+                    "avgNetMove": -0.432022497515915,
+                    "profitFactor": 0.108765870136229
                   },
                   "DOWN": {
-                    "signals": 23,
-                    "winRate": 0.34782608695652173,
-                    "avgNetMove": -0.26791148281542965,
-                    "profitFactor": 0.22802733174052384
+                    "signals": 24,
+                    "winRate": 0.3333333333333333,
+                    "avgNetMove": -0.2646442856375609,
+                    "profitFactor": 0.22273939623991618
                   },
                   "RANGE": {
-                    "signals": 100,
-                    "winRate": 0.27,
-                    "avgNetMove": -0.26577600847174554,
-                    "profitFactor": 0.20546636594376275
+                    "signals": 104,
+                    "winRate": 0.25,
+                    "avgNetMove": -0.2707734400331383,
+                    "profitFactor": 0.19578919575644418
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 19.06240803178328,
+                  "score": 18.411633375709215,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45264,7 +45264,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 19.06240803178328,
+                "score": 18.411633375709215,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45277,46 +45277,46 @@
               "key": "stumps",
               "label": "Stump Ensemble",
               "current": {
-                "probabilityUp": 0.1628273615635179,
-                "action": "SHORT",
-                "confidence": 83.71726384364821,
+                "probabilityUp": 0.838217306441119,
+                "action": "LONG",
+                "confidence": 83.82173064411191,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2410,
-                "signals": 507,
-                "coverage": 0.2103734439834025,
-                "winRate": 0.16962524654832348,
-                "avgNetMove": -0.3275528565823412,
-                "profitFactor": 0.12527644260226575,
+                "signals": 476,
+                "coverage": 0.1975103734439834,
+                "winRate": 0.17647058823529413,
+                "avgNetMove": -0.3282923575574762,
+                "profitFactor": 0.12615917539186264,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 219,
-                    "winRate": 0.1689497716894977,
-                    "avgNetMove": -0.3721983183430174,
-                    "profitFactor": 0.13934173850682427
+                    "signals": 206,
+                    "winRate": 0.1796116504854369,
+                    "avgNetMove": -0.37382786571056836,
+                    "profitFactor": 0.14629743129511366
                   },
                   "DOWN": {
-                    "signals": 43,
-                    "winRate": 0.2558139534883721,
-                    "avgNetMove": -0.20389049315213786,
-                    "profitFactor": 0.21475596968230254
+                    "signals": 39,
+                    "winRate": 0.28205128205128205,
+                    "avgNetMove": -0.1956743694730374,
+                    "profitFactor": 0.23908135528091903
                   },
                   "RANGE": {
-                    "signals": 245,
-                    "winRate": 0.15510204081632653,
-                    "avgNetMove": -0.3093492872023844,
-                    "profitFactor": 0.09751818552434825
+                    "signals": 231,
+                    "winRate": 0.15584415584415584,
+                    "avgNetMove": -0.3100749846386713,
+                    "profitFactor": 0.08863596157702139
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 15.322710126735819,
+                  "score": 15.787094025321066,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45327,7 +45327,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 15.322710126735819,
+                "score": 15.787094025321066,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45357,19 +45357,19 @@
               "key": "rules",
               "label": "規則基準",
               "current": {
-                "probabilityUp": 0.9199999999999999,
-                "action": "LONG",
-                "confidence": 92,
+                "probabilityUp": 0.36,
+                "action": "NEUTRAL",
+                "confidence": 64,
                 "edge": 0.32,
-                "rawScore": 1
+                "rawScore": -0.3333333333333333
               },
               "metrics": {
                 "tested": 2408,
-                "signals": 1445,
-                "coverage": 0.6000830564784053,
-                "winRate": 0.2477508650519031,
-                "avgNetMove": -0.28947108685340417,
-                "profitFactor": 0.3618439702848059,
+                "signals": 1446,
+                "coverage": 0.6004983388704319,
+                "winRate": 0.24688796680497926,
+                "avgNetMove": -0.29133827102855114,
+                "profitFactor": 0.3601736828541511,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
@@ -45381,22 +45381,22 @@
                     "profitFactor": 0.722712335138869
                   },
                   "DOWN": {
-                    "signals": 357,
-                    "winRate": 0.17647058823529413,
-                    "avgNetMove": -0.4127817459190888,
-                    "profitFactor": 0.1623516468889885
+                    "signals": 358,
+                    "winRate": 0.1787709497206704,
+                    "avgNetMove": -0.4113740272838265,
+                    "profitFactor": 0.16286994531873386
                   },
                   "RANGE": {
                     "signals": 712,
-                    "winRate": 0.2401685393258427,
-                    "avgNetMove": -0.31608311243278997,
-                    "profitFactor": 0.2835184931004019
+                    "winRate": 0.23735955056179775,
+                    "avgNetMove": -0.3204097991316956,
+                    "profitFactor": 0.2804938925528342
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 21.553138816565138,
+                  "score": 21.455392255777525,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45407,7 +45407,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 21.553138816565138,
+                "score": 21.455392255777525,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45420,28 +45420,28 @@
               "key": "logistic",
               "label": "Logistic",
               "current": {
-                "probabilityUp": 0.47465992141158747,
+                "probabilityUp": 0.5390093950995094,
                 "action": "NEUTRAL",
-                "confidence": 52.53400785884125,
+                "confidence": 53.90093950995094,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2408,
-                "signals": 2,
-                "coverage": 0.0008305647840531562,
-                "winRate": 0.5,
-                "avgNetMove": 1.0794979105664686,
-                "profitFactor": 19.381867072409634,
+                "signals": 1,
+                "coverage": 0.0004152823920265781,
+                "winRate": 1,
+                "avgNetMove": 2.276448298219636,
+                "profitFactor": 99,
                 "positiveFolds": 1,
                 "activeFolds": 1,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 2,
-                    "winRate": 0.5,
-                    "avgNetMove": 1.0794979105664686,
-                    "profitFactor": 19.381867072409634
+                    "signals": 1,
+                    "winRate": 1,
+                    "avgNetMove": 2.276448298219636,
+                    "profitFactor": 99
                   },
                   "DOWN": {
                     "signals": 0,
@@ -45459,7 +45459,7 @@
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 75,
+                  "score": 90,
                   "reasons": [
                     "訊號樣本不足",
                     "跨時間折數一致性不足",
@@ -45469,7 +45469,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 75,
+                "score": 90,
                 "reasons": [
                   "訊號樣本不足",
                   "跨時間折數一致性不足",
@@ -45481,9 +45481,9 @@
               "key": "ridgeReturn",
               "label": "Ridge Return",
               "current": {
-                "probabilityUp": 0.49647811781560913,
+                "probabilityUp": 0.5270741121068921,
                 "action": "NEUTRAL",
-                "confidence": 50.35218821843909,
+                "confidence": 52.707411210689216,
                 "edge": 0.32,
                 "rawScore": null
               },
@@ -45546,46 +45546,46 @@
               "key": "naiveBayes",
               "label": "Naive Bayes",
               "current": {
-                "probabilityUp": 0.2176363702758797,
+                "probabilityUp": 0.5385781487649577,
                 "action": "NEUTRAL",
-                "confidence": 78.23636297241202,
+                "confidence": 53.857814876495766,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2408,
-                "signals": 419,
-                "coverage": 0.1740033222591362,
-                "winRate": 0.324582338902148,
-                "avgNetMove": -0.3735358489314446,
-                "profitFactor": 0.31908377956742956,
+                "signals": 436,
+                "coverage": 0.18106312292358803,
+                "winRate": 0.3348623853211009,
+                "avgNetMove": -0.35076932937908967,
+                "profitFactor": 0.33951594970342924,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 224,
-                    "winRate": 0.3169642857142857,
-                    "avgNetMove": -0.46306879117710514,
-                    "profitFactor": 0.29960940359919885
+                    "signals": 228,
+                    "winRate": 0.3201754385964912,
+                    "avgNetMove": -0.4417789188189854,
+                    "profitFactor": 0.3169529389523083
                   },
                   "DOWN": {
-                    "signals": 48,
-                    "winRate": 0.5,
-                    "avgNetMove": 0.02019968165444425,
-                    "profitFactor": 1.0942729113598464
+                    "signals": 52,
+                    "winRate": 0.5192307692307693,
+                    "avgNetMove": 0.02211750749405197,
+                    "profitFactor": 1.1026347347031553
                   },
                   "RANGE": {
-                    "signals": 147,
-                    "winRate": 0.2789115646258503,
-                    "avgNetMove": -0.36567140270759835,
-                    "profitFactor": 0.24788504752692353
+                    "signals": 156,
+                    "winRate": 0.2948717948717949,
+                    "avgNetMove": -0.3420509263349044,
+                    "profitFactor": 0.26783406734458165
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 27.583380077854795,
+                  "score": 28.758313718228603,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45596,7 +45596,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 27.583380077854795,
+                "score": 28.758313718228603,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45609,46 +45609,46 @@
               "key": "stumps",
               "label": "Stump Ensemble",
               "current": {
-                "probabilityUp": 0.26263507109004747,
+                "probabilityUp": 0.6457657657657658,
                 "action": "NEUTRAL",
-                "confidence": 73.73649289099525,
+                "confidence": 64.57657657657658,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2408,
-                "signals": 292,
-                "coverage": 0.1212624584717608,
-                "winRate": 0.3321917808219178,
-                "avgNetMove": -0.3051546405501004,
-                "profitFactor": 0.3798851947529097,
-                "positiveFolds": 0,
+                "signals": 286,
+                "coverage": 0.11877076411960133,
+                "winRate": 0.34265734265734266,
+                "avgNetMove": -0.2999511688869961,
+                "profitFactor": 0.39155883124784896,
+                "positiveFolds": 1,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 97,
-                    "winRate": 0.28865979381443296,
-                    "avgNetMove": -0.5379304580341241,
-                    "profitFactor": 0.2823095752132241
+                    "signals": 101,
+                    "winRate": 0.297029702970297,
+                    "avgNetMove": -0.5250440908970475,
+                    "profitFactor": 0.29116974895335473
                   },
                   "DOWN": {
-                    "signals": 81,
-                    "winRate": 0.3950617283950617,
-                    "avgNetMove": -0.09043027598702079,
-                    "profitFactor": 0.6775810777574061
+                    "signals": 76,
+                    "winRate": 0.39473684210526316,
+                    "avgNetMove": -0.11091521723553426,
+                    "profitFactor": 0.6195364331304684
                   },
                   "RANGE": {
-                    "signals": 114,
-                    "winRate": 0.32456140350877194,
-                    "avgNetMove": -0.259658318038339,
-                    "profitFactor": 0.38674252896449696
+                    "signals": 109,
+                    "winRate": 0.3486238532110092,
+                    "avgNetMove": -0.22318371202916062,
+                    "profitFactor": 0.4474208079542733
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 27.15033184653224,
+                  "score": 29.586990608274068,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45659,7 +45659,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 27.15033184653224,
+                "score": 29.586990608274068,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45689,19 +45689,19 @@
               "key": "rules",
               "label": "規則基準",
               "current": {
-                "probabilityUp": 0.857313432835821,
-                "action": "LONG",
-                "confidence": 85.73134328358209,
+                "probabilityUp": 0.2555223880597015,
+                "action": "NEUTRAL",
+                "confidence": 74.44776119402985,
                 "edge": 0.32,
-                "rawScore": 0.8507462686567164
+                "rawScore": -0.582089552238806
               },
               "metrics": {
                 "tested": 2398,
-                "signals": 1194,
-                "coverage": 0.49791492910758967,
-                "winRate": 0.32160804020100503,
-                "avgNetMove": -0.34810326624487437,
-                "profitFactor": 0.6101077860052445,
+                "signals": 1197,
+                "coverage": 0.4991659716430359,
+                "winRate": 0.3208020050125313,
+                "avgNetMove": -0.3487191393034985,
+                "profitFactor": 0.6090898938693785,
                 "positiveFolds": 1,
                 "activeFolds": 5,
                 "totalFolds": 5,
@@ -45719,16 +45719,16 @@
                     "profitFactor": 0.19322510611455546
                   },
                   "RANGE": {
-                    "signals": 317,
-                    "winRate": 0.4069400630914827,
-                    "avgNetMove": -0.44069270103185615,
-                    "profitFactor": 0.5037591872977297
+                    "signals": 320,
+                    "winRate": 0.403125,
+                    "avgNetMove": -0.44212842524064405,
+                    "profitFactor": 0.5005913060703755
                   }
                 },
                 "avgEdge": 0.312,
                 "validation": {
                   "passed": false,
-                  "score": 27.150497489172864,
+                  "score": 27.081757564807223,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45739,7 +45739,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 27.150497489172864,
+                "score": 27.081757564807223,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45752,47 +45752,49 @@
               "key": "logistic",
               "label": "Logistic",
               "current": {
-                "probabilityUp": 0.5152518300334912,
+                "probabilityUp": 0.5043954859840287,
                 "action": "NEUTRAL",
-                "confidence": 51.52518300334912,
+                "confidence": 50.43954859840287,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2398,
-                "signals": 226,
-                "coverage": 0.09424520433694746,
-                "winRate": 0.43805309734513276,
-                "avgNetMove": 0.43125494334574305,
-                "profitFactor": 1.5829373893676892,
-                "positiveFolds": 1,
-                "activeFolds": 3,
+                "signals": 125,
+                "coverage": 0.05212677231025855,
+                "winRate": 0.464,
+                "avgNetMove": -0.22533887875910838,
+                "profitFactor": 0.7007490720786107,
+                "positiveFolds": 0,
+                "activeFolds": 2,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 81,
-                    "winRate": 0.6419753086419753,
-                    "avgNetMove": 2.2404004458868223,
-                    "profitFactor": 6.0679200095218455
+                    "signals": 29,
+                    "winRate": 0.6206896551724138,
+                    "avgNetMove": 0.5324083871609889,
+                    "profitFactor": 3.327816099915311
                   },
                   "DOWN": {
-                    "signals": 21,
-                    "winRate": 0.5714285714285714,
-                    "avgNetMove": -0.2510507109201355,
-                    "profitFactor": 0.5424759267298181
+                    "signals": 13,
+                    "winRate": 0.5384615384615384,
+                    "avgNetMove": -0.42666838369332905,
+                    "profitFactor": 0.3634304307737384
                   },
                   "RANGE": {
-                    "signals": 124,
-                    "winRate": 0.28225806451612906,
-                    "avgNetMove": -0.634973822511063,
-                    "profitFactor": 0.34310971216452435
+                    "signals": 83,
+                    "winRate": 0.39759036144578314,
+                    "avgNetMove": -0.45856041065715597,
+                    "profitFactor": 0.5168762941446451
                   }
                 },
-                "avgEdge": 0.166,
+                "avgEdge": 0.21600000000000003,
                 "validation": {
                   "passed": false,
-                  "score": 61.284856241417714,
+                  "score": 41.473222424817834,
                   "reasons": [
+                    "扣成本後平均淨變動≤0",
+                    "Profit Factor 未達 1.05",
                     "跨時間折數一致性不足",
                     "跨盤勢穩定性不足"
                   ]
@@ -45800,8 +45802,10 @@
               },
               "validation": {
                 "passed": false,
-                "score": 61.284856241417714,
+                "score": 41.473222424817834,
                 "reasons": [
+                  "扣成本後平均淨變動≤0",
+                  "Profit Factor 未達 1.05",
                   "跨時間折數一致性不足",
                   "跨盤勢穩定性不足"
                 ]
@@ -45811,46 +45815,46 @@
               "key": "ridgeReturn",
               "label": "Ridge Return",
               "current": {
-                "probabilityUp": 0.4974320646898734,
+                "probabilityUp": 0.5066114563920915,
                 "action": "NEUTRAL",
-                "confidence": 50.25679353101266,
+                "confidence": 50.661145639209145,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2398,
-                "signals": 14,
-                "coverage": 0.005838198498748957,
-                "winRate": 0.5714285714285714,
-                "avgNetMove": -0.36357400159358905,
-                "profitFactor": 0.5409745762017691,
+                "signals": 47,
+                "coverage": 0.019599666388657216,
+                "winRate": 0.2978723404255319,
+                "avgNetMove": -0.788060960683623,
+                "profitFactor": 0.19598360688106553,
                 "positiveFolds": 0,
                 "activeFolds": 1,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 11,
-                    "winRate": 0.45454545454545453,
-                    "avgNetMove": -0.7767395681327323,
-                    "profitFactor": 0.2294798530536304
+                    "signals": 21,
+                    "winRate": 0.38095238095238093,
+                    "avgNetMove": -0.48069516820806496,
+                    "profitFactor": 0.32500993870946115
                   },
                   "DOWN": {
-                    "signals": 0,
+                    "signals": 8,
                     "winRate": 0,
-                    "avgNetMove": 0,
+                    "avgNetMove": -0.988024746493776,
                     "profitFactor": 0
                   },
                   "RANGE": {
-                    "signals": 3,
-                    "winRate": 1,
-                    "avgNetMove": 1.151366409049937,
-                    "profitFactor": 99
+                    "signals": 18,
+                    "winRate": 0.3333333333333333,
+                    "avgNetMove": -1.0577815915450388,
+                    "profitFactor": 0.17958752812221201
                   }
                 },
-                "avgEdge": 0.274,
+                "avgEdge": 0.27,
                 "validation": {
                   "passed": false,
-                  "score": 42.72851996812822,
+                  "score": 15.089844616114773,
                   "reasons": [
                     "訊號樣本不足",
                     "扣成本後平均淨變動≤0",
@@ -45862,7 +45866,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 42.72851996812822,
+                "score": 15.089844616114773,
                 "reasons": [
                   "訊號樣本不足",
                   "扣成本後平均淨變動≤0",
@@ -45876,46 +45880,46 @@
               "key": "naiveBayes",
               "label": "Naive Bayes",
               "current": {
-                "probabilityUp": 0.41071615989090837,
+                "probabilityUp": 0.45772352723826576,
                 "action": "NEUTRAL",
-                "confidence": 58.92838401090916,
+                "confidence": 54.22764727617342,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2398,
-                "signals": 632,
-                "coverage": 0.2635529608006672,
-                "winRate": 0.3322784810126582,
-                "avgNetMove": -0.7389083233631626,
-                "profitFactor": 0.3193969657843791,
+                "signals": 659,
+                "coverage": 0.27481234361968304,
+                "winRate": 0.3201820940819423,
+                "avgNetMove": -0.7313694954887566,
+                "profitFactor": 0.32379730110555127,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 242,
-                    "winRate": 0.41735537190082644,
-                    "avgNetMove": -0.8562549294434051,
-                    "profitFactor": 0.3833958253993994
+                    "signals": 247,
+                    "winRate": 0.41700404858299595,
+                    "avgNetMove": -0.789006246234138,
+                    "profitFactor": 0.4207424683752902
                   },
                   "DOWN": {
-                    "signals": 101,
-                    "winRate": 0.25742574257425743,
-                    "avgNetMove": -0.44811836551373274,
-                    "profitFactor": 0.3856875447454092
+                    "signals": 115,
+                    "winRate": 0.24347826086956523,
+                    "avgNetMove": -0.4923904447648201,
+                    "profitFactor": 0.3365602568140023
                   },
                   "RANGE": {
-                    "signals": 289,
-                    "winRate": 0.28719723183391005,
-                    "avgNetMove": -0.742271323610131,
-                    "profitFactor": 0.2239182556703975
+                    "signals": 297,
+                    "winRate": 0.26936026936026936,
+                    "avgNetMove": -0.7759698773040546,
+                    "profitFactor": 0.2079609316967429
                   }
                 },
                 "avgEdge": 0.32,
                 "validation": {
                   "passed": false,
-                  "score": 18.481327203622822,
+                  "score": 17.785356675960827,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45926,7 +45930,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 18.481327203622822,
+                "score": 17.785356675960827,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -45939,28 +45943,28 @@
               "key": "stumps",
               "label": "Stump Ensemble",
               "current": {
-                "probabilityUp": 0.3435123809523809,
+                "probabilityUp": 0.609045990117826,
                 "action": "NEUTRAL",
-                "confidence": 65.64876190476191,
+                "confidence": 60.9045990117826,
                 "edge": 0.32,
                 "rawScore": null
               },
               "metrics": {
                 "tested": 2398,
-                "signals": 214,
-                "coverage": 0.08924103419516263,
-                "winRate": 0.32242990654205606,
-                "avgNetMove": -0.47850355008728884,
-                "profitFactor": 0.39418499721396344,
+                "signals": 211,
+                "coverage": 0.08798999165971642,
+                "winRate": 0.3127962085308057,
+                "avgNetMove": -0.4973886399811155,
+                "profitFactor": 0.3791032250336701,
                 "positiveFolds": 0,
                 "activeFolds": 5,
                 "totalFolds": 5,
                 "regimes": {
                   "UP": {
-                    "signals": 17,
-                    "winRate": 0.5882352941176471,
-                    "avgNetMove": -0.37219106216857817,
-                    "profitFactor": 0.6975925371732837
+                    "signals": 14,
+                    "winRate": 0.5,
+                    "avgNetMove": -0.6340350981572405,
+                    "profitFactor": 0.5757528057774408
                   },
                   "DOWN": {
                     "signals": 49,
@@ -45978,7 +45982,7 @@
                 "avgEdge": 0.29200000000000004,
                 "validation": {
                   "passed": false,
-                  "score": 23.00002245619815,
+                  "score": 21.947961797534088,
                   "reasons": [
                     "扣成本後平均淨變動≤0",
                     "Profit Factor 未達 1.05",
@@ -45989,7 +45993,7 @@
               },
               "validation": {
                 "passed": false,
-                "score": 23.00002245619815,
+                "score": 21.947961797534088,
                 "reasons": [
                   "扣成本後平均淨變動≤0",
                   "Profit Factor 未達 1.05",
@@ -46018,36 +46022,36 @@
       "available": true,
       "coverage": {
         "funding": {
-          "count": 174,
-          "hours": 1728,
-          "days": 72,
+          "count": 175,
+          "hours": 1736,
+          "days": 72.33333333333333,
           "start": 1787500800000,
-          "end": 1793721600000
+          "end": 1793750400000
         },
         "openInterest": {
-          "count": 314,
-          "hours": 313,
-          "days": 13.041666666666666,
+          "count": 318,
+          "hours": 317,
+          "days": 13.208333333333334,
           "start": 1792612800000,
-          "end": 1793739600000
+          "end": 1793754000000
         },
         "longShort": {
-          "count": 314,
-          "hours": 313,
-          "days": 13.041666666666666,
+          "count": 318,
+          "hours": 317,
+          "days": 13.208333333333334,
           "start": 1792612800000,
-          "end": 1793739600000
+          "end": 1793754000000
         },
         "taker": {
-          "count": 314,
-          "hours": 313,
-          "days": 13.041666666666666,
+          "count": 318,
+          "hours": 317,
+          "days": 13.208333333333334,
           "start": 1792612800000,
-          "end": 1793739600000
+          "end": 1793754000000
         }
       },
-      "alignedCount": 310,
-      "generatedAt": "2026-11-03T22:04:00.354Z",
+      "alignedCount": 314,
+      "generatedAt": "2026-11-04T02:14:06.805Z",
       "horizons": {
         "1h": {
           "available": true,
@@ -46056,15 +46060,15 @@
               "key": "derivLogistic",
               "label": "Derivatives Logistic",
               "current": {
-                "probabilityUp": 0.47139240760222667,
-                "confidence": 52.86075923977733,
+                "probabilityUp": 0.5351868250640778,
+                "confidence": 53.51868250640778,
                 "action": "NEUTRAL",
                 "edge": 0.3
               },
               "metrics": {
-                "tested": 140,
+                "tested": 141,
                 "signals": 8,
-                "coverage": 0.05714285714285714,
+                "coverage": 0.05673758865248227,
                 "winRate": 0.5,
                 "avgNetMove": -0.2687062383060945,
                 "profitFactor": 0.4210734341299162,
@@ -46110,18 +46114,18 @@
               "key": "derivRidge",
               "label": "Derivatives Ridge",
               "current": {
-                "probabilityUp": 0.47264626353691835,
-                "confidence": 52.73537364630816,
+                "probabilityUp": 0.5192471025621787,
+                "confidence": 51.924710256217864,
                 "action": "NEUTRAL",
                 "edge": 0.3
               },
               "metrics": {
-                "tested": 140,
-                "signals": 4,
-                "coverage": 0.02857142857142857,
-                "winRate": 0.25,
-                "avgNetMove": -0.45206385414793804,
-                "profitFactor": 0.14903064888660086,
+                "tested": 141,
+                "signals": 3,
+                "coverage": 0.02127659574468085,
+                "winRate": 0.3333333333333333,
+                "avgNetMove": -0.32760307153912477,
+                "profitFactor": 0.2436960956274756,
                 "positiveFolds": 0,
                 "totalFolds": 3,
                 "regimes": {
@@ -46130,8 +46134,8 @@
                     "avgNetMove": 0.31668059223847217
                   },
                   "DOWN": {
-                    "signals": 3,
-                    "avgNetMove": -0.7083120029434081
+                    "signals": 2,
+                    "avgNetMove": -0.6497449034279232
                   },
                   "RANGE": {
                     "signals": 0,
@@ -46167,7 +46171,7 @@
             "confidence": 50,
             "reason": "沒有衍生品模型通過短期完整驗證"
           },
-          "sampleCount": 309,
+          "sampleCount": 313,
           "folds": 3
         },
         "4h": {
@@ -46177,18 +46181,18 @@
               "key": "derivLogistic",
               "label": "Derivatives Logistic",
               "current": {
-                "probabilityUp": 0.5112825914600265,
-                "confidence": 51.128259146002655,
+                "probabilityUp": 0.540848588666124,
+                "confidence": 54.08485886661239,
                 "action": "NEUTRAL",
                 "edge": 0.3
               },
               "metrics": {
-                "tested": 138,
-                "signals": 4,
-                "coverage": 0.028985507246376812,
-                "winRate": 0.75,
-                "avgNetMove": 1.0345591037861093,
-                "profitFactor": 4605.616308846016,
+                "tested": 140,
+                "signals": 3,
+                "coverage": 0.02142857142857143,
+                "winRate": 0.6666666666666666,
+                "avgNetMove": 0.9584859363318877,
+                "profitFactor": 3200.5223555244693,
                 "positiveFolds": 1,
                 "totalFolds": 3,
                 "regimes": {
@@ -46197,8 +46201,8 @@
                     "avgNetMove": 0
                   },
                   "DOWN": {
-                    "signals": 4,
-                    "avgNetMove": 1.0345591037861093
+                    "signals": 3,
+                    "avgNetMove": 0.9584859363318877
                   },
                   "RANGE": {
                     "signals": 0,
@@ -46227,15 +46231,15 @@
               "key": "derivRidge",
               "label": "Derivatives Ridge",
               "current": {
-                "probabilityUp": 0.4547150496461885,
-                "confidence": 54.528495035381155,
+                "probabilityUp": 0.4975128965618292,
+                "confidence": 50.24871034381708,
                 "action": "NEUTRAL",
                 "edge": 0.3
               },
               "metrics": {
-                "tested": 138,
+                "tested": 140,
                 "signals": 2,
-                "coverage": 0.014492753623188406,
+                "coverage": 0.014285714285714285,
                 "winRate": 0.5,
                 "avgNetMove": 0.9432221350726413,
                 "profitFactor": 2100.0468355677326,
@@ -46280,7 +46284,7 @@
             "confidence": 50,
             "reason": "沒有衍生品模型通過短期完整驗證"
           },
-          "sampleCount": 306,
+          "sampleCount": 310,
           "folds": 3
         },
         "24h": {
@@ -46290,18 +46294,18 @@
               "key": "derivLogistic",
               "label": "Derivatives Logistic",
               "current": {
-                "probabilityUp": 0.4665311578729665,
-                "confidence": 53.34688421270335,
+                "probabilityUp": 0.5429989513890269,
+                "confidence": 54.299895138902684,
                 "action": "NEUTRAL",
                 "edge": 0.13
               },
               "metrics": {
-                "tested": 126,
-                "signals": 79,
-                "coverage": 0.626984126984127,
-                "winRate": 0.7088607594936709,
-                "avgNetMove": 0.4543696324963439,
-                "profitFactor": 2.0254516784368377,
+                "tested": 130,
+                "signals": 80,
+                "coverage": 0.6153846153846154,
+                "winRate": 0.725,
+                "avgNetMove": 0.4697960614655673,
+                "profitFactor": 2.1008986403593184,
                 "positiveFolds": 2,
                 "totalFolds": 3,
                 "regimes": {
@@ -46310,12 +46314,12 @@
                     "avgNetMove": 3.315810534532364
                   },
                   "DOWN": {
-                    "signals": 32,
-                    "avgNetMove": -0.05655711428970884
+                    "signals": 31,
+                    "avgNetMove": -0.03047228863568421
                   },
                   "RANGE": {
-                    "signals": 44,
-                    "avgNetMove": 0.6308544777473813
+                    "signals": 46,
+                    "avgNetMove": 0.6213237882903158
                   }
                 },
                 "validation": {
@@ -46336,18 +46340,18 @@
               "key": "derivRidge",
               "label": "Derivatives Ridge",
               "current": {
-                "probabilityUp": 0.4384797233636027,
-                "confidence": 56.15202766363973,
-                "action": "SHORT",
+                "probabilityUp": 0.5211230393911873,
+                "confidence": 52.11230393911873,
+                "action": "NEUTRAL",
                 "edge": 0.04
               },
               "metrics": {
-                "tested": 126,
-                "signals": 70,
-                "coverage": 0.5555555555555556,
-                "winRate": 0.7714285714285715,
-                "avgNetMove": 0.8819997857615158,
-                "profitFactor": 5.9457660860682715,
+                "tested": 130,
+                "signals": 74,
+                "coverage": 0.5692307692307692,
+                "winRate": 0.7567567567567568,
+                "avgNetMove": 0.8465923500915674,
+                "profitFactor": 5.80415188007015,
                 "positiveFolds": 3,
                 "totalFolds": 3,
                 "regimes": {
@@ -46360,8 +46364,8 @@
                     "avgNetMove": -0.03613377956813944
                   },
                   "RANGE": {
-                    "signals": 40,
-                    "avgNetMove": 1.2370181150236053
+                    "signals": 44,
+                    "avgNetMove": 1.1451948523730473
                   }
                 },
                 "validation": {
@@ -46385,25 +46389,25 @@
             "confidence": 50,
             "reason": "沒有衍生品模型通過短期完整驗證"
           },
-          "sampleCount": 286,
+          "sampleCount": 290,
           "folds": 3
         }
       },
       "latestSnapshot": {
         "funding": 0.01,
-        "oiNow": 32869.7296000002,
-        "oiChg4": -1.2398918295402739,
-        "longShort": 2.3365970107943537,
-        "takerRatio": 1.15668136957167,
-        "imbalance": 0.07264928968287412
+        "oiNow": 32621.152800000204,
+        "oiChg4": -0.7562483872699644,
+        "longShort": 2.3403005941978328,
+        "takerRatio": 0.9007581749456331,
+        "imbalance": -0.052211704972519916
       },
       "note": "衍生品增強模型只在公開衍生品資料實際覆蓋的短期區間驗證，不把短期結果當成長期證明。"
     },
     "derivativeError": null,
     "feedWarnings": [],
     "venue": "OKX",
-    "generatedAt": "2026-11-03T22:04:00.448Z",
-    "modelAsOf": 1793743199999,
+    "generatedAt": "2026-11-04T02:14:06.886Z",
+    "modelAsOf": 1793757599999,
     "historyLength": 5000
   }
 }
