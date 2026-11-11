@@ -1,7 +1,7 @@
 {
   "version": 2,
   "venue": "OKX",
-  "updatedAt": "2026-11-10T21:24:53.775Z",
+  "updatedAt": "2026-11-11T01:22:13.348Z",
   "feeds": {
     "funding": [
       {
@@ -5768,6 +5768,13 @@
         "fundingRate": "0.0000484085643949",
         "fundingTime": 1794326400000,
         "timestamp": 1794326400000
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "fundingRate": "0.0001",
+        "fundingTime": 1794355200000,
+        "timestamp": 1794355200000
       }
     ],
     "openInterest": [
@@ -17241,8 +17248,36 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794344400000,
-        "sumOpenInterest": "35586.1802000001372",
-        "sumOpenInterestValue": "2630181695.81805014047944"
+        "sumOpenInterest": "35564.107000000121",
+        "sumOpenInterestValue": "2625257024.8832089319296"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794348000000,
+        "sumOpenInterest": "35779.072700000129",
+        "sumOpenInterestValue": "2634946231.0842395001921"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794351600000,
+        "sumOpenInterest": "35851.1267000001333",
+        "sumOpenInterestValue": "2645526341.4464098364736"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794355200000,
+        "sumOpenInterest": "35687.9782000001366",
+        "sumOpenInterestValue": "2623123498.46513004031856"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794358800000,
+        "sumOpenInterest": "36015.2420000001308",
+        "sumOpenInterestValue": "2646457606.54720961139328"
       }
     ],
     "longShort": [
@@ -28235,7 +28270,31 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794344400000,
-        "longShortRatio": "2.9557302980276306"
+        "longShortRatio": "2.9304103671706263"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794348000000,
+        "longShortRatio": "2.9072191481147857"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794351600000,
+        "longShortRatio": "2.8960811905675664"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794355200000,
+        "longShortRatio": "2.8522717729066935"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794358800000,
+        "longShortRatio": "2.8195685606218047"
       }
     ],
     "taker": [
@@ -39039,9 +39098,41 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794344400000,
-        "sellVol": "38273.20999999999868",
-        "buyVol": "51770.96000000000392",
-        "buySellRatio": "1.35266835470555"
+        "sellVol": "88967.88999999999939",
+        "buyVol": "87527.68000000000486",
+        "buySellRatio": "0.9838120247653396"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794348000000,
+        "sellVol": "106565.15999999999976",
+        "buyVol": "65696.23000000000048",
+        "buySellRatio": "0.6164888224256407"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794351600000,
+        "sellVol": "71837.2799999999988",
+        "buyVol": "73174.19999999999847",
+        "buySellRatio": "1.018610392821109"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794355200000,
+        "sellVol": "116535.66000000000355",
+        "buyVol": "107784.96000000000277",
+        "buySellRatio": "0.9249096800069609"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794358800000,
+        "sellVol": "41035.69000000000283",
+        "buyVol": "80573.01000000000023",
+        "buySellRatio": "1.9634861750832018"
       }
     ]
   }
