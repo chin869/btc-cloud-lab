@@ -1,7 +1,7 @@
 {
   "version": 2,
   "venue": "OKX",
-  "updatedAt": "2026-11-13T21:25:31.098Z",
+  "updatedAt": "2026-11-14T01:36:23.983Z",
   "feeds": {
     "funding": [
       {
@@ -5831,6 +5831,13 @@
         "fundingRate": "0.0000381700234244",
         "fundingTime": 1794585600000,
         "timestamp": 1794585600000
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "fundingRate": "0.0000393916238255",
+        "fundingTime": 1794614400000,
+        "timestamp": 1794614400000
       }
     ],
     "openInterest": [
@@ -17808,8 +17815,36 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794603600000,
-        "sumOpenInterest": "33842.3406000001612",
-        "sumOpenInterestValue": "2308361920.34496080036435"
+        "sumOpenInterest": "33810.9893000001609",
+        "sumOpenInterestValue": "2312478945.48100100464287"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794607200000,
+        "sumOpenInterest": "33714.3033000001559",
+        "sumOpenInterestValue": "2302541943.88582064729963"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794610800000,
+        "sumOpenInterest": "33658.3481000001533",
+        "sumOpenInterestValue": "2298188642.43320046730867"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794614400000,
+        "sumOpenInterest": "33509.1320000001526",
+        "sumOpenInterestValue": "2289658884.08081042706644"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794618000000,
+        "sumOpenInterest": "33458.7671000001457",
+        "sumOpenInterestValue": "2282915100.36997994121299"
       }
     ],
     "longShort": [
@@ -29234,7 +29269,31 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794603600000,
-        "longShortRatio": "2.9629761164876143"
+        "longShortRatio": "2.9832090385388291"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794607200000,
+        "longShortRatio": "3.0315170698620846"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794610800000,
+        "longShortRatio": "3.0362635875693473"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794614400000,
+        "longShortRatio": "3.0172352205751027"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794618000000,
+        "longShortRatio": "3.0017338727604144"
       }
     ],
     "taker": [
@@ -40614,9 +40673,41 @@
         "symbol": "BTCUSDT",
         "venue": "OKX",
         "timestamp": 1794603600000,
-        "sellVol": "87536.83000000000094",
-        "buyVol": "52126.41999999999834",
-        "buySellRatio": "0.5954798683022906"
+        "sellVol": "185983.9300000000003",
+        "buyVol": "134388.12999999999561",
+        "buySellRatio": "0.7225792572508819"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794607200000,
+        "sellVol": "113616.24999999999687",
+        "buyVol": "117831.46000000000227",
+        "buySellRatio": "1.0371004147734149"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794610800000,
+        "sellVol": "132020.6899999999973",
+        "buyVol": "173265.37999999999825",
+        "buySellRatio": "1.3124108047003844"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794614400000,
+        "sellVol": "104536.10999999999653",
+        "buyVol": "105438.36000000000104",
+        "buySellRatio": "1.0086309888516036"
+      },
+      {
+        "symbol": "BTCUSDT",
+        "venue": "OKX",
+        "timestamp": 1794618000000,
+        "sellVol": "36085.71000000000004",
+        "buyVol": "35784.71999999999934",
+        "buySellRatio": "0.9916590251376515"
       }
     ]
   }
