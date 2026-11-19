@@ -1,21 +1,21 @@
 {
   "version": 3,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-11-19T00:24:14.548Z",
-  "lastRunAt": "2026-11-19T00:24:14.548Z",
-  "lastSuccessAt": "2026-11-19T00:24:14.548Z",
+  "updatedAt": "2026-11-19T07:44:44.008Z",
+  "lastRunAt": "2026-11-19T07:44:44.008Z",
+  "lastSuccessAt": "2026-11-19T07:44:44.008Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1795047780000,
+  "lastProcessedCandleTs": 1795074180000,
   "lastDecision": {
     "ok": true,
     "signal": "SELL",
     "mode": "experimental-unvalidated",
-    "probabilityUp": 0.3848008600743493,
-    "confidence": 60,
+    "probabilityUp": 0.40036106836294966,
+    "confidence": 59.96389316370504,
     "horizonProbabilities": {
-      "1h": 0.44249669208894216,
-      "4h": 0.3573644374760274,
-      "24h": 0.3765302610157942
+      "1h": 0.432420096506323,
+      "4h": 0.3945150974902013,
+      "24h": 0.3887160324458241
     },
     "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
     "confidenceKind": "heuristic-score-not-win-probability",
@@ -25,28 +25,28 @@
       "supportingHorizons": 0,
       "agreement": 0
     },
-    "reason": "研究模式 SELL；模型原始機率均值 38.5%，不代表實際交易勝率。；訊號已保存，下一個完整分鐘開盤模擬成交，於下次執行補算。",
-    "generatedAt": "2026-11-19T00:24:14.548Z",
-    "modelAsOf": 1795046399999,
+    "reason": "研究模式 SELL；模型原始機率均值 40.0%，不代表實際交易勝率。；訊號已保存，下一個完整分鐘開盤模擬成交，於下次執行補算。",
+    "generatedAt": "2026-11-19T07:44:44.008Z",
+    "modelAsOf": 1795071599999,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M perpetual",
     "venue": "OKX",
-    "candleTs": 1795047780000,
-    "price": 62666.6,
+    "candleTs": 1795074180000,
+    "price": 63591.5,
     "market": {
-      "candleTs": 1795047780000,
-      "closedAt": 1795047839999,
-      "price": 62666.6,
-      "open": 62639.1,
-      "high": 62667.4,
-      "low": 62639,
-      "atr": 57.485714285713975,
-      "atrPct": 0.0009173262038424611,
-      "rsi": 42.01564657155986,
-      "emaFast": 62684.627680674195,
-      "emaSlow": 62755.25602618569,
-      "momentum5": -0.0001882626231685114,
-      "volumeRatio": 0.6485920001056864
+      "candleTs": 1795074180000,
+      "closedAt": 1795074239999,
+      "price": 63591.5,
+      "open": 63563.2,
+      "high": 63591.6,
+      "low": 63563.1,
+      "atr": 37.028571428569975,
+      "atrPct": 0.0005822880641055797,
+      "rsi": 57.61058864507074,
+      "emaFast": 63573.84924765376,
+      "emaSlow": 63579.36750874961,
+      "momentum5": -0.00007547608901781189,
+      "volumeRatio": 0.5829037448909377
     },
     "currentRegime": "DOWN",
     "mainValidated": {
@@ -56,7 +56,7 @@
     },
     "derivativesAvailable": true,
     "feedWarnings": [],
-    "at": "2026-11-19T00:24:14.548Z",
+    "at": "2026-11-19T07:44:44.008Z",
     "executed": "PENDING_ENTRY"
   },
   "settingsSnapshot": {
@@ -83,10 +83,10 @@
     "experimentalTrading": true
   },
   "account": {
-    "cash": 503.36882986877185,
+    "cash": 501.7320631030154,
     "qty": 0,
     "avgEntry": 0,
-    "realizedPnl": 3.3688298687719502,
+    "realizedPnl": 1.732063103015434,
     "positionSide": null,
     "leverage": 1,
     "marginUsed": 0,
@@ -96,10 +96,235 @@
     "entryFee": 0,
     "riskAmount": 0,
     "positionOpenedAt": null,
-    "lastExitAt": "2026-11-16T19:51:59.999Z",
+    "lastExitAt": "2026-11-19T00:28:59.999Z",
     "highestPrice": 0,
     "lowestPrice": 0,
     "trades": [
+      {
+        "id": "paper-v3:OKX:1795047780000:close",
+        "positionId": "paper-v3:OKX:1795047780000",
+        "ts": "2026-11-19T00:28:59.999Z",
+        "recordedAt": "2026-11-19T07:44:44.008Z",
+        "candleTs": 1795048080000,
+        "side": "CLOSE_SHORT",
+        "qty": 0.004017771840586713,
+        "fill": 62893.355476657205,
+        "quotePrice": 62861.92451440001,
+        "fee": 0.25269115259412345,
+        "entryFee": 0.25155863561657765,
+        "fundingPaid": 0,
+        "grossPnl": -1.132516977545815,
+        "realized": -1.6367667657565161,
+        "leverage": 2,
+        "mode": "experimental-unvalidated",
+        "entryContext": {
+          "ok": true,
+          "signal": "SELL",
+          "mode": "experimental-unvalidated",
+          "probabilityUp": 0.3848008600743493,
+          "confidence": 60,
+          "horizonProbabilities": {
+            "1h": 0.44249669208894216,
+            "4h": 0.3573644374760274,
+            "24h": 0.3765302610157942
+          },
+          "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
+          "confidenceKind": "heuristic-score-not-win-probability",
+          "evidence": {
+            "validatedVotes": [],
+            "supportingVotes": 0,
+            "supportingHorizons": 0,
+            "agreement": 0
+          },
+          "reason": "研究模式 SELL；模型原始機率均值 38.5%，不代表實際交易勝率。",
+          "generatedAt": "2026-11-19T00:24:14.548Z",
+          "modelAsOf": 1795046399999,
+          "marketType": "USDT_M_BTC_PERPETUAL",
+          "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+          "venue": "OKX",
+          "candleTs": 1795047780000,
+          "price": 62666.6,
+          "market": {
+            "candleTs": 1795047780000,
+            "closedAt": 1795047839999,
+            "price": 62666.6,
+            "open": 62639.1,
+            "high": 62667.4,
+            "low": 62639,
+            "atr": 57.485714285713975,
+            "atrPct": 0.0009173262038424611,
+            "rsi": 42.01564657155986,
+            "emaFast": 62684.627680674195,
+            "emaSlow": 62755.25602618569,
+            "momentum5": -0.0001882626231685114,
+            "volumeRatio": 0.6485920001056864
+          },
+          "currentRegime": "DOWN",
+          "mainValidated": {
+            "1h": false,
+            "4h": false,
+            "24h": false
+          },
+          "derivativesAvailable": true,
+          "feedWarnings": [],
+          "signalCreatedAt": "2026-11-19T00:24:14.548Z",
+          "run": {
+            "id": "44428684805",
+            "attempt": "1",
+            "event": "schedule",
+            "codeRevision": "d59174376a9c78be7c6244ca49beaefd4fe5b445"
+          },
+          "plan": {
+            "side": "SHORT",
+            "leverage": 2,
+            "notional": 251.55863561657765,
+            "qty": 0.004017771840586713,
+            "entryPrice": 62611.47860000001,
+            "riskAmount": 3.775266224015789,
+            "riskPct": 0.0075,
+            "stopPct": 0.004,
+            "takePct": 0.008,
+            "entryFee": 0.25155863561657765,
+            "estimatedStopLoss": 1.6367667657565352,
+            "estimatedTakeProfit": 1.3864664264353268,
+            "netRewardRisk": 0.8470763553135097,
+            "riskNote": "含設定手續費與滑價的估計；跳價及資金費可能使損失超過預算",
+            "marginUsed": 125.77931780828882,
+            "stopPrice": 62861.92451440001,
+            "takeProfitPrice": 62110.58677120001
+          }
+        },
+        "exitContext": {
+          "reason": "Adaptive stop loss",
+          "executionAssumption": "stop touched within candle",
+          "ambiguous": false,
+          "run": {
+            "id": "44481944151",
+            "attempt": "1",
+            "event": "schedule",
+            "codeRevision": "8a7d28ac92bc07830811d474e83049c843099626"
+          }
+        },
+        "reason": "Adaptive stop loss",
+        "venue": "OKX",
+        "strategyVersion": "paper-v3",
+        "execution": "delayed-paper-replay",
+        "marketType": "USDT_M_PERPETUAL",
+        "source": "AUTO-CLOUD-USDT-M-1M",
+        "slippageRate": 0.0005
+      },
+      {
+        "id": "paper-v3:OKX:1795047780000:open",
+        "positionId": "paper-v3:OKX:1795047780000",
+        "ts": "2026-11-19T00:25:00.000Z",
+        "recordedAt": "2026-11-19T07:44:44.008Z",
+        "candleTs": 1795047900000,
+        "side": "OPEN_SHORT",
+        "leverage": 2,
+        "notional": 251.55863561657765,
+        "qty": 0.004017771840586713,
+        "entryPrice": 62611.47860000001,
+        "riskAmount": 3.775266224015789,
+        "riskPct": 0.0075,
+        "stopPct": 0.004,
+        "takePct": 0.008,
+        "entryFee": 0.25155863561657765,
+        "estimatedStopLoss": 1.6367667657565352,
+        "estimatedTakeProfit": 1.3864664264353268,
+        "netRewardRisk": 0.8470763553135097,
+        "riskNote": "含設定手續費與滑價的估計；跳價及資金費可能使損失超過預算",
+        "marginUsed": 125.77931780828882,
+        "stopPrice": 62861.92451440001,
+        "takeProfitPrice": 62110.58677120001,
+        "fill": 62611.47860000001,
+        "quotePrice": 62642.8,
+        "fee": 0.25155863561657765,
+        "realized": 0,
+        "mode": "experimental-unvalidated",
+        "entryContext": {
+          "ok": true,
+          "signal": "SELL",
+          "mode": "experimental-unvalidated",
+          "probabilityUp": 0.3848008600743493,
+          "confidence": 60,
+          "horizonProbabilities": {
+            "1h": 0.44249669208894216,
+            "4h": 0.3573644374760274,
+            "24h": 0.3765302610157942
+          },
+          "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
+          "confidenceKind": "heuristic-score-not-win-probability",
+          "evidence": {
+            "validatedVotes": [],
+            "supportingVotes": 0,
+            "supportingHorizons": 0,
+            "agreement": 0
+          },
+          "reason": "研究模式 SELL；模型原始機率均值 38.5%，不代表實際交易勝率。",
+          "generatedAt": "2026-11-19T00:24:14.548Z",
+          "modelAsOf": 1795046399999,
+          "marketType": "USDT_M_BTC_PERPETUAL",
+          "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+          "venue": "OKX",
+          "candleTs": 1795047780000,
+          "price": 62666.6,
+          "market": {
+            "candleTs": 1795047780000,
+            "closedAt": 1795047839999,
+            "price": 62666.6,
+            "open": 62639.1,
+            "high": 62667.4,
+            "low": 62639,
+            "atr": 57.485714285713975,
+            "atrPct": 0.0009173262038424611,
+            "rsi": 42.01564657155986,
+            "emaFast": 62684.627680674195,
+            "emaSlow": 62755.25602618569,
+            "momentum5": -0.0001882626231685114,
+            "volumeRatio": 0.6485920001056864
+          },
+          "currentRegime": "DOWN",
+          "mainValidated": {
+            "1h": false,
+            "4h": false,
+            "24h": false
+          },
+          "derivativesAvailable": true,
+          "feedWarnings": [],
+          "signalCreatedAt": "2026-11-19T00:24:14.548Z",
+          "run": {
+            "id": "44428684805",
+            "attempt": "1",
+            "event": "schedule",
+            "codeRevision": "d59174376a9c78be7c6244ca49beaefd4fe5b445"
+          },
+          "plan": {
+            "side": "SHORT",
+            "leverage": 2,
+            "notional": 251.55863561657765,
+            "qty": 0.004017771840586713,
+            "entryPrice": 62611.47860000001,
+            "riskAmount": 3.775266224015789,
+            "riskPct": 0.0075,
+            "stopPct": 0.004,
+            "takePct": 0.008,
+            "entryFee": 0.25155863561657765,
+            "estimatedStopLoss": 1.6367667657565352,
+            "estimatedTakeProfit": 1.3864664264353268,
+            "netRewardRisk": 0.8470763553135097,
+            "riskNote": "含設定手續費與滑價的估計；跳價及資金費可能使損失超過預算",
+            "marginUsed": 125.77931780828882,
+            "stopPrice": 62861.92451440001,
+            "takeProfitPrice": 62110.58677120001
+          }
+        },
+        "venue": "OKX",
+        "strategyVersion": "paper-v3",
+        "marketType": "USDT_M_PERPETUAL",
+        "source": "AUTO-CLOUD-USDT-M-1M",
+        "execution": "pre-recorded signal, next complete minute open",
+        "reason": "研究模式 SELL；模型原始機率均值 38.5%，不代表實際交易勝率。"
+      },
       {
         "id": "paper-v3:OKX:1794855180000:close",
         "positionId": "paper-v3:OKX:1794855180000",
@@ -34193,6 +34418,3079 @@
         "price": 62666.6,
         "strategyVersion": "paper-v3",
         "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795047900000,
+        "equity": 502.5607238529167,
+        "price": 62750,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795047960000,
+        "equity": 502.3698796904888,
+        "price": 62797.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048020000,
+        "equity": 502.3582281521511,
+        "price": 62800.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048080000,
+        "equity": 501.7320631030154,
+        "price": 62843.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048140000,
+        "equity": 501.7320631030154,
+        "price": 62847.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048200000,
+        "equity": 501.7320631030154,
+        "price": 62855.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048260000,
+        "equity": 501.7320631030154,
+        "price": 62826.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048320000,
+        "equity": 501.7320631030154,
+        "price": 62874.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048380000,
+        "equity": 501.7320631030154,
+        "price": 62905.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048440000,
+        "equity": 501.7320631030154,
+        "price": 62978.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048500000,
+        "equity": 501.7320631030154,
+        "price": 63033.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048560000,
+        "equity": 501.7320631030154,
+        "price": 63035.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048620000,
+        "equity": 501.7320631030154,
+        "price": 63056.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048680000,
+        "equity": 501.7320631030154,
+        "price": 63078.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048740000,
+        "equity": 501.7320631030154,
+        "price": 63106.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048800000,
+        "equity": 501.7320631030154,
+        "price": 63070.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048860000,
+        "equity": 501.7320631030154,
+        "price": 62976.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048920000,
+        "equity": 501.7320631030154,
+        "price": 63111.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795048980000,
+        "equity": 501.7320631030154,
+        "price": 63132.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049040000,
+        "equity": 501.7320631030154,
+        "price": 63130.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049100000,
+        "equity": 501.7320631030154,
+        "price": 63183.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049160000,
+        "equity": 501.7320631030154,
+        "price": 63149,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049220000,
+        "equity": 501.7320631030154,
+        "price": 63100.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049280000,
+        "equity": 501.7320631030154,
+        "price": 63089.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049340000,
+        "equity": 501.7320631030154,
+        "price": 63128.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049400000,
+        "equity": 501.7320631030154,
+        "price": 63146.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049460000,
+        "equity": 501.7320631030154,
+        "price": 63157.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049520000,
+        "equity": 501.7320631030154,
+        "price": 63170.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049580000,
+        "equity": 501.7320631030154,
+        "price": 63168.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049640000,
+        "equity": 501.7320631030154,
+        "price": 63184.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049700000,
+        "equity": 501.7320631030154,
+        "price": 63222,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049760000,
+        "equity": 501.7320631030154,
+        "price": 63222.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049820000,
+        "equity": 501.7320631030154,
+        "price": 63205.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049880000,
+        "equity": 501.7320631030154,
+        "price": 63093.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795049940000,
+        "equity": 501.7320631030154,
+        "price": 63154.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050000000,
+        "equity": 501.7320631030154,
+        "price": 63176.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050060000,
+        "equity": 501.7320631030154,
+        "price": 63094.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050120000,
+        "equity": 501.7320631030154,
+        "price": 63093,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050180000,
+        "equity": 501.7320631030154,
+        "price": 63216.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050240000,
+        "equity": 501.7320631030154,
+        "price": 63249.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050300000,
+        "equity": 501.7320631030154,
+        "price": 63206.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050360000,
+        "equity": 501.7320631030154,
+        "price": 63185.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050420000,
+        "equity": 501.7320631030154,
+        "price": 63156.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050480000,
+        "equity": 501.7320631030154,
+        "price": 63078.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050540000,
+        "equity": 501.7320631030154,
+        "price": 63097.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050600000,
+        "equity": 501.7320631030154,
+        "price": 63137.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050660000,
+        "equity": 501.7320631030154,
+        "price": 63084.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050720000,
+        "equity": 501.7320631030154,
+        "price": 63106.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050780000,
+        "equity": 501.7320631030154,
+        "price": 63132.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050840000,
+        "equity": 501.7320631030154,
+        "price": 63113.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050900000,
+        "equity": 501.7320631030154,
+        "price": 62967.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795050960000,
+        "equity": 501.7320631030154,
+        "price": 62972.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051020000,
+        "equity": 501.7320631030154,
+        "price": 62981,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051080000,
+        "equity": 501.7320631030154,
+        "price": 62956.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051140000,
+        "equity": 501.7320631030154,
+        "price": 62909.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051200000,
+        "equity": 501.7320631030154,
+        "price": 62846,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051260000,
+        "equity": 501.7320631030154,
+        "price": 62867.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051320000,
+        "equity": 501.7320631030154,
+        "price": 62817.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051380000,
+        "equity": 501.7320631030154,
+        "price": 62785.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051440000,
+        "equity": 501.7320631030154,
+        "price": 62803.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051500000,
+        "equity": 501.7320631030154,
+        "price": 62749.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051560000,
+        "equity": 501.7320631030154,
+        "price": 62714.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051620000,
+        "equity": 501.7320631030154,
+        "price": 62670.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051680000,
+        "equity": 501.7320631030154,
+        "price": 62627.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051740000,
+        "equity": 501.7320631030154,
+        "price": 62640,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051800000,
+        "equity": 501.7320631030154,
+        "price": 62596.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051860000,
+        "equity": 501.7320631030154,
+        "price": 62531.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051920000,
+        "equity": 501.7320631030154,
+        "price": 62500.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795051980000,
+        "equity": 501.7320631030154,
+        "price": 62465.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052040000,
+        "equity": 501.7320631030154,
+        "price": 62413.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052100000,
+        "equity": 501.7320631030154,
+        "price": 62410.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052160000,
+        "equity": 501.7320631030154,
+        "price": 62483.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052220000,
+        "equity": 501.7320631030154,
+        "price": 62465.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052280000,
+        "equity": 501.7320631030154,
+        "price": 62430.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052340000,
+        "equity": 501.7320631030154,
+        "price": 62582.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052400000,
+        "equity": 501.7320631030154,
+        "price": 62599.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052460000,
+        "equity": 501.7320631030154,
+        "price": 62705,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052520000,
+        "equity": 501.7320631030154,
+        "price": 62754.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052580000,
+        "equity": 501.7320631030154,
+        "price": 62762.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052640000,
+        "equity": 501.7320631030154,
+        "price": 62753.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052700000,
+        "equity": 501.7320631030154,
+        "price": 62739.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052760000,
+        "equity": 501.7320631030154,
+        "price": 62660.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052820000,
+        "equity": 501.7320631030154,
+        "price": 62700,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052880000,
+        "equity": 501.7320631030154,
+        "price": 62694.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795052940000,
+        "equity": 501.7320631030154,
+        "price": 62678.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053000000,
+        "equity": 501.7320631030154,
+        "price": 62719.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053060000,
+        "equity": 501.7320631030154,
+        "price": 62722.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053120000,
+        "equity": 501.7320631030154,
+        "price": 62678.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053180000,
+        "equity": 501.7320631030154,
+        "price": 62667.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053240000,
+        "equity": 501.7320631030154,
+        "price": 62689.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053300000,
+        "equity": 501.7320631030154,
+        "price": 62789.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053360000,
+        "equity": 501.7320631030154,
+        "price": 62810.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053420000,
+        "equity": 501.7320631030154,
+        "price": 62865.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053480000,
+        "equity": 501.7320631030154,
+        "price": 62810.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053540000,
+        "equity": 501.7320631030154,
+        "price": 62819.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053600000,
+        "equity": 501.7320631030154,
+        "price": 62730.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053660000,
+        "equity": 501.7320631030154,
+        "price": 62752.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053720000,
+        "equity": 501.7320631030154,
+        "price": 62751.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053780000,
+        "equity": 501.7320631030154,
+        "price": 62731.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053840000,
+        "equity": 501.7320631030154,
+        "price": 62768.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053900000,
+        "equity": 501.7320631030154,
+        "price": 62777,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795053960000,
+        "equity": 501.7320631030154,
+        "price": 62793.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054020000,
+        "equity": 501.7320631030154,
+        "price": 62729.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054080000,
+        "equity": 501.7320631030154,
+        "price": 62714,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054140000,
+        "equity": 501.7320631030154,
+        "price": 62712.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054200000,
+        "equity": 501.7320631030154,
+        "price": 62701.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054260000,
+        "equity": 501.7320631030154,
+        "price": 62729.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054320000,
+        "equity": 501.7320631030154,
+        "price": 62836.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054380000,
+        "equity": 501.7320631030154,
+        "price": 62846.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054440000,
+        "equity": 501.7320631030154,
+        "price": 62851.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054500000,
+        "equity": 501.7320631030154,
+        "price": 62818,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054560000,
+        "equity": 501.7320631030154,
+        "price": 62772.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054620000,
+        "equity": 501.7320631030154,
+        "price": 62781.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054680000,
+        "equity": 501.7320631030154,
+        "price": 62745,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054740000,
+        "equity": 501.7320631030154,
+        "price": 62812.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054800000,
+        "equity": 501.7320631030154,
+        "price": 62764.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054860000,
+        "equity": 501.7320631030154,
+        "price": 62721.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054920000,
+        "equity": 501.7320631030154,
+        "price": 62781.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795054980000,
+        "equity": 501.7320631030154,
+        "price": 62772,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055040000,
+        "equity": 501.7320631030154,
+        "price": 62745.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055100000,
+        "equity": 501.7320631030154,
+        "price": 62783.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055160000,
+        "equity": 501.7320631030154,
+        "price": 62792.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055220000,
+        "equity": 501.7320631030154,
+        "price": 62850,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055280000,
+        "equity": 501.7320631030154,
+        "price": 62775.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055340000,
+        "equity": 501.7320631030154,
+        "price": 62701,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055400000,
+        "equity": 501.7320631030154,
+        "price": 62610.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055460000,
+        "equity": 501.7320631030154,
+        "price": 62666.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055520000,
+        "equity": 501.7320631030154,
+        "price": 62633.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055580000,
+        "equity": 501.7320631030154,
+        "price": 62629.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055640000,
+        "equity": 501.7320631030154,
+        "price": 62626.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055700000,
+        "equity": 501.7320631030154,
+        "price": 62671.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055760000,
+        "equity": 501.7320631030154,
+        "price": 62600.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055820000,
+        "equity": 501.7320631030154,
+        "price": 62631.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055880000,
+        "equity": 501.7320631030154,
+        "price": 62582.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795055940000,
+        "equity": 501.7320631030154,
+        "price": 62586.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056000000,
+        "equity": 501.7320631030154,
+        "price": 62607.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056060000,
+        "equity": 501.7320631030154,
+        "price": 62659.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056120000,
+        "equity": 501.7320631030154,
+        "price": 62653.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056180000,
+        "equity": 501.7320631030154,
+        "price": 62640.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056240000,
+        "equity": 501.7320631030154,
+        "price": 62595.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056300000,
+        "equity": 501.7320631030154,
+        "price": 62634.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056360000,
+        "equity": 501.7320631030154,
+        "price": 62634.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056420000,
+        "equity": 501.7320631030154,
+        "price": 62634.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056480000,
+        "equity": 501.7320631030154,
+        "price": 62600,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056540000,
+        "equity": 501.7320631030154,
+        "price": 62602.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056600000,
+        "equity": 501.7320631030154,
+        "price": 62591.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056660000,
+        "equity": 501.7320631030154,
+        "price": 62572,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056720000,
+        "equity": 501.7320631030154,
+        "price": 62602.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056780000,
+        "equity": 501.7320631030154,
+        "price": 62584.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056840000,
+        "equity": 501.7320631030154,
+        "price": 62630,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056900000,
+        "equity": 501.7320631030154,
+        "price": 62628.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795056960000,
+        "equity": 501.7320631030154,
+        "price": 62575.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057020000,
+        "equity": 501.7320631030154,
+        "price": 62523.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057080000,
+        "equity": 501.7320631030154,
+        "price": 62549.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057140000,
+        "equity": 501.7320631030154,
+        "price": 62556.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057200000,
+        "equity": 501.7320631030154,
+        "price": 62557.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057260000,
+        "equity": 501.7320631030154,
+        "price": 62602.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057320000,
+        "equity": 501.7320631030154,
+        "price": 62610.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057380000,
+        "equity": 501.7320631030154,
+        "price": 62646.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057440000,
+        "equity": 501.7320631030154,
+        "price": 62574.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057500000,
+        "equity": 501.7320631030154,
+        "price": 62536.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057560000,
+        "equity": 501.7320631030154,
+        "price": 62517.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057620000,
+        "equity": 501.7320631030154,
+        "price": 62483.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057680000,
+        "equity": 501.7320631030154,
+        "price": 62469.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057740000,
+        "equity": 501.7320631030154,
+        "price": 62452.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057800000,
+        "equity": 501.7320631030154,
+        "price": 62449.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057860000,
+        "equity": 501.7320631030154,
+        "price": 62477.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057920000,
+        "equity": 501.7320631030154,
+        "price": 62490.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795057980000,
+        "equity": 501.7320631030154,
+        "price": 62455.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058040000,
+        "equity": 501.7320631030154,
+        "price": 62439.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058100000,
+        "equity": 501.7320631030154,
+        "price": 62400,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058160000,
+        "equity": 501.7320631030154,
+        "price": 62496.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058220000,
+        "equity": 501.7320631030154,
+        "price": 62532.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058280000,
+        "equity": 501.7320631030154,
+        "price": 62588.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058340000,
+        "equity": 501.7320631030154,
+        "price": 62576.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058400000,
+        "equity": 501.7320631030154,
+        "price": 62578.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058460000,
+        "equity": 501.7320631030154,
+        "price": 62690.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058520000,
+        "equity": 501.7320631030154,
+        "price": 62712.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058580000,
+        "equity": 501.7320631030154,
+        "price": 62804.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058640000,
+        "equity": 501.7320631030154,
+        "price": 62794.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058700000,
+        "equity": 501.7320631030154,
+        "price": 62793.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058760000,
+        "equity": 501.7320631030154,
+        "price": 62826.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058820000,
+        "equity": 501.7320631030154,
+        "price": 62793,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058880000,
+        "equity": 501.7320631030154,
+        "price": 62883.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795058940000,
+        "equity": 501.7320631030154,
+        "price": 62911.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059000000,
+        "equity": 501.7320631030154,
+        "price": 62937.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059060000,
+        "equity": 501.7320631030154,
+        "price": 62987.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059120000,
+        "equity": 501.7320631030154,
+        "price": 62953.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059180000,
+        "equity": 501.7320631030154,
+        "price": 62900.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059240000,
+        "equity": 501.7320631030154,
+        "price": 63012.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059300000,
+        "equity": 501.7320631030154,
+        "price": 63017,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059360000,
+        "equity": 501.7320631030154,
+        "price": 62950.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059420000,
+        "equity": 501.7320631030154,
+        "price": 62943.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059480000,
+        "equity": 501.7320631030154,
+        "price": 62985,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059540000,
+        "equity": 501.7320631030154,
+        "price": 62940.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059600000,
+        "equity": 501.7320631030154,
+        "price": 62962.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059660000,
+        "equity": 501.7320631030154,
+        "price": 62953,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059720000,
+        "equity": 501.7320631030154,
+        "price": 62958.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059780000,
+        "equity": 501.7320631030154,
+        "price": 62965,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059840000,
+        "equity": 501.7320631030154,
+        "price": 62977.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059900000,
+        "equity": 501.7320631030154,
+        "price": 63027,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795059960000,
+        "equity": 501.7320631030154,
+        "price": 63060,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060020000,
+        "equity": 501.7320631030154,
+        "price": 63095,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060080000,
+        "equity": 501.7320631030154,
+        "price": 63161.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060140000,
+        "equity": 501.7320631030154,
+        "price": 63137,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060200000,
+        "equity": 501.7320631030154,
+        "price": 63092.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060260000,
+        "equity": 501.7320631030154,
+        "price": 63075.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060320000,
+        "equity": 501.7320631030154,
+        "price": 63055,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060380000,
+        "equity": 501.7320631030154,
+        "price": 63063.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060440000,
+        "equity": 501.7320631030154,
+        "price": 63145.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060500000,
+        "equity": 501.7320631030154,
+        "price": 63149.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060560000,
+        "equity": 501.7320631030154,
+        "price": 63129.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060620000,
+        "equity": 501.7320631030154,
+        "price": 63187.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060680000,
+        "equity": 501.7320631030154,
+        "price": 63172.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060740000,
+        "equity": 501.7320631030154,
+        "price": 63170,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060800000,
+        "equity": 501.7320631030154,
+        "price": 63218,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060860000,
+        "equity": 501.7320631030154,
+        "price": 63337.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060920000,
+        "equity": 501.7320631030154,
+        "price": 63383,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795060980000,
+        "equity": 501.7320631030154,
+        "price": 63445.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061040000,
+        "equity": 501.7320631030154,
+        "price": 63486.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061100000,
+        "equity": 501.7320631030154,
+        "price": 63494.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061160000,
+        "equity": 501.7320631030154,
+        "price": 63482.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061220000,
+        "equity": 501.7320631030154,
+        "price": 63433.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061280000,
+        "equity": 501.7320631030154,
+        "price": 63404.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061340000,
+        "equity": 501.7320631030154,
+        "price": 63352.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061400000,
+        "equity": 501.7320631030154,
+        "price": 63299.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061460000,
+        "equity": 501.7320631030154,
+        "price": 63358.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061520000,
+        "equity": 501.7320631030154,
+        "price": 63300.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061580000,
+        "equity": 501.7320631030154,
+        "price": 63300,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061640000,
+        "equity": 501.7320631030154,
+        "price": 63322.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061700000,
+        "equity": 501.7320631030154,
+        "price": 63244.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061760000,
+        "equity": 501.7320631030154,
+        "price": 63267,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061820000,
+        "equity": 501.7320631030154,
+        "price": 63229.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061880000,
+        "equity": 501.7320631030154,
+        "price": 63242.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795061940000,
+        "equity": 501.7320631030154,
+        "price": 63286.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062000000,
+        "equity": 501.7320631030154,
+        "price": 63320.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062060000,
+        "equity": 501.7320631030154,
+        "price": 63375.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062120000,
+        "equity": 501.7320631030154,
+        "price": 63404.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062180000,
+        "equity": 501.7320631030154,
+        "price": 63342,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062240000,
+        "equity": 501.7320631030154,
+        "price": 63371,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062300000,
+        "equity": 501.7320631030154,
+        "price": 63353.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062360000,
+        "equity": 501.7320631030154,
+        "price": 63328.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062420000,
+        "equity": 501.7320631030154,
+        "price": 63317,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062480000,
+        "equity": 501.7320631030154,
+        "price": 63314.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062540000,
+        "equity": 501.7320631030154,
+        "price": 63315.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062600000,
+        "equity": 501.7320631030154,
+        "price": 63359.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062660000,
+        "equity": 501.7320631030154,
+        "price": 63391.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062720000,
+        "equity": 501.7320631030154,
+        "price": 63395.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062780000,
+        "equity": 501.7320631030154,
+        "price": 63389,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062840000,
+        "equity": 501.7320631030154,
+        "price": 63385.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062900000,
+        "equity": 501.7320631030154,
+        "price": 63362,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795062960000,
+        "equity": 501.7320631030154,
+        "price": 63399.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063020000,
+        "equity": 501.7320631030154,
+        "price": 63440,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063080000,
+        "equity": 501.7320631030154,
+        "price": 63453.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063140000,
+        "equity": 501.7320631030154,
+        "price": 63472.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063200000,
+        "equity": 501.7320631030154,
+        "price": 63503.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063260000,
+        "equity": 501.7320631030154,
+        "price": 63434.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063320000,
+        "equity": 501.7320631030154,
+        "price": 63451.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063380000,
+        "equity": 501.7320631030154,
+        "price": 63475.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063440000,
+        "equity": 501.7320631030154,
+        "price": 63488.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063500000,
+        "equity": 501.7320631030154,
+        "price": 63574.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063560000,
+        "equity": 501.7320631030154,
+        "price": 63644.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063620000,
+        "equity": 501.7320631030154,
+        "price": 63637.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063680000,
+        "equity": 501.7320631030154,
+        "price": 63646.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063740000,
+        "equity": 501.7320631030154,
+        "price": 63589.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063800000,
+        "equity": 501.7320631030154,
+        "price": 63570.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063860000,
+        "equity": 501.7320631030154,
+        "price": 63527.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063920000,
+        "equity": 501.7320631030154,
+        "price": 63541.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795063980000,
+        "equity": 501.7320631030154,
+        "price": 63567.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064040000,
+        "equity": 501.7320631030154,
+        "price": 63593,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064100000,
+        "equity": 501.7320631030154,
+        "price": 63563,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064160000,
+        "equity": 501.7320631030154,
+        "price": 63540.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064220000,
+        "equity": 501.7320631030154,
+        "price": 63532.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064280000,
+        "equity": 501.7320631030154,
+        "price": 63526.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064340000,
+        "equity": 501.7320631030154,
+        "price": 63557.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064400000,
+        "equity": 501.7320631030154,
+        "price": 63509.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064460000,
+        "equity": 501.7320631030154,
+        "price": 63488.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064520000,
+        "equity": 501.7320631030154,
+        "price": 63486.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064580000,
+        "equity": 501.7320631030154,
+        "price": 63487,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064640000,
+        "equity": 501.7320631030154,
+        "price": 63458.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064700000,
+        "equity": 501.7320631030154,
+        "price": 63495.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064760000,
+        "equity": 501.7320631030154,
+        "price": 63552.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064820000,
+        "equity": 501.7320631030154,
+        "price": 63558.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064880000,
+        "equity": 501.7320631030154,
+        "price": 63529.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795064940000,
+        "equity": 501.7320631030154,
+        "price": 63546.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065000000,
+        "equity": 501.7320631030154,
+        "price": 63500.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065060000,
+        "equity": 501.7320631030154,
+        "price": 63513.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065120000,
+        "equity": 501.7320631030154,
+        "price": 63478,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065180000,
+        "equity": 501.7320631030154,
+        "price": 63450,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065240000,
+        "equity": 501.7320631030154,
+        "price": 63416.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065300000,
+        "equity": 501.7320631030154,
+        "price": 63395,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065360000,
+        "equity": 501.7320631030154,
+        "price": 63392.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065420000,
+        "equity": 501.7320631030154,
+        "price": 63442.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065480000,
+        "equity": 501.7320631030154,
+        "price": 63425.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065540000,
+        "equity": 501.7320631030154,
+        "price": 63369.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065600000,
+        "equity": 501.7320631030154,
+        "price": 63369.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065660000,
+        "equity": 501.7320631030154,
+        "price": 63387.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065720000,
+        "equity": 501.7320631030154,
+        "price": 63379.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065780000,
+        "equity": 501.7320631030154,
+        "price": 63437.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065840000,
+        "equity": 501.7320631030154,
+        "price": 63454.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065900000,
+        "equity": 501.7320631030154,
+        "price": 63514.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795065960000,
+        "equity": 501.7320631030154,
+        "price": 63474.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066020000,
+        "equity": 501.7320631030154,
+        "price": 63430.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066080000,
+        "equity": 501.7320631030154,
+        "price": 63419.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066140000,
+        "equity": 501.7320631030154,
+        "price": 63379.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066200000,
+        "equity": 501.7320631030154,
+        "price": 63426.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066260000,
+        "equity": 501.7320631030154,
+        "price": 63391.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066320000,
+        "equity": 501.7320631030154,
+        "price": 63375.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066380000,
+        "equity": 501.7320631030154,
+        "price": 63394.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066440000,
+        "equity": 501.7320631030154,
+        "price": 63374.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066500000,
+        "equity": 501.7320631030154,
+        "price": 63412.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066560000,
+        "equity": 501.7320631030154,
+        "price": 63438.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066620000,
+        "equity": 501.7320631030154,
+        "price": 63398.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066680000,
+        "equity": 501.7320631030154,
+        "price": 63360.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066740000,
+        "equity": 501.7320631030154,
+        "price": 63301.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066800000,
+        "equity": 501.7320631030154,
+        "price": 63343.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066860000,
+        "equity": 501.7320631030154,
+        "price": 63314.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066920000,
+        "equity": 501.7320631030154,
+        "price": 63294.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795066980000,
+        "equity": 501.7320631030154,
+        "price": 63309.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067040000,
+        "equity": 501.7320631030154,
+        "price": 63309.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067100000,
+        "equity": 501.7320631030154,
+        "price": 63370,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067160000,
+        "equity": 501.7320631030154,
+        "price": 63324.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067220000,
+        "equity": 501.7320631030154,
+        "price": 63299.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067280000,
+        "equity": 501.7320631030154,
+        "price": 63308,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067340000,
+        "equity": 501.7320631030154,
+        "price": 63291.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067400000,
+        "equity": 501.7320631030154,
+        "price": 63292.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067460000,
+        "equity": 501.7320631030154,
+        "price": 63282.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067520000,
+        "equity": 501.7320631030154,
+        "price": 63277.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067580000,
+        "equity": 501.7320631030154,
+        "price": 63318.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067640000,
+        "equity": 501.7320631030154,
+        "price": 63260.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067700000,
+        "equity": 501.7320631030154,
+        "price": 63307.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067760000,
+        "equity": 501.7320631030154,
+        "price": 63298.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067820000,
+        "equity": 501.7320631030154,
+        "price": 63311.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067880000,
+        "equity": 501.7320631030154,
+        "price": 63331.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795067940000,
+        "equity": 501.7320631030154,
+        "price": 63330,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068000000,
+        "equity": 501.7320631030154,
+        "price": 63406.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068060000,
+        "equity": 501.7320631030154,
+        "price": 63434,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068120000,
+        "equity": 501.7320631030154,
+        "price": 63486.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068180000,
+        "equity": 501.7320631030154,
+        "price": 63489.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068240000,
+        "equity": 501.7320631030154,
+        "price": 63450.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068300000,
+        "equity": 501.7320631030154,
+        "price": 63479.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068360000,
+        "equity": 501.7320631030154,
+        "price": 63455.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068420000,
+        "equity": 501.7320631030154,
+        "price": 63439.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068480000,
+        "equity": 501.7320631030154,
+        "price": 63439.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068540000,
+        "equity": 501.7320631030154,
+        "price": 63425.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068600000,
+        "equity": 501.7320631030154,
+        "price": 63415.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068660000,
+        "equity": 501.7320631030154,
+        "price": 63394.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068720000,
+        "equity": 501.7320631030154,
+        "price": 63340,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068780000,
+        "equity": 501.7320631030154,
+        "price": 63415.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068840000,
+        "equity": 501.7320631030154,
+        "price": 63437.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068900000,
+        "equity": 501.7320631030154,
+        "price": 63454.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795068960000,
+        "equity": 501.7320631030154,
+        "price": 63468.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069020000,
+        "equity": 501.7320631030154,
+        "price": 63461.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069080000,
+        "equity": 501.7320631030154,
+        "price": 63479.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069140000,
+        "equity": 501.7320631030154,
+        "price": 63474.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069200000,
+        "equity": 501.7320631030154,
+        "price": 63514.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069260000,
+        "equity": 501.7320631030154,
+        "price": 63486.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069320000,
+        "equity": 501.7320631030154,
+        "price": 63494.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069380000,
+        "equity": 501.7320631030154,
+        "price": 63507.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069440000,
+        "equity": 501.7320631030154,
+        "price": 63480.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069500000,
+        "equity": 501.7320631030154,
+        "price": 63490.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069560000,
+        "equity": 501.7320631030154,
+        "price": 63514.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069620000,
+        "equity": 501.7320631030154,
+        "price": 63525.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069680000,
+        "equity": 501.7320631030154,
+        "price": 63514.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069740000,
+        "equity": 501.7320631030154,
+        "price": 63493.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069800000,
+        "equity": 501.7320631030154,
+        "price": 63520,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069860000,
+        "equity": 501.7320631030154,
+        "price": 63566.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069920000,
+        "equity": 501.7320631030154,
+        "price": 63581.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795069980000,
+        "equity": 501.7320631030154,
+        "price": 63560.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070040000,
+        "equity": 501.7320631030154,
+        "price": 63584.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070100000,
+        "equity": 501.7320631030154,
+        "price": 63580,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070160000,
+        "equity": 501.7320631030154,
+        "price": 63558.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070220000,
+        "equity": 501.7320631030154,
+        "price": 63516.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070280000,
+        "equity": 501.7320631030154,
+        "price": 63512.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070340000,
+        "equity": 501.7320631030154,
+        "price": 63525,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070400000,
+        "equity": 501.7320631030154,
+        "price": 63519.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070460000,
+        "equity": 501.7320631030154,
+        "price": 63529.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070520000,
+        "equity": 501.7320631030154,
+        "price": 63527.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070580000,
+        "equity": 501.7320631030154,
+        "price": 63524.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070640000,
+        "equity": 501.7320631030154,
+        "price": 63503.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070700000,
+        "equity": 501.7320631030154,
+        "price": 63500,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070760000,
+        "equity": 501.7320631030154,
+        "price": 63520.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070820000,
+        "equity": 501.7320631030154,
+        "price": 63513.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070880000,
+        "equity": 501.7320631030154,
+        "price": 63487.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795070940000,
+        "equity": 501.7320631030154,
+        "price": 63466.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071000000,
+        "equity": 501.7320631030154,
+        "price": 63474.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071060000,
+        "equity": 501.7320631030154,
+        "price": 63497.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071120000,
+        "equity": 501.7320631030154,
+        "price": 63559.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071180000,
+        "equity": 501.7320631030154,
+        "price": 63589,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071240000,
+        "equity": 501.7320631030154,
+        "price": 63649.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071300000,
+        "equity": 501.7320631030154,
+        "price": 63639.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071360000,
+        "equity": 501.7320631030154,
+        "price": 63660,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071420000,
+        "equity": 501.7320631030154,
+        "price": 63660,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071480000,
+        "equity": 501.7320631030154,
+        "price": 63683,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071540000,
+        "equity": 501.7320631030154,
+        "price": 63721.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071600000,
+        "equity": 501.7320631030154,
+        "price": 63775.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071660000,
+        "equity": 501.7320631030154,
+        "price": 63745,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071720000,
+        "equity": 501.7320631030154,
+        "price": 63763.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071780000,
+        "equity": 501.7320631030154,
+        "price": 63737.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071840000,
+        "equity": 501.7320631030154,
+        "price": 63718.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071900000,
+        "equity": 501.7320631030154,
+        "price": 63754.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795071960000,
+        "equity": 501.7320631030154,
+        "price": 63806,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072020000,
+        "equity": 501.7320631030154,
+        "price": 63846.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072080000,
+        "equity": 501.7320631030154,
+        "price": 63808.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072140000,
+        "equity": 501.7320631030154,
+        "price": 63723.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072200000,
+        "equity": 501.7320631030154,
+        "price": 63742.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072260000,
+        "equity": 501.7320631030154,
+        "price": 63633.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072320000,
+        "equity": 501.7320631030154,
+        "price": 63608,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072380000,
+        "equity": 501.7320631030154,
+        "price": 63613.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072440000,
+        "equity": 501.7320631030154,
+        "price": 63600,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072500000,
+        "equity": 501.7320631030154,
+        "price": 63608.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072560000,
+        "equity": 501.7320631030154,
+        "price": 63623.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072620000,
+        "equity": 501.7320631030154,
+        "price": 63632.9,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072680000,
+        "equity": 501.7320631030154,
+        "price": 63600.1,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072740000,
+        "equity": 501.7320631030154,
+        "price": 63570.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072800000,
+        "equity": 501.7320631030154,
+        "price": 63573.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072860000,
+        "equity": 501.7320631030154,
+        "price": 63608.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072920000,
+        "equity": 501.7320631030154,
+        "price": 63610.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795072980000,
+        "equity": 501.7320631030154,
+        "price": 63598.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073040000,
+        "equity": 501.7320631030154,
+        "price": 63585.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073100000,
+        "equity": 501.7320631030154,
+        "price": 63562.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073160000,
+        "equity": 501.7320631030154,
+        "price": 63561.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073220000,
+        "equity": 501.7320631030154,
+        "price": 63569.7,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073280000,
+        "equity": 501.7320631030154,
+        "price": 63548.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073340000,
+        "equity": 501.7320631030154,
+        "price": 63547.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073400000,
+        "equity": 501.7320631030154,
+        "price": 63569.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073460000,
+        "equity": 501.7320631030154,
+        "price": 63577.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073520000,
+        "equity": 501.7320631030154,
+        "price": 63528,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073580000,
+        "equity": 501.7320631030154,
+        "price": 63517.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073640000,
+        "equity": 501.7320631030154,
+        "price": 63561.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073700000,
+        "equity": 501.7320631030154,
+        "price": 63583,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073760000,
+        "equity": 501.7320631030154,
+        "price": 63598.4,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073820000,
+        "equity": 501.7320631030154,
+        "price": 63596.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073880000,
+        "equity": 501.7320631030154,
+        "price": 63596.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795073940000,
+        "equity": 501.7320631030154,
+        "price": 63553.3,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795074000000,
+        "equity": 501.7320631030154,
+        "price": 63551.8,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795074060000,
+        "equity": 501.7320631030154,
+        "price": 63578,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795074120000,
+        "equity": 501.7320631030154,
+        "price": 63563.2,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795074180000,
+        "equity": 501.7320631030154,
+        "price": 63591.5,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
       }
     ],
     "fundingEvents": [
@@ -34207,8 +37505,8 @@
         "priceMethod": "minute-open proxy, not exchange mark"
       }
     ],
-    "estimatedStopLoss": 1.637821878108462,
-    "estimatedTakeProfit": 1.3873601871608432,
+    "estimatedStopLoss": 1.6367667657565352,
+    "estimatedTakeProfit": 1.3864664264353268,
     "netRewardRisk": 0.8470763553135097,
     "positionVenue": null,
     "positionId": null,
@@ -34228,20 +37526,20 @@
   },
   "strategyVersion": "paper-v3",
   "pendingEntry": {
-    "id": "paper-v3:OKX:1795047780000",
-    "entryAt": 1795047900000,
-    "createdAt": "2026-11-19T00:24:14.548Z",
+    "id": "paper-v3:OKX:1795074180000",
+    "entryAt": 1795074300000,
+    "createdAt": "2026-11-19T07:44:44.008Z",
     "venue": "OKX",
     "decision": {
       "ok": true,
       "signal": "SELL",
       "mode": "experimental-unvalidated",
-      "probabilityUp": 0.3848008600743493,
-      "confidence": 60,
+      "probabilityUp": 0.40036106836294966,
+      "confidence": 59.96389316370504,
       "horizonProbabilities": {
-        "1h": 0.44249669208894216,
-        "4h": 0.3573644374760274,
-        "24h": 0.3765302610157942
+        "1h": 0.432420096506323,
+        "4h": 0.3945150974902013,
+        "24h": 0.3887160324458241
       },
       "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
       "confidenceKind": "heuristic-score-not-win-probability",
@@ -34251,28 +37549,28 @@
         "supportingHorizons": 0,
         "agreement": 0
       },
-      "reason": "研究模式 SELL；模型原始機率均值 38.5%，不代表實際交易勝率。",
-      "generatedAt": "2026-11-19T00:24:14.548Z",
-      "modelAsOf": 1795046399999,
+      "reason": "研究模式 SELL；模型原始機率均值 40.0%，不代表實際交易勝率。",
+      "generatedAt": "2026-11-19T07:44:44.008Z",
+      "modelAsOf": 1795071599999,
       "marketType": "USDT_M_BTC_PERPETUAL",
       "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
       "venue": "OKX",
-      "candleTs": 1795047780000,
-      "price": 62666.6,
+      "candleTs": 1795074180000,
+      "price": 63591.5,
       "market": {
-        "candleTs": 1795047780000,
-        "closedAt": 1795047839999,
-        "price": 62666.6,
-        "open": 62639.1,
-        "high": 62667.4,
-        "low": 62639,
-        "atr": 57.485714285713975,
-        "atrPct": 0.0009173262038424611,
-        "rsi": 42.01564657155986,
-        "emaFast": 62684.627680674195,
-        "emaSlow": 62755.25602618569,
-        "momentum5": -0.0001882626231685114,
-        "volumeRatio": 0.6485920001056864
+        "candleTs": 1795074180000,
+        "closedAt": 1795074239999,
+        "price": 63591.5,
+        "open": 63563.2,
+        "high": 63591.6,
+        "low": 63563.1,
+        "atr": 37.028571428569975,
+        "atrPct": 0.0005822880641055797,
+        "rsi": 57.61058864507074,
+        "emaFast": 63573.84924765376,
+        "emaSlow": 63579.36750874961,
+        "momentum5": -0.00007547608901781189,
+        "volumeRatio": 0.5829037448909377
       },
       "currentRegime": "DOWN",
       "mainValidated": {
@@ -34284,25 +37582,25 @@
       "feedWarnings": []
     },
     "market": {
-      "candleTs": 1795047780000,
-      "closedAt": 1795047839999,
-      "price": 62666.6,
-      "open": 62639.1,
-      "high": 62667.4,
-      "low": 62639,
-      "atr": 57.485714285713975,
-      "atrPct": 0.0009173262038424611,
-      "rsi": 42.01564657155986,
-      "emaFast": 62684.627680674195,
-      "emaSlow": 62755.25602618569,
-      "momentum5": -0.0001882626231685114,
-      "volumeRatio": 0.6485920001056864
+      "candleTs": 1795074180000,
+      "closedAt": 1795074239999,
+      "price": 63591.5,
+      "open": 63563.2,
+      "high": 63591.6,
+      "low": 63563.1,
+      "atr": 37.028571428569975,
+      "atrPct": 0.0005822880641055797,
+      "rsi": 57.61058864507074,
+      "emaFast": 63573.84924765376,
+      "emaSlow": 63579.36750874961,
+      "momentum5": -0.00007547608901781189,
+      "volumeRatio": 0.5829037448909377
     },
     "run": {
-      "id": "44428684805",
+      "id": "44481944151",
       "attempt": "1",
       "event": "schedule",
-      "codeRevision": "d59174376a9c78be7c6244ca49beaefd4fe5b445"
+      "codeRevision": "8a7d28ac92bc07830811d474e83049c843099626"
     }
   },
   "pendingExit": null,
@@ -38206,6 +41504,66 @@
         "codeRevision": "d59174376a9c78be7c6244ca49beaefd4fe5b445"
       },
       "action": "PENDING_ENTRY"
+    },
+    {
+      "ok": true,
+      "signal": "SELL",
+      "mode": "experimental-unvalidated",
+      "probabilityUp": 0.40036106836294966,
+      "confidence": 59.96389316370504,
+      "horizonProbabilities": {
+        "1h": 0.432420096506323,
+        "4h": 0.3945150974902013,
+        "24h": 0.3887160324458241
+      },
+      "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
+      "confidenceKind": "heuristic-score-not-win-probability",
+      "evidence": {
+        "validatedVotes": [],
+        "supportingVotes": 0,
+        "supportingHorizons": 0,
+        "agreement": 0
+      },
+      "reason": "研究模式 SELL；模型原始機率均值 40.0%，不代表實際交易勝率。；訊號已保存，下一個完整分鐘開盤模擬成交，於下次執行補算。",
+      "generatedAt": "2026-11-19T07:44:44.008Z",
+      "modelAsOf": 1795071599999,
+      "marketType": "USDT_M_BTC_PERPETUAL",
+      "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+      "venue": "OKX",
+      "candleTs": 1795074180000,
+      "price": 63591.5,
+      "market": {
+        "candleTs": 1795074180000,
+        "closedAt": 1795074239999,
+        "price": 63591.5,
+        "open": 63563.2,
+        "high": 63591.6,
+        "low": 63563.1,
+        "atr": 37.028571428569975,
+        "atrPct": 0.0005822880641055797,
+        "rsi": 57.61058864507074,
+        "emaFast": 63573.84924765376,
+        "emaSlow": 63579.36750874961,
+        "momentum5": -0.00007547608901781189,
+        "volumeRatio": 0.5829037448909377
+      },
+      "currentRegime": "DOWN",
+      "mainValidated": {
+        "1h": false,
+        "4h": false,
+        "24h": false
+      },
+      "derivativesAvailable": true,
+      "feedWarnings": [],
+      "recordedAt": "2026-11-19T07:44:44.008Z",
+      "strategyVersion": "paper-v3",
+      "run": {
+        "id": "44481944151",
+        "attempt": "1",
+        "event": "schedule",
+        "codeRevision": "8a7d28ac92bc07830811d474e83049c843099626"
+      },
+      "action": "PENDING_ENTRY"
     }
   ],
   "runs": [
@@ -39768,16 +43126,40 @@
         "資金費以公開費率估算，覆蓋可能不完整",
         "尚未模擬維持保證金與交易所強平"
       ]
+    },
+    {
+      "at": "2026-11-19T07:44:44.008Z",
+      "id": "44481944151",
+      "attempt": "1",
+      "event": "schedule",
+      "codeRevision": "8a7d28ac92bc07830811d474e83049c843099626",
+      "status": "ok",
+      "lastAttemptAt": "2026-11-19T07:44:44.008Z",
+      "lastCheckedCandleAt": "2026-11-19T07:43:59.999Z",
+      "quoteAt": "2026-11-19T07:43:59.999Z",
+      "intervalMinutes": 440.491,
+      "expectedIntervalMinutes": 5,
+      "processedMinutes": 439,
+      "gap": null,
+      "venue": "OKX",
+      "indicatorContextComplete": true,
+      "execution": "delayed-paper-replay",
+      "fundingModel": "public rate × minute-open proxy; funding history coverage not guaranteed",
+      "limitations": [
+        "非即時交易；排程不保證準點",
+        "資金費以公開費率估算，覆蓋可能不完整",
+        "尚未模擬維持保證金與交易所強平"
+      ]
     }
   ],
   "health": {
     "status": "ok",
-    "lastAttemptAt": "2026-11-19T00:24:14.548Z",
-    "lastCheckedCandleAt": "2026-11-19T00:23:59.999Z",
-    "quoteAt": "2026-11-19T00:23:59.999Z",
-    "intervalMinutes": 372.50475,
+    "lastAttemptAt": "2026-11-19T07:44:44.008Z",
+    "lastCheckedCandleAt": "2026-11-19T07:43:59.999Z",
+    "quoteAt": "2026-11-19T07:43:59.999Z",
+    "intervalMinutes": 440.491,
     "expectedIntervalMinutes": 5,
-    "processedMinutes": 0,
+    "processedMinutes": 439,
     "gap": null,
     "venue": "OKX",
     "indicatorContextComplete": true,
@@ -39789,5 +43171,5 @@
       "尚未模擬維持保證金與交易所強平"
     ]
   },
-  "totalRuns": 65
+  "totalRuns": 66
 }
