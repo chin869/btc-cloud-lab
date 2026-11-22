@@ -1,21 +1,21 @@
 {
   "version": 3,
   "createdAt": "2026-09-25T00:00:00.000Z",
-  "updatedAt": "2026-11-21T21:50:58.913Z",
-  "lastRunAt": "2026-11-21T21:50:58.913Z",
-  "lastSuccessAt": "2026-11-21T21:50:58.913Z",
+  "updatedAt": "2026-11-22T01:44:08.754Z",
+  "lastRunAt": "2026-11-22T01:44:08.754Z",
+  "lastSuccessAt": "2026-11-22T01:44:08.754Z",
   "lastError": null,
-  "lastProcessedCandleTs": 1795297740000,
+  "lastProcessedCandleTs": 1795311780000,
   "lastDecision": {
     "ok": true,
     "signal": "HOLD",
     "mode": "experimental-unvalidated",
-    "probabilityUp": 0.45527015742024796,
-    "confidence": 54.472984257975206,
+    "probabilityUp": 0.47391990250954125,
+    "confidence": 52.60800974904588,
     "horizonProbabilities": {
-      "1h": 0.4380092807283406,
-      "4h": 0.49559868564688586,
-      "24h": 0.4336541995962231
+      "1h": 0.43142002715705197,
+      "4h": 0.5567894909852281,
+      "24h": 0.4330176488290206
     },
     "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
     "confidenceKind": "heuristic-score-not-win-probability",
@@ -25,28 +25,28 @@
       "supportingHorizons": 0,
       "agreement": 0
     },
-    "reason": "研究模式 HOLD；模型原始機率均值 45.5%，不代表實際交易勝率。",
-    "generatedAt": "2026-11-21T21:50:58.913Z",
-    "modelAsOf": 1795294799999,
+    "reason": "研究模式 HOLD；模型原始機率均值 47.4%，不代表實際交易勝率。",
+    "generatedAt": "2026-11-22T01:44:08.754Z",
+    "modelAsOf": 1795309199999,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M perpetual",
     "venue": "OKX",
-    "candleTs": 1795297740000,
-    "price": 60372.3,
+    "candleTs": 1795311780000,
+    "price": 60038.6,
     "market": {
-      "candleTs": 1795297740000,
-      "closedAt": 1795297799999,
-      "price": 60372.3,
-      "open": 60362.3,
-      "high": 60372.4,
-      "low": 60362.3,
-      "atr": 35.42857142857195,
-      "atrPct": 0.0005868348800455167,
-      "rsi": 45.67521367521453,
-      "emaFast": 60389.084000748684,
-      "emaSlow": 60395.688214856455,
-      "momentum5": -0.000314614853463957,
-      "volumeRatio": 0.7575445685321252
+      "candleTs": 1795311780000,
+      "closedAt": 1795311839999,
+      "price": 60038.6,
+      "open": 60021.9,
+      "high": 60060.8,
+      "low": 60004.5,
+      "atr": 34.457142857144,
+      "atrPct": 0.0005739164946741597,
+      "rsi": 41.20171673819771,
+      "emaFast": 60034.76623054673,
+      "emaSlow": 60071.42695338678,
+      "momentum5": 0.00030323023505340885,
+      "volumeRatio": 1.5730126487021296
     },
     "currentRegime": "RANGE",
     "mainValidated": {
@@ -56,7 +56,7 @@
     },
     "derivativesAvailable": true,
     "feedWarnings": [],
-    "at": "2026-11-21T21:50:58.913Z",
+    "at": "2026-11-22T01:44:08.754Z",
     "executed": "HOLD"
   },
   "settingsSnapshot": {
@@ -60290,6 +60290,13 @@
         "price": 60372.3,
         "strategyVersion": "paper-v3",
         "valuation": "mark-to-market before hypothetical exit costs"
+      },
+      {
+        "ts": 1795311780000,
+        "equity": 497.7585346718372,
+        "price": 60038.6,
+        "strategyVersion": "paper-v3",
+        "valuation": "mark-to-market before hypothetical exit costs"
       }
     ],
     "fundingEvents": [
@@ -64836,6 +64843,66 @@
         "codeRevision": "6239b4cd12d5e8acff6e337897e4ab19402e07ee"
       },
       "action": "HOLD"
+    },
+    {
+      "ok": true,
+      "signal": "HOLD",
+      "mode": "experimental-unvalidated",
+      "probabilityUp": 0.47391990250954125,
+      "confidence": 52.60800974904588,
+      "horizonProbabilities": {
+        "1h": 0.43142002715705197,
+        "4h": 0.5567894909852281,
+        "24h": 0.4330176488290206
+      },
+      "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
+      "confidenceKind": "heuristic-score-not-win-probability",
+      "evidence": {
+        "validatedVotes": [],
+        "supportingVotes": 0,
+        "supportingHorizons": 0,
+        "agreement": 0
+      },
+      "reason": "研究模式 HOLD；模型原始機率均值 47.4%，不代表實際交易勝率。",
+      "generatedAt": "2026-11-22T01:44:08.754Z",
+      "modelAsOf": 1795309199999,
+      "marketType": "USDT_M_BTC_PERPETUAL",
+      "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
+      "venue": "OKX",
+      "candleTs": 1795311780000,
+      "price": 60038.6,
+      "market": {
+        "candleTs": 1795311780000,
+        "closedAt": 1795311839999,
+        "price": 60038.6,
+        "open": 60021.9,
+        "high": 60060.8,
+        "low": 60004.5,
+        "atr": 34.457142857144,
+        "atrPct": 0.0005739164946741597,
+        "rsi": 41.20171673819771,
+        "emaFast": 60034.76623054673,
+        "emaSlow": 60071.42695338678,
+        "momentum5": 0.00030323023505340885,
+        "volumeRatio": 1.5730126487021296
+      },
+      "currentRegime": "RANGE",
+      "mainValidated": {
+        "1h": false,
+        "4h": false,
+        "24h": false
+      },
+      "derivativesAvailable": true,
+      "feedWarnings": [],
+      "recordedAt": "2026-11-22T01:44:08.754Z",
+      "strategyVersion": "paper-v3",
+      "run": {
+        "id": "44972817519",
+        "attempt": "1",
+        "event": "schedule",
+        "codeRevision": "679bc850e7251403e71966460e92de9a3d8af2da"
+      },
+      "action": "HOLD"
     }
   ],
   "runs": [
@@ -66638,16 +66705,40 @@
         "資金費以公開費率估算，覆蓋可能不完整",
         "尚未模擬維持保證金與交易所強平"
       ]
+    },
+    {
+      "at": "2026-11-22T01:44:08.754Z",
+      "id": "44972817519",
+      "attempt": "1",
+      "event": "schedule",
+      "codeRevision": "679bc850e7251403e71966460e92de9a3d8af2da",
+      "status": "ok",
+      "lastAttemptAt": "2026-11-22T01:44:08.754Z",
+      "lastCheckedCandleAt": "2026-11-22T01:43:59.999Z",
+      "quoteAt": "2026-11-22T01:43:59.999Z",
+      "intervalMinutes": 233.16401666666667,
+      "expectedIntervalMinutes": 5,
+      "processedMinutes": 0,
+      "gap": null,
+      "venue": "OKX",
+      "indicatorContextComplete": true,
+      "execution": "delayed-paper-replay",
+      "fundingModel": "public rate × minute-open proxy; funding history coverage not guaranteed",
+      "limitations": [
+        "非即時交易；排程不保證準點",
+        "資金費以公開費率估算，覆蓋可能不完整",
+        "尚未模擬維持保證金與交易所強平"
+      ]
     }
   ],
   "health": {
     "status": "ok",
-    "lastAttemptAt": "2026-11-21T21:50:58.913Z",
-    "lastCheckedCandleAt": "2026-11-21T21:49:59.999Z",
-    "quoteAt": "2026-11-21T21:49:59.999Z",
-    "intervalMinutes": 319.2518166666667,
+    "lastAttemptAt": "2026-11-22T01:44:08.754Z",
+    "lastCheckedCandleAt": "2026-11-22T01:43:59.999Z",
+    "quoteAt": "2026-11-22T01:43:59.999Z",
+    "intervalMinutes": 233.16401666666667,
     "expectedIntervalMinutes": 5,
-    "processedMinutes": 318,
+    "processedMinutes": 0,
     "gap": null,
     "venue": "OKX",
     "indicatorContextComplete": true,
@@ -66659,5 +66750,5 @@
       "尚未模擬維持保證金與交易所強平"
     ]
   },
-  "totalRuns": 75
+  "totalRuns": 76
 }
