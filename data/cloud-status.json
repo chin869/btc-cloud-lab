@@ -1,18 +1,18 @@
 {
   "version": 2,
   "strategyVersion": "paper-v3",
-  "lastRunAt": "2026-11-25T11:39:36.322Z",
-  "lastSuccessAt": "2026-11-25T11:39:40.125Z",
+  "lastRunAt": "2026-11-25T20:40:01.583Z",
+  "lastSuccessAt": "2026-11-25T20:40:05.058Z",
   "collector": {
     "version": 1,
-    "lastAttemptAt": "2026-11-25T11:39:37.105Z",
-    "lastSuccessAt": "2026-11-25T11:39:37.335Z",
+    "lastAttemptAt": "2026-11-25T20:40:02.451Z",
+    "lastSuccessAt": "2026-11-25T20:40:02.706Z",
     "lastError": null,
     "counts": {
-      "funding": 789,
-      "openInterest": 1989,
-      "longShort": 1989,
-      "taker": 1990
+      "funding": 790,
+      "openInterest": 1998,
+      "longShort": 1998,
+      "taker": 1999
     },
     "sources": {
       "funding": {
@@ -39,45 +39,53 @@
   },
   "decision": {
     "ok": true,
-    "signal": "HOLD",
-    "mode": "experimental-unvalidated",
-    "probabilityUp": 0.4723282535117517,
-    "confidence": 52.767174648824835,
+    "signal": "SELL",
+    "mode": "validated",
+    "probabilityUp": 0.42879753348310284,
+    "confidence": 60,
     "horizonProbabilities": {
-      "1h": 0.48643121700177067,
-      "4h": 0.48759740575570854,
-      "24h": 0.4538249075837744
+      "1h": 0.4052079938585119,
+      "4h": 0.40793712087496486,
+      "24h": 0.4562376127515017
     },
     "probabilityLabel": "模型原始機率均值，未校準為實際交易勝率",
     "confidenceKind": "heuristic-score-not-win-probability",
     "evidence": {
-      "validatedVotes": [],
-      "supportingVotes": 0,
-      "supportingHorizons": 0,
-      "agreement": 0
+      "validatedVotes": [
+        {
+          "key": "24h",
+          "action": "SHORT",
+          "weight": 1.6,
+          "source": "Derivatives 24h",
+          "probabilityUp": 0.3680415705999487
+        }
+      ],
+      "supportingVotes": 1,
+      "supportingHorizons": 1,
+      "agreement": 1
     },
-    "reason": "研究模式 HOLD；模型原始機率均值 47.2%，不代表實際交易勝率。",
-    "generatedAt": "2026-11-25T11:39:40.125Z",
-    "modelAsOf": 1795604399999,
+    "reason": "模型檢查通過票：Derivatives 24h SHORT；支持 1 個週期。信心分數不是勝率。",
+    "generatedAt": "2026-11-25T20:40:05.058Z",
+    "modelAsOf": 1795636799999,
     "marketType": "USDT_M_BTC_PERPETUAL",
     "marketDataSource": "OKX USDT-M BTC-USDT-SWAP",
     "venue": "OKX",
-    "candleTs": 1795606680000,
-    "price": 58504.2,
+    "candleTs": 1795639140000,
+    "price": 59852.5,
     "market": {
-      "candleTs": 1795606680000,
-      "closedAt": 1795606739999,
-      "price": 58504.2,
-      "open": 58495.7,
-      "high": 58547.8,
-      "low": 58466.2,
-      "atr": 86.90714285714368,
-      "atrPct": 0.0014854855353486362,
-      "rsi": 34.20929141248254,
-      "emaFast": 58537.11495800609,
-      "emaSlow": 58610.82906512503,
-      "momentum5": -0.0018153712809628741,
-      "volumeRatio": 1.0253747846933277
+      "candleTs": 1795639140000,
+      "closedAt": 1795639199999,
+      "price": 59852.5,
+      "open": 59881.3,
+      "high": 59892.8,
+      "low": 59840.2,
+      "atr": 77.18571428571522,
+      "atrPct": 0.0012895988352318653,
+      "rsi": 39.641224059092096,
+      "emaFast": 59905.947613127064,
+      "emaSlow": 59928.21825327807,
+      "momentum5": -0.0023934889101124845,
+      "volumeRatio": 1.009526311917349
     },
     "currentRegime": "DOWN",
     "mainValidated": {
@@ -89,17 +97,17 @@
     "feedWarnings": []
   },
   "run": {
-    "id": "45606460293",
+    "id": "45697099546",
     "attempt": "1",
     "event": "schedule",
-    "codeRevision": "1f29b50ba40d7011fbfe19a4bbc119e8b283543d"
+    "codeRevision": "adba1c377b660133d5eec237265acbbb8597c2bb"
   },
   "health": {
     "status": "ok",
-    "lastAttemptAt": "2026-11-25T11:39:40.125Z",
-    "lastCheckedCandleAt": "2026-11-25T11:38:59.999Z",
-    "quoteAt": "2026-11-25T11:38:59.999Z",
-    "intervalMinutes": 547.7796,
+    "lastAttemptAt": "2026-11-25T20:40:05.058Z",
+    "lastCheckedCandleAt": "2026-11-25T20:39:59.999Z",
+    "quoteAt": "2026-11-25T20:39:59.999Z",
+    "intervalMinutes": 540.41555,
     "expectedIntervalMinutes": 5,
     "processedMinutes": 0,
     "gap": null,
@@ -113,5 +121,5 @@
       "尚未模擬維持保證金與交易所強平"
     ]
   },
-  "durationSeconds": 3.854
+  "durationSeconds": 3.514
 }
